@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" monitorInterval="300">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="WARN" onMatch="DENY" onMisMatch="ACCEPT"/>
+            <PatternLayout>
+                <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}:%L - %msg%n</Pattern>
+            </PatternLayout>
+        </Console>
+
+        <Console name="Warning" target="SYSTEM_ERR">
+            <PatternLayout>
+                <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}:%L - %msg%n</Pattern>
+            </PatternLayout>
+        </Console>
+
+        <RollingFile name="FileOutput" fileName="${sys:catalina.base}/logs/root/${date:dd-MM-yyyy}/LastLog.txt"
+                     filePattern="${sys:catalina.base}/logs/root/${date:dd-MM-yyyy}/%d{dd-MM-yyyy}-%i.txt"
+                     bufferedIO="true"
+                     append="true"
+                     ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}:%L - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <OnStartupTriggeringPolicy minSize="0"/>
+                <SizeBasedTriggeringPolicy size="5 MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="50"/>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console" level="debug"/>
+            <AppenderRef ref="Warning" level="warn"/>
+        </Root>
+        <Logger name="com.fonarik94.servlets.GoAwayServlet" level="debug" additivity="true">
+            <AppenderRef ref="FileOutput"/>
+        </Logger>
+        <Logger name="com.fonarik94.filters.RequestDetectorFilter" level="debug" additivity="true">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Warning"/>
+        </Logger>
+        <Logger name="com.fonarik94.servlets.FileRequestServlet" level="info" additivity="true">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="com.fonarik94.filters.ProcessingTimeFilter" level="debug" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="com.fonarik94.servlets.TestServlet" level="debug" additivity="true">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="com.fonarik94.servlets.WOL" level="debug" additivity="true">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileOutput"/>
+        </Logger>
+    </Loggers>
+
+</Configuration>

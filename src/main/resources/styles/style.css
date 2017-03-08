@@ -1,0 +1,42 @@
+@import "fonts.css";
+body{
+    background-color: black;
+}
+h1{
+    font-family: Dited;
+    font-style: normal;
+    text-align: center;
+    font-size: 350%;
+    color: white
+}
+p {
+    font-family: Dited;
+    font-style: normal;
+    text-align: center;
+    font-size: 150%;
+    color: white;
+}
+.text-area{
+    margin-top: 10%;
+}
+.image{
+    margin-left: -45px;
+    position:absolute;
+    bottom: 0px;
+}
+.footer{
+    text-align: center;
+    height: 50px;
+    position: absolute;
+    bottom: 15px;
+    left: 0px;
+    right: 0px;
+}
+.WOLarea{
+    text-align: center;
+    width: 350px;
+    height: auto;
+    margin: auto;
+    padding: 10px;
+    background-color: white;
+}
