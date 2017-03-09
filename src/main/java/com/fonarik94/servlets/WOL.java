@@ -13,54 +13,68 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Arrays;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
-/**
- * Created by Ярослав on 01.03.2017.
- */
 public class WOL extends HttpServlet {
     private static final Logger log = LogManager.getLogger(getCurentClassName());
+    private String mac;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        log.debug(">> MAC: " + request.getParameter("MAC"));
-        wake(request.getParameter("MAC"));
+        mac = request.getParameter("MAC");
+        if (mac != null) {
+            log.debug(">> Wake up PC with MAC: " + mac);
+            wake(mac);
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/wol.jsp");
+        dispatcher.forward(request, response);
+    }
 
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        mac = request.getParameter("MAC");
+        if (mac != null) {
+            log.debug(">> Wake up PC with MAC: " + mac);
+            wake(mac);
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/wol.jsp");
         dispatcher.forward(request, response);
     }
 
     private void wake(String mac) throws IOException {
+        /**
+         * Send wake-on-lan package
+         * @param mac
+         * @throws IOException
+         */
         if (mac != null) {
-            int wolPort = 9;
             InetAddress localaddr = InetAddress.getLocalHost();
-            log.debug(">> getLocalHost: " + localaddr);
+            log.debug(">> LocalHost: " + localaddr);
             String[] localHost = localaddr.toString().split("/");
-            log.debug(">> host name: " + localHost[0] + ";  host ip: " + localHost[1]);
+            log.debug(">> Host name: " + localHost[0] + ";  host ip: " + localHost[1]);
             String[] localHostOctets = localHost[1].split("\\.");
-            log.debug(">> local host octets: " + Arrays.toString(localHostOctets));
-            String br = localHostOctets[0] + "." + localHostOctets[1] + "." + localHostOctets[2] + "." + "255";
-            log.debug("broadcast address: " + br);
-
-            String broadcastIP = "10.10.25.255";
-            InetAddress address = InetAddress.getByName(broadcastIP);
-            DatagramPacket udpPacket = this.getWolPacket(mac);
-            DatagramSocket udpSocket = new DatagramSocket(wolPort, address);
+            String broadcastIP = localHostOctets[0] + "." + localHostOctets[1] + "." + localHostOctets[2] + "." + "255";
+            log.debug(">> Broadcast address: " + broadcastIP);
+            DatagramPacket udpPacket = this.getWolPacket(mac, broadcastIP);
+            DatagramSocket udpSocket = new DatagramSocket();
             for (int i = 0; i < 10; i++) {
                 udpSocket.send(udpPacket);
             }
             udpSocket.close();
+            log.info("Wake-on-lan package sent");
         }
     }
 
-    /**
-     * Returns an array of bytes, ready for sending like wake-on-lan packet
-     *
-     * @param mac - string MAC address like AA:BB:CC:DD:EE:FF or AA-BB-CC-DD-EE-FF
-     * @return byte array, like FF x 6 and MAC x 16
-     */
-    private DatagramPacket getWolPacket(String mac) {
+    private DatagramPacket getWolPacket(String mac, String broadcastIP) throws UnknownHostException {
+        /**
+         * Returns an array of bytes, ready for sending wake-on-lan packet over UDP
+         *
+         * @param mac - string MAC address like AA:BB:CC:DD:EE:FF or AA-BB-CC-DD-EE-FF
+         * @return DatagramPacket, like FF x 6 and MAC x 16
+         */
+        InetAddress address = InetAddress.getByName(broadcastIP);
+        int wolPort = 9;
 
         byte[] wolPacket = new byte[102];
         for (int i = 0; i < 6; i++) {
@@ -80,7 +94,7 @@ public class WOL extends HttpServlet {
             System.arraycopy(macBytes, 0, wolPacket, pos, 6);
             pos += 6;
         }
-        return new DatagramPacket(wolPacket, wolPacket.length);
+        return new DatagramPacket(wolPacket, wolPacket.length, address, wolPort);
     }
 }
 

@@ -7,10 +7,10 @@
 <body>
 <h1> Wake-on-lan </h1>
 <div class="WOLarea">
-    <form action="wol">
+    <form action="wol" method="post">
         MAC: <input type="text" name="MAC" value="BC-AE-C5-74-0E-BB">
         <br><br>
-        <button submit autofocus="hit">Разбудить!</button>
+        <button type="submit"  autofocus="hit">Разбудить!</button>
     </form>
 </div>
 </body>

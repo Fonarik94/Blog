@@ -35,27 +35,19 @@
         <Root level="info">
             <AppenderRef ref="Console" level="debug"/>
             <AppenderRef ref="Warning" level="warn"/>
+            <AppenderRef ref="FileOutput"/>
         </Root>
         <Logger name="com.fonarik94.servlets.GoAwayServlet" level="debug" additivity="true">
-            <AppenderRef ref="FileOutput"/>
         </Logger>
         <Logger name="com.fonarik94.filters.RequestDetectorFilter" level="debug" additivity="true">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="Warning"/>
         </Logger>
         <Logger name="com.fonarik94.servlets.FileRequestServlet" level="info" additivity="true">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="Console"/>
         </Logger>
         <Logger name="com.fonarik94.filters.ProcessingTimeFilter" level="debug" additivity="true">
-            <AppenderRef ref="Console"/>
         </Logger>
         <Logger name="com.fonarik94.servlets.TestServlet" level="debug" additivity="true">
-            <AppenderRef ref="Console"/>
         </Logger>
         <Logger name="com.fonarik94.servlets.WOL" level="debug" additivity="true">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="FileOutput"/>
         </Logger>
     </Loggers>
 
