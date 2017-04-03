@@ -6,9 +6,14 @@
          version="3.1"
          metadata-complete="true">
     <!--Servlets-->
+
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>com.fonarik94.servlets.LoginServlet</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>WakeOnLan</servlet-name>
-        <servlet-class>com.fonarik94.servlets.WOL</servlet-class>
+        <servlet-class>com.fonarik94.servlets.WolServlet</servlet-class>
     </servlet>
     
     <servlet>
@@ -29,6 +34,10 @@
         <servlet-class>com.fonarik94.servlets.FileRequestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/login/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>fileRequestServlet</servlet-name>
         <url-pattern>/resources/*</url-pattern>
     </servlet-mapping>
@@ -45,21 +54,44 @@
         <filter-name>ProcessingTimeFilter</filter-name>
         <filter-class>com.fonarik94.filters.ProcessingTimeFilter</filter-class>
     </filter>
-    <filter>
-        <filter-name>requestDetector</filter-name>
-        <filter-class>com.fonarik94.filters.RequestDetectorFilter</filter-class>
-    </filter>
+
     <filter-mapping>
         <filter-name>ProcessingTimeFilter</filter-name>
-        <servlet-name>URLRewrite</servlet-name>
+        <servlet-name>goAway</servlet-name>
     </filter-mapping>
-    <filter-mapping>
-        <filter-name>requestDetector</filter-name>
-        <servlet-name>URLRewrite</servlet-name>
-    </filter-mapping>
+
     <context-param>
         <param-name>log4jConfiguration</param-name>
         <param-value>/WEB-INF/log4j2.xml</param-value>
     </context-param>
+
+    <!--Login configuration-->
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>secured</web-resource-name>
+            <url-pattern>/wol</url-pattern>
+            <http-method>GET</http-method>
+            <http-method>POST</http-method>
+            <http-method>DELETE</http-method>
+            <http-method>HEAD</http-method>
+            <http-method>UPDATE</http-method>
+        </web-resource-collection>
+
+        <auth-constraint>
+            <role-name>manager</role-name>
+        </auth-constraint>
+    </security-constraint>
+
+    <security-role>
+        <role-name>manager</role-name>
+    </security-role>
+
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config>
+            <form-login-page>/login.jsp</form-login-page>
+            <form-error-page>/error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
 
 </web-app>

@@ -24,7 +24,7 @@ public class WakeOnLan {
             DatagramSocket udpSocket = new DatagramSocket();
             List<InetAddress> broadcastIP = getBroadcastIP();
             for (InetAddress ip : broadcastIP) {
-                log.debug(">> Sending WOL packet with MAC address " + mac + " on broadcast ip: " + ip.toString());
+                log.debug(">> Sending WolServlet packet with MAC address " + mac + " on broadcast ip: " + ip.toString());
                 DatagramPacket udpPacket = getWolPacket(mac, ip);
                 for (int i = 0; i < 10; i++) {
                     udpSocket.send(udpPacket);

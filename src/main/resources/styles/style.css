@@ -1,23 +1,31 @@
 @import "fonts.css";
 body{
-    background-color: black;
+    margin:0px;
+    display: flex;
+    background-color: #f6f6f6;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 h1{
     font-family: Dited;
     font-style: normal;
     text-align: center;
     font-size: 350%;
-    color: white
 }
-p {
+h2{
     font-family: Dited;
     font-style: normal;
     text-align: center;
-    font-size: 150%;
-    color: white;
+    font-size: 250%;
+
 }
-.text-area{
-    margin-top: 10%;
+p {
+    font-family: Arial;
+    font-size: 110%;
+}
+A, A:visited{
+    color: black;
 }
 .image{
     margin-left: -45px;
@@ -32,11 +40,97 @@ p {
     left: 0px;
     right: 0px;
 }
-.WOLarea{
-    text-align: center;
-    width: 350px;
-    height: auto;
-    margin: auto;
-    padding: 10px;
+.center-area{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+
+#authform, #wol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
     background-color: white;
+    padding: 15px;
+    width: 300px;
+}
+
+#block{
+    background-color: #aaffaa;
+    height: 40px;
+    width: auto;
+}
+.container{
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+
+}
+#sidebar{
+    left: 0;
+    top:0;
+    background-color: #51BBFE;
+    display: block;
+    flex-basis: 250px;
+    flex-shrink: 0;
+    height: auto;
+}
+#sidebar #logo{
+    display: block;
+    background-color: #8FF7A7;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-family: Dited;
+    font-size: 300%;
+}
+
+#sidebar #menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding-top: 48px;
+}
+#menu .item{
+    font-family:Arial;
+    font-style:normal;
+    font-size:150%;
+    padding:10px;
+    padding-left: 40px;
+    text-decoration: none;
+
+}
+#menu .item:hover{
+    background: #8FF7A7;
+    -webkit-transition: background 0.5s ease-in-out;
+}
+.content{
+    background-color: #f6f6f6;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    height: auto;
+    flex-grow: 1;
+}
+.content .post{
+    background-color: white;
+    display: block;
+    padding: 10px;
+    margin: 30px;
+    flex-basis: 650px;
 }

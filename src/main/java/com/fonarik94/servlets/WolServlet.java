@@ -13,7 +13,7 @@ import java.io.IOException;
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 import static com.fonarik94.utils.WakeOnLan.wake;
 
-public class WOL extends HttpServlet {
+public class WolServlet extends HttpServlet {
     private static final Logger log = LogManager.getLogger(getCurentClassName());
 
 
@@ -21,7 +21,7 @@ public class WOL extends HttpServlet {
         String mac = request.getParameter("MAC");
         if (mac != null) {
             wake(mac);
-            log.info(">> WOL package sent");
+            log.info(">> WolServlet package sent");
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/wol.jsp");
         dispatcher.forward(request, response);
@@ -31,7 +31,7 @@ public class WOL extends HttpServlet {
         String mac = request.getParameter("MAC");
         if (mac != null) {
             wake(mac);
-            log.info(">> WOL package sent");
+            log.info(">> WolServlet package sent");
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/wol.jsp");
         dispatcher.forward(request, response);

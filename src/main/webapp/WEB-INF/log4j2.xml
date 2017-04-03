@@ -47,7 +47,7 @@
         </Logger>
         <Logger name="com.fonarik94.servlets.TestServlet" level="debug" additivity="true">
         </Logger>
-        <Logger name="com.fonarik94.servlets.WOL" level="debug" additivity="true">
+        <Logger name="com.fonarik94.servlets.WolServlet" level="debug" additivity="true">
         </Logger>
     </Loggers>
 

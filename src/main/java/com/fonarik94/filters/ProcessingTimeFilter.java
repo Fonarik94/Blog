@@ -11,9 +11,6 @@ import java.io.IOException;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
-/**
- * Created by Ярослав on 15.02.2017.
- */
 public class ProcessingTimeFilter extends AbstractFilter {
     private static Logger log = LogManager.getLogger(getCurentClassName());
     @Override
