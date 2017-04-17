@@ -1,6 +1,3 @@
-<%@ page import="java.text.DateFormat" %>
-<%@ page import="java.text.SimpleDateFormat" %>
-<%@ page import="java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +10,6 @@
         <div class="center">
             <h1>Сайт в разработке</h1>
             <p>Не знаю, когда сделаю.</p>
-
         </div>
     </div>
 <div class="image">

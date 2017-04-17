@@ -6,7 +6,14 @@
          version="3.1"
          metadata-complete="true">
     <!--Servlets-->
-
+    <servlet>
+        <servlet-name>Administration</servlet-name>
+        <servlet-class>com.fonarik94.servlets.AdministrationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Administration</servlet-name>
+        <url-pattern>/administration/*</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.fonarik94.servlets.LoginServlet</servlet-class>
@@ -15,10 +22,17 @@
         <servlet-name>WakeOnLan</servlet-name>
         <servlet-class>com.fonarik94.servlets.WolServlet</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>Aboutpage</servlet-name>
+        <jsp-file>/jsp/about.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Aboutpage</servlet-name>
+        <url-pattern>/about</url-pattern>
+    </servlet-mapping>
+
     <servlet>
         <servlet-name>test</servlet-name>
-        <!--<jsp-file>/test.jsp</jsp-file>-->
         <servlet-class>com.fonarik94.servlets.TestServlet</servlet-class>
     </servlet>
     <servlet>
@@ -43,13 +57,17 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>test</servlet-name>
-        <url-pattern>/test</url-pattern>
+        <url-pattern>/test/*</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>WakeOnLan</servlet-name>
-        <url-pattern>/wol/*</url-pattern>
+        <url-pattern>/administration/wol/</url-pattern>
     </servlet-mapping>
     <!--Filters-->
+    <filter>
+        <filter-name>RequestDetectorFilter</filter-name>
+        <filter-class>com.fonarik94.filters.RequestDetectorFilter</filter-class>
+    </filter>
     <filter>
         <filter-name>ProcessingTimeFilter</filter-name>
         <filter-class>com.fonarik94.filters.ProcessingTimeFilter</filter-class>
@@ -58,6 +76,10 @@
     <filter-mapping>
         <filter-name>ProcessingTimeFilter</filter-name>
         <servlet-name>goAway</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>RequestDetectorFilter</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
     <context-param>
@@ -69,7 +91,7 @@
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>secured</web-resource-name>
-            <url-pattern>/wol</url-pattern>
+            <url-pattern>/administration/*</url-pattern>
             <http-method>GET</http-method>
             <http-method>POST</http-method>
             <http-method>DELETE</http-method>
@@ -89,8 +111,8 @@
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
-            <form-login-page>/login.jsp</form-login-page>
-            <form-error-page>/error.jsp</form-error-page>
+            <form-login-page>/jsp/login.jsp</form-login-page>
+            <form-error-page>/jsp/error.jsp</form-error-page>
         </form-login-config>
     </login-config>
 

@@ -15,6 +15,7 @@ import java.util.Arrays;
 public class FileRequestServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
         StringBuilder pathToRequestedFile = new StringBuilder();
         pathToRequestedFile.append(getServletContext().getRealPath(File.separator)).append(File.separator)
                 .append("WEB-INF").append(File.separator).append("classes").append(File.separator);
@@ -26,7 +27,6 @@ public class FileRequestServlet extends HttpServlet {
         String normalPath = pathToRequestedFile.toString().replaceAll("\\\\", "\\\\\\\\");
         response.setContentType(getServletContext().getMimeType(requestedFile[requestedFile.length-1]));
 
-//        logger.debug("font.ttf MIME type is "+getServletContext().getMimeType("font.ttf"));
         logger.debug(requestedFile[requestedFile.length-1]+"MIME type is "+getServletContext().getMimeType(requestedFile[requestedFile.length-1]));
 
 

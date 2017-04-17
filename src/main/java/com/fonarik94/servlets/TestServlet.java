@@ -20,7 +20,17 @@ public class TestServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.debug(">> Test servlet");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/test.jsp");
+        String path = request.getRequestURI().replaceFirst("/test/", "");
+/*        if (path.equalsIgnoreCase("1")) {
+            request.setAttribute("requestedPage", "posts.jsp");
+        }*/
+        switch (path){
+            case "about": request.setAttribute("requestedPage", "about.jsp");
+            case "1": request.setAttribute("requestedPage", "posts.jsp");
+        }
+
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
         dispatcher.forward(request,response);
     }
 }
