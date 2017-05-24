@@ -23,7 +23,7 @@ public class WolServlet extends HttpServlet {
             wake(mac);
             log.info(">> WolServlet package sent");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/administration/wol.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/administration/wol");
         dispatcher.forward(request, response);
     }
 
@@ -33,7 +33,7 @@ public class WolServlet extends HttpServlet {
             wake(mac);
             log.info(">> WolServlet package sent");
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/administration/wol.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/administration/wol");
         dispatcher.forward(request, response);
     }
 }

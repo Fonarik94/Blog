@@ -16,20 +16,20 @@ import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 /**
  * Created by Ярослав on 15.02.2017.
  */
-public class TestServlet extends HttpServlet {
+public class RootServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.debug(">> Test servlet");
-        String path = request.getRequestURI().replaceFirst("/test/", "");
-/*        if (path.equalsIgnoreCase("1")) {
-            request.setAttribute("requestedPage", "posts.jsp");
-        }*/
+/*        logger.debug(">> Root servlet");*/
+        String path = request.getRequestURI();
+        logger.debug(">> requested path is: " + path);
         switch (path){
-            case "about": request.setAttribute("requestedPage", "about.jsp");
-            case "1": request.setAttribute("requestedPage", "posts.jsp");
+            case "/":request.setAttribute("requestedPage", "/jsp/posts.jsp");
+            break;
+            case "/about": request.setAttribute("requestedPage", "/jsp/about.jsp");
+            break;
+            default:request.setAttribute("requestedPage", "/jsp/posts.jsp");
         }
-
-
+        logger.debug("requestedPage: "+ request.getAttribute("requestedPage"));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
         dispatcher.forward(request,response);
     }

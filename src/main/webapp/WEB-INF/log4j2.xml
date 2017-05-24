@@ -41,9 +41,9 @@
         <Logger name="com.fonarik94.filters.RequestDetectorFilter" level="debug" additivity="true"></Logger>
         <Logger name="com.fonarik94.servlets.FileRequestServlet" level="info" additivity="true"></Logger>
         <Logger name="com.fonarik94.filters.ProcessingTimeFilter" level="debug" additivity="true"></Logger>
-        <Logger name="com.fonarik94.servlets.TestServlet" level="debug" additivity="true"></Logger>
+        <Logger name="com.fonarik94.servlets.RootServlet" level="debug" additivity="true"></Logger>
         <Logger name="com.fonarik94.servlets.WolServlet" level="debug" additivity="true"></Logger>
-        <Logger name="com.fonarik94.servlets.TestServlet" level="debug" additivity="true"></Logger>
+        <Logger name="com.fonarik94.servlets.AdministrationServlet" level="debug" additivity="true"></Logger>
     </Loggers>
 
 </Configuration>
