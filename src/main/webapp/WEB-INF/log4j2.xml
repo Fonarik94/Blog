@@ -10,7 +10,7 @@
 
         <Console name="Warning" target="SYSTEM_ERR">
             <PatternLayout>
-                <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}:%L - %msg%n</Pattern>
+                <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}:%L - %msg%n"</Pattern>
             </PatternLayout>
         </Console>
 
@@ -20,7 +20,7 @@
                      append="true"
                      ignoreExceptions="false">
             <PatternLayout>
-                <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}:%L - %msg%n</Pattern>
+                <Pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %-5level %logger{36}:%L - %msg%n </Pattern>
             </PatternLayout>
             <Policies>
                 <OnStartupTriggeringPolicy minSize="0"/>
@@ -30,20 +30,22 @@
             <DefaultRolloverStrategy max="50"/>
         </RollingFile>
     </Appenders>
-
     <Loggers>
         <Root level="info">
             <AppenderRef ref="Console" level="debug"/>
             <AppenderRef ref="Warning" level="warn"/>
             <AppenderRef ref="FileOutput"/>
         </Root>
-        <Logger name="com.fonarik94.servlets.GoAwayServlet" level="debug" additivity="true"></Logger>
-        <Logger name="com.fonarik94.filters.RequestDetectorFilter" level="debug" additivity="true"></Logger>
-        <Logger name="com.fonarik94.servlets.FileRequestServlet" level="info" additivity="true"></Logger>
-        <Logger name="com.fonarik94.filters.ProcessingTimeFilter" level="debug" additivity="true"></Logger>
-        <Logger name="com.fonarik94.servlets.RootServlet" level="debug" additivity="true"></Logger>
-        <Logger name="com.fonarik94.servlets.WolServlet" level="debug" additivity="true"></Logger>
-        <Logger name="com.fonarik94.servlets.AdministrationServlet" level="debug" additivity="true"></Logger>
+        <Logger name="com.fonarik94.servlets.GoAwayServlet" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.filters.RequestDetectorFilter" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.servlets.FileRequestServlet" level="info" additivity="true"/>
+        <Logger name="com.fonarik94.filters.ProcessingTimeFilter" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.servlets.RootServlet" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.servlets.WolServlet" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.servlets.AdministrationServlet" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.dao.Post" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.dao.PostDaoImpl" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.dao.Post" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.dao.DBWorker" level="debug" additivity="true"/>
     </Loggers>
-
 </Configuration>

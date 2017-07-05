@@ -40,10 +40,21 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/login/*</url-pattern>
     </servlet-mapping>
+    <!--Resources-->
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/blog</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+<!--Listeners
+    <listener>
+        <listener-class>com.fonarik94.utils.MyServletContexListener</listener-class>
+    </listener>-->
 
 
     <!--Filters-->
-    <filter>
+    <!--<filter>
         <filter-name>RequestDetectorFilter</filter-name>
         <filter-class>com.fonarik94.filters.RequestDetectorFilter</filter-class>
     </filter>
@@ -58,6 +69,22 @@
     </filter-mapping>
     <filter-mapping>
         <filter-name>RequestDetectorFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>-->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 

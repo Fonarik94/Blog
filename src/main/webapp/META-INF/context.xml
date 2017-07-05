@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context crossContext="true" reloadable="true" >
+    <Resource name="jdbc/blog"
+              auth="Container"
+              type="javax.sql.DataSource"
+              maxTotal="50"
+              maxIdle="30"
+              maxWaitMillis="1000"
+              username="root"
+              password="Gerasimenko07"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/blog?useSSL=false&amp;useUnicode=true&amp;serverTimezone=Europe/Kiev&amp;autoCommit=false&amp;zeroDateTimeBehavior=convertToNull"
+              removeAbandonedOnBorrow="true"
+              removeAbandonedOnMaintenance="true"
+              removeAbandonedTimeout="60"
+              defaultTransactionIsolation="READ_COMMITTED"/>
+</Context>

@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"  name="theme-color" content="#8FF7A7">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/style.css">
     <title>Go away</title>
 </head>

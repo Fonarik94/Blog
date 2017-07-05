@@ -1,23 +1,27 @@
 <%@ page import="com.fonarik94.dao.PostDao" %>
-<%@ page import="org.apache.logging.log4j.LogManager" %>
-<%@ page import="org.apache.logging.log4j.Logger" %>
+<%@ page import="com.fonarik94.dao.PostDaoImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<% final Logger logger = LogManager.getLogger("posts.jsp");%>
-<%logger.debug(">>Post page"); %>
-<%PostDao post = PostDao.getInstance();
-    request.setAttribute("post", post );%>
+<%
+    PostDao postDao = PostDaoImpl.getInstance();
+    request.setAttribute("post", postDao);
+%>
 <a class="item" href="/administration/postWriter/addPost"><b>ДОБАВИТЬ</b></a>
-<c:forEach items="${post.getList()}" var="post">
-    <%logger.debug(">>Post printed"); %>
+<c:forEach items="${post.getListOfAllPosts(false)}" var="post">
     <div class="post">
         <div class="postHeader"><b>${post.getPostHeader()}</b><br></div>
-        <div class="postPublicationDate">${post.getPublicationDate()}<br></div>
+        <div class="postPublicationDate">${post.getPublicationDateAsString()}<br></div>
         <div class="postText"><p>${post.getPostText()}</p></div>
         <hr>
         <div class="editorItems">
-            <div class="postEditorItem"><a href="">Edit</a></div>
-            <div class="postEditorItem"><a href="">Delete</a></div>
+            <div class="postEditorItem"><a href="/administration/postWriter/edit?editById=${post.getPostId()}">Edit</a></div>
+            <div class="postEditorItem">
+                <form id="deletePostById"  method="post">
+                    <input type="hidden" name="Page" value="Delete">
+                    <input type="hidden" name="DeleteById" value="${post.getPostId()}">
+                    <input type="submit" value="Delete">
+                </form>
+            </div>
         </div>
     </div>
 </c:forEach>
