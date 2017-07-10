@@ -3,27 +3,27 @@ package com.fonarik94.dao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
 public class Post {
     private int postId;
     private String postHeader;
-    private Date creationDate;
-    private Date publicationDate;
+    private LocalDateTime creationDate;
+    private LocalDateTime publicationDateTime;
     private String postText;
     boolean isPublished;
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
 
     public static class PostBuilder {
         private int postId = 0;
         private String postHeader = "null";
         private String postText = "null";
-        private java.sql.Date creationDate;
-        private java.sql.Date publicationDate;
+        private LocalDateTime creationDateTime;
+        private LocalDateTime publicationDateTime;
         private boolean isPublished = false;
 
         public PostBuilder setPostId(int id) {
@@ -46,13 +46,13 @@ public class Post {
             return this;
         }
 
-        public PostBuilder setCreationDate(java.sql.Date creationDate){
-            this.creationDate = creationDate;
+        public PostBuilder setCreationDateTime(LocalDateTime creationDateTime){
+            this.creationDateTime = creationDateTime;
             return this;
         }
 
-        public PostBuilder setPublicationDate(java.sql.Date publicationDate){
-            this.publicationDate = publicationDate;
+        public PostBuilder setPublicationDateTime(LocalDateTime publicationDateTime){
+            this.publicationDateTime = publicationDateTime;
             return this;
         }
 
@@ -72,37 +72,35 @@ public class Post {
     public String getPostHeader() {
         return postHeader;
     }
+    
 
-//    public void setPostHeader(String postHeader) {
-//        this.postHeader = postHeader;
-//    }
-
-    public Date getCreationDate() {
+    public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
     public String getCreationDateAsString() {
-        return dateFormat.format(creationDate);
+        return dateTimeFormat.format(creationDate);
     }
 
-    public Date getPublicationDate() throws IllegalAccessException {
+    public LocalDateTime getPublicationDateTime() {
         if (isPublished) {
-            return publicationDate;
+            return publicationDateTime;
         } else {
-            throw new IllegalArgumentException("Post is not published");
+            LocalDateTime dumbDateTime = LocalDateTime.MIN;
+            return dumbDateTime;
         }
     }
 
     public String getPublicationDateAsString() {
         if (isPublished) {
-            return dateFormat.format(publicationDate);
+            return dateTimeFormat.format(publicationDateTime);
         } else {
             return "Not published";
         }
     }
 
-    public void setPublicationDate() {
-        this.publicationDate = new Date();
+    public void setPublicationDateTime() {
+        this.publicationDateTime = LocalDateTime.now();
     }
 
     public String getPostText() {
@@ -122,15 +120,12 @@ public class Post {
     }
 
     private Post(PostBuilder builder) {
-        postId = builder.postId;
-        postHeader = builder.postHeader;
-        postText = builder.postText;
-        creationDate = builder.creationDate;
-        publicationDate = builder.publicationDate;
-        isPublished = builder.isPublished;
-        if (builder.isPublished) {
-            publicationDate = new Date();
-        }
+        this.postId = builder.postId;
+        this.postHeader = builder.postHeader;
+        this.postText = builder.postText;
+        this.creationDate = builder.creationDateTime;
+        this.publicationDateTime = builder.publicationDateTime;
+        this.isPublished = builder.isPublished;
     }
 
     public String toString(){

@@ -1,7 +1,5 @@
 package com.fonarik94.dao;
 
-import com.fonarik94.utils.MyServletContexListener;
-import javafx.geometry.Pos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -9,19 +7,16 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
 public class DBWorker {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
-    private static final String insert = "INSERT INTO posts (postHeader, text, creationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?)";
+    private static final String insert = "INSERT INTO posts (postHeader, text, creationDate, publicationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?, ?)";
     private static final String readById = "SELECT idposts, postHeader, text, creationDate, publicationDate, isPublished FROM posts WHERE idposts = ?";
     private static final String readAll = "SELECT idposts, postHeader, text, creationDate, publicationDate, isPublished FROM posts ORDER BY idposts DESC";
     private static final String deleteById = "DELETE FROM posts WHERE idposts = ?";
@@ -45,13 +40,16 @@ public class DBWorker {
         return connection;
     }
 
+
+
     static void addPost(Post post) {
         try (Connection connection = getConnection()) {
             connection.setAutoCommit(false);
             try (PreparedStatement postInsertPreparedStatement = connection.prepareStatement(insert)) {
                 postInsertPreparedStatement.setString(1, post.getPostHeader());
                 postInsertPreparedStatement.setString(2, post.getPostText());
-                postInsertPreparedStatement.setInt(3, post.isPublished ? 1 : 0);
+                if(post.isPublished){postInsertPreparedStatement.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));}
+                postInsertPreparedStatement.setInt(4, post.isPublished ? 1 : 0);
                 postInsertPreparedStatement.executeUpdate();
             } catch (SQLException sqlE) {
                 connection.rollback();
@@ -73,8 +71,8 @@ public class DBWorker {
                     post = new Post.PostBuilder().setPostId(resultSet.getInt("idposts"))
                             .setPostHeader(resultSet.getString("postHeader"))
                             .setPostText(resultSet.getString("text"))
-                            .setCreationDate(resultSet.getDate("creationDate"))
-                            .setPublicationDate(resultSet.getDate("publicationDate"))
+                            .setCreationDateTime(resultSet.getTimestamp("creationDate").toLocalDateTime())
+                            .setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime())
                             .setPublished(resultSet.getBoolean("isPublished"))
                             .build();
                 }
@@ -92,13 +90,16 @@ public class DBWorker {
             try (PreparedStatement postReadAllPreparedStatement = connection.prepareStatement(readAll)) {
                 ResultSet resultSet = postReadAllPreparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    allPosts.add(new Post.PostBuilder().setPostId(resultSet.getInt("idposts"))
+                    Post post = new Post.PostBuilder()
+                            .setPostId(resultSet.getInt("idposts"))
                             .setPostHeader(resultSet.getString("postHeader"))
                             .setPostText(resultSet.getString("text"))
-                            .setCreationDate(resultSet.getDate("creationDate"))
-                            .setPublicationDate(resultSet.getDate("publicationDate"))
+                            .setCreationDateTime(resultSet.getTimestamp("creationDate").toLocalDateTime())
+                            .setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime())
                             .setPublished((resultSet.getInt("isPublished")) == 1)
-                            .build());
+                            .build();
+                    logger.debug("Post ID: " + post.getPostId() + "; Creation date: " + post.getCreationDate() + "; Publication date: " + post.getPublicationDateAsString() );
+                    allPosts.add(post);
                 }
             }
         } catch (SQLException e) {
@@ -141,30 +142,6 @@ public class DBWorker {
 
             logger.fatal(">> Cant't update post with ID: " + id + "; " + e.toString());
         }
-    }
-
-    private static Connection connectDB() {
-        FileInputStream propFIS;
-        Properties dbProp;
-        Connection connection = null;
-        //getting path to resource file
-        String dbPoropPath = String.valueOf(MyServletContexListener.class.getResource("sql" + File.separator + "DBProperties.xml"));
-        try {
-            propFIS = new FileInputStream(dbPoropPath);
-            dbProp = new Properties();
-            dbProp.loadFromXML(propFIS);
-
-            String connectionURL = "jdbc:mysql://" + dbProp.getProperty("DBhost") + "/";
-            connection = DriverManager.getConnection(connectionURL, dbProp);
-            Statement statement = connection.createStatement();
-            createTables(statement);
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-        return connection;
     }
 
     private static void createTables(Statement statement) throws SQLException {

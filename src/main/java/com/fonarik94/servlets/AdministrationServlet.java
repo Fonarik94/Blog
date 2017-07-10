@@ -3,7 +3,6 @@ package com.fonarik94.servlets;
 import com.fonarik94.dao.Post;
 import com.fonarik94.dao.PostDao;
 import com.fonarik94.dao.PostDaoImpl;
-import javafx.geometry.Pos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,12 +28,12 @@ public class AdministrationServlet extends HttpServlet {
                 request.setAttribute("requestedPage", "/jsp/redactor.jsp");
                 break;
             case "postWriter/addPost":
-                request.setAttribute("requestedPage", "/jsp/addPost.jsp");
+                request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");
                 break;
             case "postWriter/edit":
                 logger.debug(">> Request to edit post with id: " + request.getParameter("editById"));
                 request.setAttribute("editMode", PostDaoImpl.getInstance().getPostById(Integer.parseInt(request.getParameter("editById"))));
-                request.setAttribute("requestedPage", "/jsp/addPost.jsp");
+                request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");
                 break;
             default:
                 request.setAttribute("requestedPage", "/jsp/wol.jsp"); //displayed page on path "/administration"
@@ -60,6 +59,7 @@ public class AdministrationServlet extends HttpServlet {
                     editPost(request);
                     break;
         }
+
         response.sendRedirect("/administration/postWriter");
     }
 
@@ -83,8 +83,8 @@ public class AdministrationServlet extends HttpServlet {
                     .setPostHeader(request.getParameter("postHeaderInput"))
                     .setPostText(request.getParameter("postTextInput"))
                     .setPublished(request.getParameter("isPublished").equalsIgnoreCase("on"))
-                    .setCreationDate(null)
-                    .setPublicationDate(null)
+                    .setCreationDateTime(null)
+                    .setPublicationDateTime(null)
                     .setPostId(id)
                     .build();
 

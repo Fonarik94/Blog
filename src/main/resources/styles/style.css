@@ -150,6 +150,7 @@ A, A:visited{
 }
 #content .post{
     background-color: white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Параметры тени */
     display: block;
     padding: 10px;
     margin: 30px;

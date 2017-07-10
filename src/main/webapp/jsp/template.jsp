@@ -10,10 +10,10 @@
     <div id="sidebar">
         <div id="logo">¯\_(ツ)_/¯</div>
         <div id="menu">
-            <a class="item" href="/">Главная</a>
+            <%--<a class="item" href="/">Главная</a>--%>
             <a class="item" href="/blog">Блог</a>
             <a class="item" href="/about">О проекте</a>
-            <a class="item" href="/login">Войти</a>
+            <%--<a class="item" href="/login">Войти</a>--%>
         </div>
         <div id="social">
             <div class="socialbutton"><a href="https://twitter.com/Fonarik94" target="_blank"><img src="${pageContext.request.contextPath}/resources/images/twitter.png" alt="Twitter"></a> </div>

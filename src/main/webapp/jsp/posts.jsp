@@ -8,7 +8,6 @@
     request.setAttribute("post", postDao);
 %>
 
-<%--<c:forEach items="${post.getListOfPosts(0, 100)}" var="post">--%>
 <c:forEach items="${post.getListOfAllPosts(true)}" var="post">
     <div class="post">
         <div class="postHeader"><b>${post.getPostHeader()}</b><br></div>
