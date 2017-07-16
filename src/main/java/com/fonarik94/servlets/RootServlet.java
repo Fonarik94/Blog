@@ -1,6 +1,9 @@
 package com.fonarik94.servlets;
 
 import com.fonarik94.dao.DBWorker;
+import com.fonarik94.dao.Post;
+import com.fonarik94.dao.PostDao;
+import com.fonarik94.dao.PostDaoImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,16 +25,28 @@ public class RootServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getRequestURI();
-//        logger.debug(">> requested path is: " + path);
         switch (path){
             case "/":request.setAttribute("requestedPage", "/jsp/posts.jsp");
             break;
             case "/about": request.setAttribute("requestedPage", "/jsp/about.jsp");
+            break;
+            case "/read": read(request, response);
             break;
             default:request.setAttribute("requestedPage", "/jsp/posts.jsp");
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
         dispatcher.forward(request,response);
+    }
+
+    private void read(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        int postId = Integer.valueOf(request.getParameter("postId"));
+        logger.debug(">> Requested post with ID = " + postId);
+        PostDao postDao = PostDaoImpl.getInstance();
+        Post requestedPost = postDao.getPostById(postId);
+        request.setAttribute("requestedPost", requestedPost);
+        request.setAttribute("requestedPage", "singlePost.jsp");
+//        response.sendRedirect("postId=" + postId);
+
     }
 }

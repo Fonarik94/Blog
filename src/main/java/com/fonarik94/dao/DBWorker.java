@@ -18,7 +18,7 @@ public class DBWorker {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
     private static final String insert = "INSERT INTO posts (postHeader, text, creationDate, publicationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?, ?)";
     private static final String readById = "SELECT idposts, postHeader, text, creationDate, publicationDate, isPublished FROM posts WHERE idposts = ?";
-    private static final String readAll = "SELECT idposts, postHeader, text, creationDate, publicationDate, isPublished FROM posts ORDER BY idposts DESC";
+    private static final String readAll = "SELECT idposts, postHeader, SUBSTRING(text, 1, 500), creationDate, publicationDate, isPublished FROM posts ORDER BY idposts DESC";
     private static final String deleteById = "DELETE FROM posts WHERE idposts = ?";
     private static final String editById = "UPDATE posts SET postHeader = ?, text = ?, isPublished = ? where idposts = ?";
 
@@ -89,16 +89,17 @@ public class DBWorker {
         try (Connection connection = getConnection()) {
             try (PreparedStatement postReadAllPreparedStatement = connection.prepareStatement(readAll)) {
                 ResultSet resultSet = postReadAllPreparedStatement.executeQuery();
+
                 while (resultSet.next()) {
                     Post post = new Post.PostBuilder()
                             .setPostId(resultSet.getInt("idposts"))
                             .setPostHeader(resultSet.getString("postHeader"))
-                            .setPostText(resultSet.getString("text"))
+                            .setPostText(resultSet.getString(3)+"...")
                             .setCreationDateTime(resultSet.getTimestamp("creationDate").toLocalDateTime())
                             .setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime())
                             .setPublished((resultSet.getInt("isPublished")) == 1)
                             .build();
-                    logger.debug("Post ID: " + post.getPostId() + "; Creation date: " + post.getCreationDate() + "; Publication date: " + post.getPublicationDateAsString() );
+
                     allPosts.add(post);
                 }
             }

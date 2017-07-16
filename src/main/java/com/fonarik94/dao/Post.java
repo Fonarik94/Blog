@@ -72,7 +72,7 @@ public class Post {
     public String getPostHeader() {
         return postHeader;
     }
-    
+
 
     public LocalDateTime getCreationDate() {
         return creationDate;

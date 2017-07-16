@@ -9,9 +9,11 @@
 %>
 
 <c:forEach items="${post.getListOfAllPosts(true)}" var="post">
-    <div class="post">
-        <div class="postHeader"><b>${post.getPostHeader()}</b><br></div>
-        <div class="postPublicationDate">${post.getPublicationDateAsString()}<br></div>
-        <div class="postText"><p>${post.getPostText()}</p></div>
+    <div class="post all">
+        <a href="read?postId=${post.getPostId()}">
+            <h1>${post.getPostHeader()}</h1>
+            <div class="postPublicationDate">${post.getPublicationDateAsString()}<br></div>
+            <div class="postText"><p>${post.getPostText()}</p></div>
+        </a>
     </div>
 </c:forEach>
