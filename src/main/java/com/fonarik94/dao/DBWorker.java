@@ -40,8 +40,6 @@ public class DBWorker {
         return connection;
     }
 
-
-
     static void addPost(Post post) {
         try (Connection connection = getConnection()) {
             connection.setAutoCommit(false);
@@ -80,7 +78,7 @@ public class DBWorker {
         } catch (SQLException e) {
             logger.fatal(">> Can't select post with id = " + id + ": " + e.toString());
         }
-        logger.debug(">> Post retrieved from DB: " + post.toString());
+//        logger.debug(">> Post retrieved from DB: " + post.toString());
         return post;
     }
 

@@ -6,20 +6,12 @@ body{
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
+    font-family: Arial;
 }
 h1{
     font-size: 18pt;
     font-weight: bold;
     margin-bottom: 0px;
-}
-h2{
-    font-style: normal;
-    text-align: center;
-    font-size: 250%;
-}
-p {
-    font-family: Arial;
-    font-size: 110%;
 }
 A, A:visited{
     color: black;
@@ -43,7 +35,9 @@ A, A:visited{
     align-items: stretch;
     background-color: white;
     padding: 15px;
+    margin: 30px;
     width: 300px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6); /* Параметры тени */
 }
 #block{
     background-color: #51BBFE;
@@ -53,16 +47,6 @@ A, A:visited{
 #block:hover{
     background: #8FF7A7;
     -webkit-transition: background 0.5s ease-in-out;
-}
-.container{
-    height: 100%;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    display:flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
 }
 #sidebar{
     background-color: #51BBFE;
@@ -118,10 +102,10 @@ A, A:visited{
 }
 #content .post{
     background-color: white;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Параметры тени */
+    box-shadow: 0 0 20px rgba(0,0,0,0.6); /* Параметры тени */
     display: block;
     padding: 10px;
-    margin: 30px;
+    margin: 20px;
 }
 #content .item{
     background: #51BBFE;
@@ -137,6 +121,7 @@ A, A:visited{
     padding: 10px;
     margin: 20px;
     background-color: white;
+
 }
 .post .postHeader{
     font-size: 18pt;
@@ -156,7 +141,7 @@ A, A:visited{
     margin-right: 15px;
 }
 .all{
-    flex-basis: 650px;
+    flex-basis: 750px;
     background: white;
 }
 .all a{

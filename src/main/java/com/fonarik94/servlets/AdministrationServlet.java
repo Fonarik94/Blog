@@ -55,9 +55,9 @@ public class AdministrationServlet extends HttpServlet {
                 addPost(request);
                 break;
             case "Edit":
-                    logger.debug(">> edit by id: " + request.getParameter("editById"));
-                    editPost(request);
-                    break;
+                logger.debug(">> edit by id: " + request.getParameter("editById"));
+                editPost(request);
+                break;
         }
 
         response.sendRedirect("/administration/postWriter");
@@ -76,21 +76,20 @@ public class AdministrationServlet extends HttpServlet {
                 isPublishedCheckBox);
     }
 
-    private void editPost(HttpServletRequest request){
+    private void editPost(HttpServletRequest request) {
         try {
             int id = Integer.parseInt(request.getParameter("editById"));
             Post updatedPost = new Post.PostBuilder()
                     .setPostHeader(request.getParameter("postHeaderInput"))
                     .setPostText(request.getParameter("postTextInput"))
-                    .setPublished(request.getParameter("isPublished").equalsIgnoreCase("on"))
+                    .setPublished(request.getParameter("isPublished") != null)
                     .setCreationDateTime(null)
                     .setPublicationDateTime(null)
                     .setPostId(id)
                     .build();
 
-                    PostDaoImpl.getInstance().editPostById(id, updatedPost);
-        }
-        catch (NumberFormatException nfe){
+            PostDaoImpl.getInstance().editPostById(id, updatedPost);
+        } catch (NumberFormatException nfe) {
             logger.error(">> Wrong post ID while edit post" + nfe.toString());
         }
     }

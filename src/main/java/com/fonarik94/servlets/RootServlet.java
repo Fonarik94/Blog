@@ -34,7 +34,7 @@ public class RootServlet extends HttpServlet {
             break;
             default:request.setAttribute("requestedPage", "/jsp/posts.jsp");
         }
-
+        logger.info(">> Get request from IP: "+ request.getRemoteHost());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
         dispatcher.forward(request,response);
     }

@@ -8,7 +8,7 @@
 %>
 <a class="item" href="/administration/postWriter/addPost"><b>ДОБАВИТЬ</b></a>
 <c:forEach items="${post.getListOfAllPosts(false)}" var="post">
-    <div class="post">
+    <div class="post all">
         <div class="postHeader"><b>${post.getPostHeader()}</b><br></div>
         <div class="postPublicationDate">${post.getPublicationDateAsString()}<br></div>
         <div class="postText"><p>${post.getPostText()}</p></div>
