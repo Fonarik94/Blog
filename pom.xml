@@ -6,6 +6,12 @@
     <version>0.1-SNAPSHOT</version>
     <name>Blog</name>
     <url>http://maven.apache.org</url>
+    <!--Spring Boot standard config-->
+<!--    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.4.RELEASE</version>
+    </parent>-->
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -18,20 +24,20 @@
     </properties>
 
     <dependencies>
-<!--Servlet API-->
+        <!--Servlet API-->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
-<!--JSTL-->
+        <!--JSTL-->
         <dependency>
             <groupId>jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-<!--Log4j-->
+        <!--Log4j-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -47,13 +53,13 @@
             <artifactId>log4j-web</artifactId>
             <version>${log4j.version}</version>
         </dependency>
-<!--JDBC, MySQL-->
+        <!--JDBC, MySQL-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>6.0.6</version>
         </dependency>
-<!-- Spring Framework -->
+        <!-- Spring Framework -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
@@ -78,8 +84,18 @@
             <version>${spring.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <!--Spring Boot-->
+<!--        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>-->
     </dependencies>
-<!--Build-->
+    <!--Build-->
     <build>
         <finalName>Blog</finalName>
 
@@ -100,6 +116,10 @@
                     </webResources>
                 </configuration>
 
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>

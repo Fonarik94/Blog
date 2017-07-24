@@ -12,36 +12,45 @@ import java.util.List;
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
 public class WakeOnLan {
-    private static final Logger log = LogManager.getLogger(getCurentClassName());
+    private static final Logger logger = LogManager.getLogger(getCurentClassName());
 
     /**
      * Sending Wake-on-lan packet to broadcast addresses over all network interfaces
+     *
      * @param mac - MAC address of computer, which need to wakeup
      * @throws IOException
      */
-    public static void wake(String mac) throws IOException {
-        if (mac != null) {
-            DatagramSocket udpSocket = new DatagramSocket();
-            List<InetAddress> broadcastIP = getBroadcastIP();
-            for (InetAddress ip : broadcastIP) {
-                log.debug(">> Sending WolServlet packet with MAC address " + mac + " on broadcast ip: " + ip.toString());
-                DatagramPacket udpPacket = getWolPacket(mac, ip);
-                for (int i = 0; i < 10; i++) {
-                    udpSocket.send(udpPacket);
+    public static void wake(String mac) {
+        if (!mac.equals("")) {
+            try (DatagramSocket udpSocket = new DatagramSocket()) {
+                List<InetAddress> broadcastIP = getBroadcastIP();
+                for (InetAddress ip : broadcastIP) {
+                    logger.info(">> Sending WOL packet with MAC address " + mac + " on broadcast ip: " + ip.toString());
+                    DatagramPacket udpPacket = getWolPacket(mac, ip);
+                    for (int i = 0; i < 10; i++) {
+                        udpSocket.send(udpPacket);
+                    }
                 }
+            } catch (SocketException e) {
+                logger.error(">> Cant create new datagram socket" + e.toString());
+            } catch (IOException e){
+                logger.error(">> Cant send UDP packet: " + e.toString());
             }
-            udpSocket.close();
+        }
+        else {
+            logger.info(">> MAC address id null. Nothing to do.");
         }
     }
 
     /**
-     *  Returns DatagramPacket instance, which maked with MAC address and InetAddress instance
-     * @param mac - MAC address of PC
+     * Returns DatagramPacket instance, which maked with MAC address and InetAddress instance
+     *
+     * @param mac                  - MAC address of PC
      * @param broadcastInetAddress - broadcast inet address
      * @return datagram packet with mac and broadcast address and wake on lan port 9
      * @throws UnknownHostException
      */
-    private static DatagramPacket getWolPacket(String mac, InetAddress broadcastInetAddress) throws UnknownHostException {
+    private static DatagramPacket getWolPacket(String mac, InetAddress broadcastInetAddress){
         int wolPort = 9;
         byte[] wolPacket = new byte[102];
         for (int i = 0; i < 6; i++) {
@@ -66,22 +75,28 @@ public class WakeOnLan {
 
     /**
      * Returns List of InetAddresses of all network interfaces
+     *
      * @return List of InetAddresses
      * @throws SocketException
      * @throws UnknownHostException
      */
-    private static List<InetAddress> getBroadcastIP() throws SocketException, UnknownHostException {
-        Enumeration<NetworkInterface> networkInterfacesEnumeration = NetworkInterface.getNetworkInterfaces();
+    private static List<InetAddress> getBroadcastIP() {
         List<InetAddress> broadcastInetAddresses = new ArrayList<>();
-
-        while (networkInterfacesEnumeration.hasMoreElements()) {
-            NetworkInterface networkInterface = networkInterfacesEnumeration.nextElement();
-            List<InterfaceAddress> interfaceAddressList = networkInterface.getInterfaceAddresses();
-            for (InterfaceAddress e : interfaceAddressList) {
-                if (e.getBroadcast() != null) {
-                    broadcastInetAddresses.add(InetAddress.getByName(e.getBroadcast().toString().replaceAll("/", "")));
+        try {
+            Enumeration<NetworkInterface> networkInterfacesEnumeration = NetworkInterface.getNetworkInterfaces();
+            while (networkInterfacesEnumeration.hasMoreElements()) {
+                NetworkInterface networkInterface = networkInterfacesEnumeration.nextElement();
+                List<InterfaceAddress> interfaceAddressList = networkInterface.getInterfaceAddresses();
+                for (InterfaceAddress e : interfaceAddressList) {
+                    if (e.getBroadcast() != null) {
+                        broadcastInetAddresses.add(InetAddress.getByName(e.getBroadcast().toString().replaceAll("/", "")));
+                    }
                 }
             }
+        } catch (SocketException e) {
+            logger.error(">> Cant get network interfaces: " + e.toString());
+        } catch (UnknownHostException e) {
+            logger.error(">> Unknown host: " + e.toString());
         }
         return broadcastInetAddresses;
     }

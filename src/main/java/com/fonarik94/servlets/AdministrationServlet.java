@@ -3,6 +3,7 @@ package com.fonarik94.servlets;
 import com.fonarik94.dao.Post;
 import com.fonarik94.dao.PostDao;
 import com.fonarik94.dao.PostDaoImpl;
+import com.fonarik94.utils.WakeOnLan;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
+import static com.fonarik94.utils.WakeOnLan.wake;
 
 public class AdministrationServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
@@ -50,17 +52,24 @@ public class AdministrationServlet extends HttpServlet {
         switch (hiddenParameter) {
             case "Delete":
                 deletePost(Integer.parseInt(request.getParameter("DeleteById")));
+                response.sendRedirect("/administration/postWriter");
                 break;
             case "Add":
                 addPost(request);
+                response.sendRedirect("/administration/postWriter");
                 break;
             case "Edit":
                 logger.debug(">> edit by id: " + request.getParameter("editById"));
                 editPost(request);
+                response.sendRedirect("/administration/postWriter");
+                break;
+            case "WOL":
+                WakeOnLan.wake(request.getParameter("MAC"));
+                response.sendRedirect("/administration/wol");
                 break;
         }
 
-        response.sendRedirect("/administration/postWriter");
+//        response.sendRedirect("/administration/postWriter");
     }
 
     private void addPost(HttpServletRequest request) {

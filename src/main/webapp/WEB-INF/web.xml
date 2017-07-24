@@ -27,7 +27,6 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>com.fonarik94.servlets.LoginServlet</servlet-class>
     </servlet>
-
     <servlet>
         <servlet-name>fileRequestServlet</servlet-name>
         <servlet-class>com.fonarik94.servlets.FileRequestServlet</servlet-class>

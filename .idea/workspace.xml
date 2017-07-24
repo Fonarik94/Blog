@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="WebApp:war" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list id="b6bc9fda-2a7f-4a5b-a5ed-15830404f575" name="Rejected commit: Default" comment="Rejected commit: Default" />
-    <list default="true" id="c6a2b314-7f8c-42b2-87d7-dc8d7d095b49" name="Rejected commit: Default (2)" comment="Minor view chan">
+    <list default="true" id="c6a2b314-7f8c-42b2-87d7-dc8d7d095b49" name="Rejected commit: Default (2)" comment="Minor view updates">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/WolServlet.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/WebApp_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/WebApp_war_exploded.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp.iml" afterPath="$PROJECT_DIR$/WebApp.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/DBWorker.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/DBWorker.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/styles/style.css" afterPath="$PROJECT_DIR$/src/main/resources/styles/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/administration.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/administration.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/redactor.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/redactor.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp" />
     </list>
     <list id="cb94ab68-fb14-4d8a-a62b-85de189ef686" name="Default" comment="Fixed wake-on-lan module">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebEngine/Example$1.class" afterPath="" />
@@ -88,42 +95,165 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/styles/style.css">
+      <file leaf-file-name="FileRequestServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="36" column="18" lean-forward="true" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+            <state relative-caret-position="153">
+              <caret line="21" column="51" lean-forward="false" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="administration.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/administration.jsp">
+      <file leaf-file-name="HttpServlet.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar!/javax/servlet/http/HttpServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="14" lean-forward="false" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+            <state relative-caret-position="167">
+              <caret line="621" column="0" lean-forward="false" selection-start-line="621" selection-start-column="0" selection-end-line="621" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="template.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/template.jsp">
+      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+            <state relative-caret-position="221">
+              <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RequestDetectorFilter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/filters/RequestDetectorFilter.java">
+      <file leaf-file-name="AdministrationServlet.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="663">
+              <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+              <folding>
+                <element signature="method#addPost#0;class#AdministrationServlet#0" expanded="false" />
+                <element signature="method#editPost#0;class#AdministrationServlet#0" expanded="false" />
+                <element signature="method#deletePost#0;class#AdministrationServlet#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="log4j2.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="662">
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WakeOnLan.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatagramSocket.java" pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/net/DatagramSocket.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="156">
+              <caret line="653" column="16" lean-forward="false" selection-start-line="653" selection-start-column="16" selection-end-line="653" selection-end-column="16" />
+              <folding>
+                <element signature="docComment;field#created#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;field#oldImpl#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;field#explicitFilter#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#connectInternal#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#connectInternal#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#DatagramSocket#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#DatagramSocket#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#DatagramSocket#1;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#DatagramSocket#1;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#DatagramSocket#2;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#DatagramSocket#2;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#DatagramSocket#3;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#DatagramSocket#3;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#DatagramSocket#4;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#DatagramSocket#4;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#checkOldImpl#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="e#10261#10341#0" expanded="false" />
+                <element signature="class#10499:10866" expanded="false" />
+                <element signature="method#run#0;class#10499:10866" expanded="false" />
+                <element signature="method#createImpl#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getImpl#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getImpl#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#bind#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#bind#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#checkAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#connect#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#connect#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#connect#1;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#connect#1;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#disconnect#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#disconnect#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#isBound#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#isConnected#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getInetAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getPort#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getRemoteSocketAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getRemoteSocketAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getLocalSocketAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getLocalSocketAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#send#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="e#24223#24279#0" expanded="false" />
+                <element signature="docComment;method#receive#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#receive#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="e#28618#28660#0" expanded="false" />
+                <element signature="e#28833#28880#0" expanded="false" />
+                <element signature="e#29098#29138#0" expanded="false" />
+                <element signature="e#29716#29774#0" expanded="false" />
+                <element signature="e#31547#31600#0" expanded="false" />
+                <element signature="method#checkFiltering#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getLocalAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getLocalAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getLocalPort#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getLocalPort#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#setSoTimeout#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#setSoTimeout#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getSoTimeout#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getSoTimeout#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#setSendBufferSize#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#setSendBufferSize#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getSendBufferSize#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getSendBufferSize#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#setReceiveBufferSize#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#setReceiveBufferSize#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getReceiveBufferSize#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getReceiveBufferSize#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#setReuseAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#setReuseAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getReuseAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getReuseAddress#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#setBroadcast#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#setBroadcast#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getBroadcast#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getBroadcast#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#setTrafficClass#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#setTrafficClass#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="e#46502#46546#0" expanded="false" />
+                <element signature="docComment;method#getTrafficClass#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#getTrafficClass#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#close#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#close#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#isClosed#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#isClosed#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#getChannel#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;field#factory#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="docComment;method#setDatagramSocketImplFactory#0;class#DatagramSocket#0" expanded="false" />
+                <element signature="method#setDatagramSocketImplFactory#0;class#DatagramSocket#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -132,73 +262,17 @@
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="71" />
+              <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileRequestServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet.java">
+      <file leaf-file-name="addEditPost.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="29" column="73" lean-forward="false" selection-start-line="29" selection-start-column="73" selection-end-line="29" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdministrationServlet.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1122">
-              <caret line="79" column="8" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="13" />
-              <folding>
-                <element signature="method#deletePost#0;class#AdministrationServlet#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="redactor.jsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/redactor.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="64" lean-forward="false" selection-start-line="3" selection-start-column="64" selection-end-line="3" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBWorker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/DBWorker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding>
-                <element signature="method#getConnection#0;class#DBWorker#0" expanded="false" />
-                <element signature="method#addPost#0;class#DBWorker#0" expanded="false" />
-                <element signature="method#getPostsAll#0;class#DBWorker#0" expanded="false" />
-                <element signature="method#deletePostById#0;class#DBWorker#0" expanded="false" />
-                <element signature="method#editPostById#0;class#DBWorker#0" expanded="false" />
-                <element signature="method#createTables#0;class#DBWorker#0" expanded="false" />
-                <marker date="1500316600636" expanded="true" signature="567:685" ph="INSERT INTO posts... " />
-                <marker date="1500316600636" expanded="true" signature="732:837" ph="SELECT idpos... posts" />
-                <marker date="1500316600636" expanded="true" signature="883:989" ph="SELECT idpos... posts" />
-                <marker date="1500316600636" expanded="true" signature="883:1011" ph="SELECT idpos... posts" />
-                <marker date="1500316600636" expanded="true" signature="1060:1095" ph="DELETE FROM " />
-                <marker date="1500316600636" expanded="true" signature="1142:1218" ph="UPDATE posts... " />
-                <marker date="1500316600636" expanded="false" signature="7252:7865" ph="CREATE TABLE... IF" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="91" column="70" lean-forward="false" selection-start-line="91" selection-start-column="70" selection-end-line="91" selection-end-column="70" />
+            <state relative-caret-position="340">
+              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -212,10 +286,10 @@
         <option value="CSS File" />
         <option value="Singleton" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="XML Properties File" />
         <option value="Tag Library Descriptor" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -245,10 +319,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/filters/PricessingTimeFilter.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/test.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/wol.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/WOL.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/autentification.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/error.jsp" />
@@ -269,16 +341,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/filters/RequestDetectorFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/URLRewriteServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/about.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/TestServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/WolServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/DAOException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/DBResource.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/sql/DBProperties.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/context.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/META-INF/context.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/utils/ClassNameUtil.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/addPost.jsp" />
@@ -289,13 +357,19 @@
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/singlePost.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/posts.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/template.jsp" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/redactor.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/DBWorker.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/jsp/administration.jsp" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/styles/style.css" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet2.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" />
       </list>
     </option>
   </component>
@@ -331,15 +405,20 @@
           <item name="Blog" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Run Configurations" type="21c1f71a:MavenProjectsStructure$RunConfigurationsNode" />
         </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="Blog" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
       </expand>
       <select />
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="2576" />
-    <option name="height" value="1050" />
+    <option name="x" value="-7" />
+    <option name="y" value="2" />
+    <option name="width" value="1932" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -378,7 +457,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -419,7 +497,23 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="fonarik94" type="462c0819:PsiDirectoryNode" />
-              <item name="filters" type="462c0819:PsiDirectoryNode" />
+              <item name="servlets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WebEngine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fonarik94" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WebEngine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="WebEngine" type="b2602c69:ProjectViewProjectNode" />
@@ -436,13 +530,22 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="jsp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="WebEngine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="AndroidView" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -485,7 +588,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Maven.WebApp [tomcat7:redeploy]">
+  <component name="RunManager" selected="Tomcat Server.Tomcat local">
     <configuration name="Tomcat local" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.9" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -1219,7 +1322,9 @@
       <workItem from="1499965337599" duration="20105000" />
       <workItem from="1500282844666" duration="4352000" />
       <workItem from="1500455134288" duration="45000" />
-      <workItem from="1500455339327" duration="3185000" />
+      <workItem from="1500455339327" duration="3996000" />
+      <workItem from="1500493090430" duration="424000" />
+      <workItem from="1500827504288" duration="9819000" />
     </task>
     <task id="LOCAL-00001">
       <created>1488834623539</created>
@@ -1298,11 +1403,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500219241718</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Minor view updates">
+      <created>1500491308385</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1500491308386</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="555039000" />
+    <option name="totallyTimeSpent" value="566093000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1319,14 +1431,14 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18722467" sideWeight="0.5113452" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06915739" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09499205" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12260128" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30956239" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39934355" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28884026" sideWeight="0.4978678" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1337,8 +1449,9 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586434" sideWeight="0.4886548" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08783784" sideWeight="0.6701571" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14308426" sideWeight="0.6701571" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17329094" sideWeight="0.32984293" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1348,7 +1461,6 @@
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1400,42 +1512,32 @@
     <MESSAGE value="Connected to MySQL and implemented CRUD operations" />
     <MESSAGE value="Fixed bug with wrong publication date. Swiched to Java 8 Date Time API" />
     <MESSAGE value="Some changes in UI and database" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some changes in UI and database" />
+    <MESSAGE value="Minor view updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor view updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="19" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet2.java</url>
+          <line>39</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="25" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
+        <watch expression="requestedFile" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/filters/AbstractFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar!/javax/servlet/http/HttpServletRequestWrapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="290" column="5" lean-forward="false" selection-start-line="288" selection-start-column="0" selection-end-line="291" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/PostDao1.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/administration.jsp" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/URLRewriteServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1499,13 +1601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="19" column="91" lean-forward="false" selection-start-line="19" selection-start-column="91" selection-end-line="19" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/WolServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="35" column="88" lean-forward="false" selection-start-line="35" selection-start-column="88" selection-end-line="35" selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -1582,14 +1677,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/utils/MyServletContexListener.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/META-INF/context.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1611,14 +1698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="91" lean-forward="false" selection-start-line="42" selection-start-column="91" selection-end-line="42" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/PostDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1634,37 +1713,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="36" column="71" lean-forward="false" selection-start-line="36" selection-start-column="71" selection-end-line="36" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/singlePost.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="22" lean-forward="false" selection-start-line="36" selection-start-column="22" selection-end-line="36" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1122">
-          <caret line="79" column="8" lean-forward="false" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="13" />
-          <folding>
-            <element signature="method#deletePost#0;class#AdministrationServlet#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1698,22 +1751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="29" column="73" lean-forward="false" selection-start-line="29" selection-start-column="73" selection-end-line="29" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="91" column="70" lean-forward="false" selection-start-line="91" selection-start-column="70" selection-end-line="91" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/template.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
@@ -1722,18 +1759,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="71" />
+        <state relative-caret-position="153">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/filters/RequestDetectorFilter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/styles/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="17">
+          <caret line="36" column="18" lean-forward="false" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
           <folding />
         </state>
       </provider>
@@ -1746,11 +1783,208 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/styles/style.css">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/filters/RequestDetectorFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="36" column="18" lean-forward="true" selection-start-line="36" selection-start-column="18" selection-end-line="36" selection-end-column="18" />
+        <state relative-caret-position="170">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="4" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="13" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar!/javax/servlet/http/HttpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="621" column="0" lean-forward="false" selection-start-line="621" selection-start-column="0" selection-end-line="621" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/WolServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="16" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="34" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/FileRequestServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="21" column="51" lean-forward="false" selection-start-line="21" selection-start-column="51" selection-end-line="21" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/net/NetworkInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5168">
+          <caret line="340" column="48" lean-forward="false" selection-start-line="340" selection-start-column="48" selection-end-line="340" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/net/DatagramSocket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="653" column="16" lean-forward="false" selection-start-line="653" selection-start-column="16" selection-end-line="653" selection-end-column="16" />
+          <folding>
+            <element signature="docComment;field#created#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;field#oldImpl#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;field#explicitFilter#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#connectInternal#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#connectInternal#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#DatagramSocket#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#DatagramSocket#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#DatagramSocket#1;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#DatagramSocket#1;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#DatagramSocket#2;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#DatagramSocket#2;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#DatagramSocket#3;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#DatagramSocket#3;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#DatagramSocket#4;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#DatagramSocket#4;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#checkOldImpl#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="e#10261#10341#0" expanded="false" />
+            <element signature="class#10499:10866" expanded="false" />
+            <element signature="method#run#0;class#10499:10866" expanded="false" />
+            <element signature="method#createImpl#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getImpl#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getImpl#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#bind#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#bind#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#checkAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#connect#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#connect#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#connect#1;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#connect#1;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#disconnect#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#disconnect#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#isBound#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#isConnected#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getInetAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getPort#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getRemoteSocketAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getRemoteSocketAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getLocalSocketAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getLocalSocketAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#send#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="e#24223#24279#0" expanded="false" />
+            <element signature="docComment;method#receive#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#receive#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="e#28618#28660#0" expanded="false" />
+            <element signature="e#28833#28880#0" expanded="false" />
+            <element signature="e#29098#29138#0" expanded="false" />
+            <element signature="e#29716#29774#0" expanded="false" />
+            <element signature="e#31547#31600#0" expanded="false" />
+            <element signature="method#checkFiltering#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getLocalAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getLocalAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getLocalPort#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getLocalPort#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#setSoTimeout#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#setSoTimeout#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getSoTimeout#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getSoTimeout#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#setSendBufferSize#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#setSendBufferSize#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getSendBufferSize#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getSendBufferSize#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#setReceiveBufferSize#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#setReceiveBufferSize#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getReceiveBufferSize#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getReceiveBufferSize#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#setReuseAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#setReuseAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getReuseAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getReuseAddress#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#setBroadcast#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#setBroadcast#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getBroadcast#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getBroadcast#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#setTrafficClass#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#setTrafficClass#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="e#46502#46546#0" expanded="false" />
+            <element signature="docComment;method#getTrafficClass#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#getTrafficClass#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#close#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#close#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#isClosed#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#isClosed#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#getChannel#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;field#factory#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="docComment;method#setDatagramSocketImplFactory#0;class#DatagramSocket#0" expanded="false" />
+            <element signature="method#setDatagramSocketImplFactory#0;class#DatagramSocket#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+          <folding>
+            <element signature="method#addPost#0;class#AdministrationServlet#0" expanded="false" />
+            <element signature="method#editPost#0;class#AdministrationServlet#0" expanded="false" />
+            <element signature="method#deletePost#0;class#AdministrationServlet#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

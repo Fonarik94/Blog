@@ -23,6 +23,7 @@ import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
  */
 public class RootServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getRequestURI();
         switch (path){
