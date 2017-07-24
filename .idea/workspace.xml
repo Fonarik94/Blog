@@ -7,19 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list id="b6bc9fda-2a7f-4a5b-a5ed-15830404f575" name="Rejected commit: Default" comment="Rejected commit: Default" />
-    <list default="true" id="c6a2b314-7f8c-42b2-87d7-dc8d7d095b49" name="Rejected commit: Default (2)" comment="Minor view updates">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/WolServlet.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/WebApp_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/WebApp_war_exploded.xml" />
+    <list default="true" id="c6a2b314-7f8c-42b2-87d7-dc8d7d095b49" name="Rejected commit: Default (2)" comment="Fixed bug with WOL module, small changes in administration servlet">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/images/nicEditorIcons.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/js/nicEdit.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/images/cat.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebApp.iml" afterPath="$PROJECT_DIR$/WebApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp" />
     </list>
     <list id="cb94ab68-fb14-4d8a-a62b-85de189ef686" name="Default" comment="Fixed wake-on-lan module">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebEngine/Example$1.class" afterPath="" />
@@ -115,35 +109,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdministrationServlet.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="663">
-              <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
-              <folding>
-                <element signature="method#addPost#0;class#AdministrationServlet#0" expanded="false" />
-                <element signature="method#editPost#0;class#AdministrationServlet#0" expanded="false" />
-                <element signature="method#deletePost#0;class#AdministrationServlet#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="log4j2.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="662">
               <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="template.jsp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/template.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="20" column="69" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -268,11 +248,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="addEditPost.jsp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="addEditPost.jsp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+            <state relative-caret-position="476">
+              <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -319,7 +299,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/test.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/wol.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/WOL.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/autentification.jsp" />
@@ -370,6 +349,7 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/utils/WakeOnLan.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp" />
       </list>
     </option>
   </component>
@@ -520,6 +500,22 @@
               <item name="WebEngine" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WebEngine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WebEngine" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WebEngine" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -561,6 +557,7 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
+    <property name="SearchEverywhereHistoryKey" value="postTextInput&#9;null&#9;null" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -1324,7 +1321,7 @@
       <workItem from="1500455134288" duration="45000" />
       <workItem from="1500455339327" duration="3996000" />
       <workItem from="1500493090430" duration="424000" />
-      <workItem from="1500827504288" duration="9819000" />
+      <workItem from="1500827504288" duration="11548000" />
     </task>
     <task id="LOCAL-00001">
       <created>1488834623539</created>
@@ -1410,11 +1407,18 @@
       <option name="project" value="LOCAL" />
       <updated>1500491308386</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixed bug with WOL module, small changes in administration servlet">
+      <created>1500922745387</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1500922745387</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="566093000" />
+    <option name="totallyTimeSpent" value="567822000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1431,7 +1435,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18722467" sideWeight="0.5113452" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="true" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09499205" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.09499205" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12260128" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1449,7 +1453,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26586434" sideWeight="0.4886548" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293348" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14308426" sideWeight="0.6701571" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14308426" sideWeight="0.6701571" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17329094" sideWeight="0.32984293" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1513,7 +1517,8 @@
     <MESSAGE value="Fixed bug with wrong publication date. Swiched to Java 8 Date Time API" />
     <MESSAGE value="Some changes in UI and database" />
     <MESSAGE value="Minor view updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor view updates" />
+    <MESSAGE value="Fixed bug with WOL module, small changes in administration servlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug with WOL module, small changes in administration servlet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1751,14 +1756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/template.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1807,26 +1804,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="5" lean-forward="false" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/wol.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar!/javax/servlet/http/HttpServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="621" column="0" lean-forward="false" selection-start-line="621" selection-start-column="0" selection-end-line="621" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1950,14 +1931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/log4j2.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="662">
@@ -1978,13 +1951,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="54" column="68" lean-forward="false" selection-start-line="54" selection-start-column="68" selection-end-line="54" selection-end-column="68" />
+        <state relative-caret-position="918">
+          <caret line="69" column="9" lean-forward="false" selection-start-line="69" selection-start-column="9" selection-end-line="69" selection-end-column="9" />
           <folding>
             <element signature="method#addPost#0;class#AdministrationServlet#0" expanded="false" />
             <element signature="method#editPost#0;class#AdministrationServlet#0" expanded="false" />
             <element signature="method#deletePost#0;class#AdministrationServlet#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0-sources.jar!/javax/servlet/http/HttpServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="621" column="0" lean-forward="false" selection-start-line="621" selection-start-column="0" selection-end-line="621" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/template.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="69" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsp/addEditPost.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="8" lean-forward="false" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>

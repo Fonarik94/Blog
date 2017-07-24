@@ -16,6 +16,10 @@
         request.setAttribute("mode", "Edit");
     }
 %>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/nicEdit.js"></script>
+<script type="text/javascript">
+    bkLib.onDomLoaded(function() { new nicEditor({fullPanel : true, iconsPath : '/resources/images/nicEditorIcons.gif'}).panelInstance('textInput'); });
+</script>
 <form id="postEditorForm" method="post" accept-charset="UTF-8">
     Заголовок<br>
     <textarea rows=2 id="headerInput" name="postHeaderInput">${postHeader}</textarea>

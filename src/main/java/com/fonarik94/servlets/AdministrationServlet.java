@@ -68,8 +68,6 @@ public class AdministrationServlet extends HttpServlet {
                 response.sendRedirect("/administration/wol");
                 break;
         }
-
-//        response.sendRedirect("/administration/postWriter");
     }
 
     private void addPost(HttpServletRequest request) {
