@@ -66,10 +66,10 @@ public class PostDaoImpl implements PostDao {
     }
 
     public List<Post> getListOfAllPosts(boolean publishedOnly) {
-        List<Post> listFromDB = DBWorker.getPostsAll();
-        List<Post> resultList;
+        List<Post> listFromDB = new ArrayList<>();
+        List<Post> resultList = new ArrayList<>();
+        listFromDB.addAll(DBWorker.getPostsAll());
         if (publishedOnly) {
-            resultList = new ArrayList<>();
             for (Post p : listFromDB) {
                 if (p.isPublished) {
                     resultList.add(p);

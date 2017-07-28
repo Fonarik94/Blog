@@ -9,7 +9,7 @@
               username="root"
               password="Gerasimenko07"
               driverClassName="com.mysql.cj.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/blog?useSSL=false&amp;useUnicode=true&amp;serverTimezone=Europe/Kiev&amp;autoCommit=false&amp;zeroDateTimeBehavior=convertToNull"
+              url="jdbc:mysql://localhost:3306?useSSL=false&amp;useUnicode=true&amp;serverTimezone=Europe/Kiev&amp;autoCommit=false&amp;zeroDateTimeBehavior=convertToNull"
               removeAbandonedOnBorrow="true"
               removeAbandonedOnMaintenance="true"
               removeAbandonedTimeout="60"

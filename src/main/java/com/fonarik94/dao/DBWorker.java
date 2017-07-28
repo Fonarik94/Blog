@@ -16,11 +16,12 @@ import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
 public class DBWorker {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
-    private static final String insert = "INSERT INTO posts (postHeader, text, creationDate, publicationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?, ?)";
-    private static final String readById = "SELECT idposts, postHeader, text, creationDate, publicationDate, isPublished FROM posts WHERE idposts = ?";
-    private static final String readAll = "SELECT idposts, postHeader, SUBSTRING(text, 1, 500), creationDate, publicationDate, isPublished FROM posts ORDER BY idposts DESC";
-    private static final String deleteById = "DELETE FROM posts WHERE idposts = ?";
-    private static final String editById = "UPDATE posts SET postHeader = ?, text = ?, isPublished = ? where idposts = ?";
+    private static final String DBNAME = "blog";
+    private static final String INSERT = "INSERT INTO posts (header, text, creationDate, publicationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?, ?)";
+    private static final String READ_BY_ID = "SELECT id, header, text, creationDate, publicationDate, isPublished FROM posts WHERE id = ?";
+    private static final String READ_ALL = "SELECT id, header, SUBSTRING(text, 1, 500), creationDate, publicationDate, isPublished FROM posts ORDER BY id DESC";
+    private static final String DELETE_BY_ID = "DELETE FROM posts WHERE id = ?";
+    private static final String EDIT_BY_ID = "UPDATE posts SET header = ?, text = ?, isPublished = ? where id = ?";
 
     private static Connection getConnection() {
         InitialContext initialContext;
@@ -31,7 +32,15 @@ public class DBWorker {
             Context envCont = (Context) initialContext.lookup("java:comp/env");
             dataSource = (DataSource) envCont.lookup("jdbc/blog");
             connection = dataSource.getConnection();
-            createTables(connection.createStatement());
+            try(Statement statement = connection.createStatement()){
+                statement.execute("USE " + DBNAME );
+            }
+            catch (SQLException e){
+                logger.info(">> Cant't use DB " + "\"" + DBNAME + "\"; Try create DB and tables...");
+                createTables(connection.createStatement());
+            }
+
+
         } catch (NamingException e) {
             logger.fatal(">> Fatal exception when creating InitialContext instance: " + e.toString());
         } catch (SQLException e) {
@@ -43,7 +52,7 @@ public class DBWorker {
     static void addPost(Post post) {
         try (Connection connection = getConnection()) {
             connection.setAutoCommit(false);
-            try (PreparedStatement postInsertPreparedStatement = connection.prepareStatement(insert)) {
+            try (PreparedStatement postInsertPreparedStatement = connection.prepareStatement(INSERT)) {
                 postInsertPreparedStatement.setString(1, post.getPostHeader());
                 postInsertPreparedStatement.setString(2, post.getPostText());
                 if(post.isPublished){postInsertPreparedStatement.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));}
@@ -62,12 +71,12 @@ public class DBWorker {
     public static Post getPostByID(int id) {
         Post post = null;
         try (Connection connection = getConnection()) {
-            try (PreparedStatement postReadByIdPreparedStatement = connection.prepareStatement(readById)) {
+            try (PreparedStatement postReadByIdPreparedStatement = connection.prepareStatement(READ_BY_ID)) {
                 postReadByIdPreparedStatement.setInt(1, id);
                 ResultSet resultSet = postReadByIdPreparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    post = new Post.PostBuilder().setPostId(resultSet.getInt("idposts"))
-                            .setPostHeader(resultSet.getString("postHeader"))
+                    post = new Post.PostBuilder().setPostId(resultSet.getInt("id"))
+                            .setPostHeader(resultSet.getString("header"))
                             .setPostText(resultSet.getString("text"))
                             .setCreationDateTime(resultSet.getTimestamp("creationDate").toLocalDateTime())
                             .setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime())
@@ -85,19 +94,17 @@ public class DBWorker {
     static List<Post> getPostsAll() {
         List<Post> allPosts = new ArrayList<>();
         try (Connection connection = getConnection()) {
-            try (PreparedStatement postReadAllPreparedStatement = connection.prepareStatement(readAll)) {
+            try (PreparedStatement postReadAllPreparedStatement = connection.prepareStatement(READ_ALL)){
                 ResultSet resultSet = postReadAllPreparedStatement.executeQuery();
-
                 while (resultSet.next()) {
                     Post post = new Post.PostBuilder()
-                            .setPostId(resultSet.getInt("idposts"))
-                            .setPostHeader(resultSet.getString("postHeader"))
+                            .setPostId(resultSet.getInt("id"))
+                            .setPostHeader(resultSet.getString("header"))
                             .setPostText(resultSet.getString(3)+"...")
                             .setCreationDateTime(resultSet.getTimestamp("creationDate").toLocalDateTime())
                             .setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime())
                             .setPublished((resultSet.getInt("isPublished")) == 1)
                             .build();
-
                     allPosts.add(post);
                 }
             }
@@ -110,7 +117,7 @@ public class DBWorker {
     static void deletePostById(int id) {
         try (Connection connection = getConnection()) {
             connection.setAutoCommit(false);
-            try (PreparedStatement deletePostByIdPreparedStatement = connection.prepareStatement(deleteById)) {
+            try (PreparedStatement deletePostByIdPreparedStatement = connection.prepareStatement(DELETE_BY_ID)) {
                 deletePostByIdPreparedStatement.setInt(1, id);
                 deletePostByIdPreparedStatement.executeUpdate();
             } catch (SQLException e) {
@@ -127,7 +134,7 @@ public class DBWorker {
     static void editPostById(int id, Post updatedPost) {
         try (Connection connection = getConnection()) {
             connection.setAutoCommit(false);
-            try (PreparedStatement editByIdPreparedStatement = connection.prepareStatement(editById)) {
+            try (PreparedStatement editByIdPreparedStatement = connection.prepareStatement(EDIT_BY_ID)) {
                 editByIdPreparedStatement.setString(1, updatedPost.getPostHeader());
                 editByIdPreparedStatement.setString(2, updatedPost.getPostText());
                 editByIdPreparedStatement.setInt(3, updatedPost.isPublished() ? 1 : 0);
@@ -144,18 +151,18 @@ public class DBWorker {
     }
 
     private static void createTables(Statement statement) throws SQLException {
-//        statement.execute("CREATE DATABASE IF NOT EXISTS  blog CHARACTER SET  = utf8;");
-        statement.execute("CREATE TABLE IF NOT EXISTS`blog`.`posts` (\n" +
-                "  `idposts` INT UNSIGNED NOT NULL AUTO_INCREMENT,\n" +
-                "  `postHeader` VARCHAR(256) NOT NULL,\n" +
-                "  `text` TEXT NOT NULL,\n" +
-                "  `creationDate` TIMESTAMP(6) NOT NULL,\n" +
-                "  `publicationDate` TIMESTAMP(6),\n" +
-                "  `isPublished` TINYINT NOT NULL DEFAULT 0,\n" +
-                "  UNIQUE INDEX `idposts_UNIQUE` (`idposts` ASC),\n" +
-                "  PRIMARY KEY (`idposts`))\n" +
-                "ENGINE = InnoDB\n" +
-                "DEFAULT CHARACTER SET = utf8;\n");
+        statement.execute("CREATE DATABASE IF NOT EXISTS `blog` CHARACTER SET  = utf8;");
+        statement.execute("USE " + DBNAME );
+        statement.execute("CREATE TABLE IF NOT EXISTS `posts` (\n" +
+                "  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,\n" +
+                "  `header` varchar(256) NOT NULL,\n" +
+                "  `text` text NOT NULL,\n" +
+                "  `creationDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,\n" +
+                "  `publicationDate` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',\n" +
+                "  `isPublished` tinyint(4) NOT NULL,\n" +
+                "  PRIMARY KEY (`id`),\n" +
+                "  UNIQUE KEY `idposts_UNIQUE` (`id`)\n" +
+                ") ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;");
 
     }
 }
