@@ -39,6 +39,14 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/login/*</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>debug</servlet-name>
+        <jsp-file>/jsp/debug.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>debug</servlet-name>
+        <url-pattern>/debug</url-pattern>
+    </servlet-mapping>
     <!--Resources-->
     <resource-ref>
         <description>DB Connection</description>
