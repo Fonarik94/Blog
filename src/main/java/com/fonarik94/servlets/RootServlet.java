@@ -35,7 +35,7 @@ public class RootServlet extends HttpServlet {
             break;
             default:request.setAttribute("requestedPage", "/jsp/posts.jsp");
         }
-        logger.info(">> Get request from IP: "+ request.getRemoteHost());
+        logger.info(">> Get request from IP: "+ getClientIp(request));
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
         dispatcher.forward(request,response);
     }
@@ -49,5 +49,20 @@ public class RootServlet extends HttpServlet {
         request.setAttribute("requestedPage", "singlePost.jsp");
 //        response.sendRedirect("postId=" + postId);
 
+    }
+
+    /**
+     * Method returns client ip in cases of use nginx
+     * @param request
+     * @return String clientIP
+     */
+    private static String getClientIp(HttpServletRequest request) {
+        String clientIp = request.getHeader("X-FORWARDED-FOR");
+        if (clientIp == null) {
+            clientIp = request.getRemoteAddr();
+        } else {
+            clientIp = clientIp.split(",")[0].trim();
+        }
+        return clientIp;
     }
 }
