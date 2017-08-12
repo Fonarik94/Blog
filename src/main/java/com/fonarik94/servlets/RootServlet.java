@@ -29,7 +29,7 @@ public class RootServlet extends HttpServlet {
         switch (path){
             case "/":request.setAttribute("requestedPage", "/jsp/posts.jsp");
             break;
-            case "/about": request.setAttribute("requestedPage", "/jsp/about.jsp");
+            case "/about": getAboutPage(request, response);
             break;
             case "/read": read(request, response);
             break;
@@ -39,7 +39,12 @@ public class RootServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
         dispatcher.forward(request,response);
     }
-
+    private void getAboutPage(HttpServletRequest request, HttpServletResponse response){
+        PostDao postDao = PostDaoImpl.getInstance();
+        Post aboutPage = postDao.getPostById(1);
+        request.setAttribute("aboutPage", aboutPage);
+        request.setAttribute("requestedPage", "/jsp/about.jsp");
+    }
     private void read(HttpServletRequest request, HttpServletResponse response) throws IOException {
         int postId = Integer.valueOf(request.getParameter("postId"));
         logger.debug(">> Requested post with ID = " + postId);
@@ -47,8 +52,6 @@ public class RootServlet extends HttpServlet {
         Post requestedPost = postDao.getPostById(postId);
         request.setAttribute("requestedPost", requestedPost);
         request.setAttribute("requestedPage", "singlePost.jsp");
-//        response.sendRedirect("postId=" + postId);
-
     }
 
     /**

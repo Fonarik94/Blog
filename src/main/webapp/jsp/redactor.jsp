@@ -6,7 +6,6 @@
     PostDao postDao = PostDaoImpl.getInstance();
     request.setAttribute("post", postDao);
 %>
-<a class="item" href="/administration/postWriter/addPost"><b>ДОБАВИТЬ</b></a>
 <c:forEach items="${post.getListOfAllPosts(false)}" var="post">
     <div class="post all">
         <div class="postHeader"><b>${post.getPostHeader()}</b><br></div>
@@ -14,7 +13,7 @@
         <div class="postText"><p>${post.getPostText()}</p></div>
         <hr>
         <div class="editorItems">
-            <div class="postEditorItem"><a href="/administration/postWriter/edit?editById=${post.getPostId()}">Edit</a></div>
+            <div class="postEditorItem"><a href="postWriter/edit?editById=${post.getPostId()}">Edit</a></div>
             <div class="postEditorItem">
                 <form id="deletePostById"  method="post">
                     <input type="hidden" name="Page" value="Delete">

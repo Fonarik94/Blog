@@ -28,6 +28,7 @@ public class AdministrationServlet extends HttpServlet {
                 break;
             case "postWriter":
                 request.setAttribute("requestedPage", "/jsp/redactor.jsp");
+                request.setAttribute("redactor", 1);
                 break;
             case "postWriter/addPost":
                 request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");

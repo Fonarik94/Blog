@@ -104,13 +104,13 @@ A, A:visited{
     background-color: white;
     box-shadow: 0 0 20px rgba(0,0,0,0.6); /* Параметры тени */
     display: block;
-    padding: 10px;
+    padding: 20px;
     margin: 20px;
 }
 #content .item{
     background: #51BBFE;
     padding: 10px;
-    margin-top: 30px;
+    margin: 10px;
     height: 28px;
 }
 #content #postEditorForm {
@@ -118,7 +118,7 @@ A, A:visited{
     align-items: stretch;
     flex-direction: column;
     height: auto;
-    padding: 10px;
+    padding: 20px;
     margin: 20px;
     background-color: white;
     width: 90%;
@@ -138,7 +138,7 @@ A, A:visited{
 .post .postEditorItem{
     display: block;
     background: #51BBFE;
-    padding: 10px;
+    padding: 20px;
     margin-right: 15px;
 }
 .all{

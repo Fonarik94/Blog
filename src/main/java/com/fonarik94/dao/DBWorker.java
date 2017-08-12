@@ -19,7 +19,7 @@ public class DBWorker {
     private static final String DBNAME = "blog";
     private static final String INSERT = "INSERT INTO posts (header, text, creationDate, publicationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?, ?)";
     private static final String READ_BY_ID = "SELECT id, header, text, creationDate, publicationDate, isPublished FROM posts WHERE id = ?";
-    private static final String READ_ALL = "SELECT id, header, SUBSTRING(text, 1, 500), creationDate, publicationDate, isPublished FROM posts ORDER BY id DESC";
+    private static final String READ_ALL = "SELECT id, header, SUBSTRING(text, 1, 500), creationDate, publicationDate, isPublished FROM posts WHERE id>=2 ORDER BY id DESC";
     private static final String DELETE_BY_ID = "DELETE FROM posts WHERE id = ?";
     private static final String EDIT_BY_ID = "UPDATE posts SET header = ?, text = ?, isPublished = ? where id = ?";
 

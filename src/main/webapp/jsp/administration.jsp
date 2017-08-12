@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
@@ -14,6 +15,10 @@
             <a class="item" href="/">Главная</a>
             <a class="item" href="/administration/wol">Wake-on-lan</a>
             <a class="item" href="/administration/postWriter">Редактор постов</a>
+            <c:if test="${requestedPage == '/jsp/redactor.jsp'}">
+                <a class="item" href="postWriter/addPost">Добавить</a>
+                <a class="item" href="postWriter/edit?editById=1">Редактировать aboutpage</a>
+            </c:if>
         </div>
     </div>
 </div>

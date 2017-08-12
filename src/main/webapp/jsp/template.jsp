@@ -30,12 +30,14 @@
             <%--<a class="item" href="/login">Войти</a>--%>
         </div>
         <div id="social">
-            <div class="socialbutton"><a href="https://twitter.com/Fonarik94" target="_blank" rel="noopener"><img
-                    src="${pageContext.request.contextPath}/resources/images/twitter.png" width=36px height=36px alt="Twitter"></a></div>
-            <div class="socialbutton"><a href="https://www.instagram.com/fonarik94" target="_blank" rel="noopener"><img
-                    src="${pageContext.request.contextPath}/resources/images/instagram.png" width=36px height=36px alt="Instagram"></a></div>
-            <div class="socialbutton"><a href="https://github.com/Fonarik94" target="_blank" rel="noopener"><img
-                    src="${pageContext.request.contextPath}/resources/images/github.png" width=36px height=36px alt="Github"></a></div>
+            <div class="socialbutton"><a href="https://t.me/fonark94" target="_blank" rel="noopener">
+                <img src="/resources/images/telegram.png" width=36px height=36px alt="Telegram"></a></div>
+            <div class="socialbutton"><a href="https://twitter.com/Fonarik94" target="_blank" rel="noopener">
+                <img src="${pageContext.request.contextPath}/resources/images/twitter.png" width=36px height=36px alt="Twitter"></a></div>
+            <div class="socialbutton"><a href="https://www.instagram.com/fonarik94" target="_blank" rel="noopener">
+                <img src="${pageContext.request.contextPath}/resources/images/instagram.png" width=36px height=36px alt="Instagram"></a></div>
+            <div class="socialbutton"><a href="https://github.com/Fonarik94" target="_blank" rel="noopener">
+                <img src="${pageContext.request.contextPath}/resources/images/github.png" width=36px height=36px alt="Github"></a></div>
         </div>
     </div>
 </div>

@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.fonarik94</groupId>
-    <artifactId>WebApp</artifactId>
+    <artifactId>Blog</artifactId>
     <packaging>war</packaging>
     <version>0.1-SNAPSHOT</version>
     <name>Blog</name>
@@ -118,22 +118,46 @@
 
             </plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
                 <groupId>org.apache.tomcat.maven</groupId>
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-                    <url>http://localhost:8080/manager/text/</url>
-                    <server>TomcatServer</server>
+                    <url>${deploy_url}</url>
+                    <server>${deploy_server}</server>
                     <path>/</path>
-                    <username>root</username>
-                    <password>Gerasimenkotomcat09</password>
+                    <username>${deploy_username}</username>
+                    <password>${deploy_password}</password>
                 </configuration>
             </plugin>
         </plugins>
     </build>
+    <profiles>
+        <profile>
+            <id>RPIServer</id>
+            <!-- Activated when -Denv=RPIServer is given as parameter. -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <deploy_url>http://10.10.25.25:8080/manager/text</deploy_url>
+                <deploy_server>RPIServer</deploy_server>
+                <deploy_username>root</deploy_username>
+                <deploy_password>Gerasimenkotomcat09</deploy_password>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
+            <!-- Activated when -Denv=local is given as parameter. -->
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <deploy_url>http://localhost:8080/manager/text</deploy_url>
+                <deploy_server>local</deploy_server>
+                <deploy_username>root</deploy_username>
+                <deploy_password>Gerasimenkotomcat09</deploy_password>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>
