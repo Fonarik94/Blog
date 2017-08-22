@@ -14,7 +14,7 @@ public class Post {
     private LocalDateTime creationDate;
     private LocalDateTime publicationDateTime;
     private String postText;
-    boolean isPublished;
+    private boolean isPublished;
     private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
 
@@ -86,8 +86,7 @@ public class Post {
         if (isPublished) {
             return publicationDateTime;
         } else {
-            LocalDateTime dumbDateTime = LocalDateTime.MIN;
-            return dumbDateTime;
+            return LocalDateTime.MIN;
         }
     }
 

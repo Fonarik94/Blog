@@ -1,7 +1,6 @@
 package com.fonarik94.dao;
 
 import java.util.List;
-import java.util.Map;
 
 public interface PostDao {
     void addPost(String postHeader, String postText, boolean isPublished);

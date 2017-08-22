@@ -16,18 +16,17 @@ public enum SQLQueries {
     CREATE_DB("CREATE_DB"),
     CREATE_TABLE("CREATE_TABLE"),
     CREATE_ABOUT_PAGE("CREATE_ABOUT_PAGE");
-    private final String propertyPath = "sql/SQLQueries.xml";
     private  String queryString = null;
-    private  Properties queries = null;
 
     public String getQueryString(){
         return queryString;
     }
 
     SQLQueries(String query)  {
-        try (InputStream propXmlInputStraem = Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyPath)) {
-            queries = new Properties();
-            queries.loadFromXML(propXmlInputStraem);
+        String propertyPath = "sql/SQLQueries.xml";
+        try (InputStream propXmlInputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyPath)) {
+            Properties queries = new Properties();
+            queries.loadFromXML(propXmlInputStream);
             queryString = queries.getProperty(query);
         } catch (IOException e){
             throw new DAOException("Cant't use property file. Check file /WEB-INF/classes/sql/SQLQueries.xml " + e.toString());

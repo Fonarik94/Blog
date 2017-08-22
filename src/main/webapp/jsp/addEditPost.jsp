@@ -1,7 +1,4 @@
 <%@ page import="com.fonarik94.dao.Post" %>
-<%@ page import="com.fonarik94.dao.PostDao" %>
-<%@ page import="com.fonarik94.dao.PostDaoImpl" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@page contentType="text/html;charset=UTF-8" %>
 <%
     Post post = (Post)request.getAttribute("editMode");

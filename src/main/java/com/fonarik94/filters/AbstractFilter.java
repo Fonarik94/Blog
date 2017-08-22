@@ -3,7 +3,7 @@ package com.fonarik94.filters;
 import javax.servlet.*;
 import java.io.IOException;
 
-public abstract class AbstractFilter implements Filter{
+abstract class AbstractFilter implements Filter{
     public void init(FilterConfig filterConfig) throws ServletException {
 
     }
