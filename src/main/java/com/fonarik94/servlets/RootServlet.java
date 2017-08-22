@@ -1,6 +1,5 @@
 package com.fonarik94.servlets;
 
-import com.fonarik94.dao.DBWorker;
 import com.fonarik94.dao.Post;
 import com.fonarik94.dao.PostDao;
 import com.fonarik94.dao.PostDaoImpl;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
@@ -23,32 +21,44 @@ import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
  */
 public class RootServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
+    private PostDao postDao = new PostDaoImpl();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.info(">> Get request from IP: " + getClientIp(request));
+        boolean error = false;
         String path = request.getRequestURI();
-        switch (path){
-            case "/":request.setAttribute("requestedPage", "/jsp/posts.jsp");
-            break;
-            case "/about": getAboutPage(request, response);
-            break;
-            case "/read": read(request, response);
-            break;
-            default:request.setAttribute("requestedPage", "/jsp/posts.jsp");
+        switch (path) {
+            case "/":
+            case "/blog":
+                request.setAttribute("requestedPage", "/jsp/posts.jsp");
+                request.setAttribute("publishedPosts", postDao.getListOfAllPosts(true));
+                break;
+            case "/about":
+                getAboutPage(request);
+                break;
+            case "/read":
+                read(request);
+                break;
+            default:
+                error = true;
         }
-        logger.info(">> Get request from IP: "+ getClientIp(request));
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
-        dispatcher.forward(request,response);
+        if (error) {
+            response.sendError(404, "You are broke the internet!");
+        } else {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
+            dispatcher.forward(request, response);
+        }
     }
-    private void getAboutPage(HttpServletRequest request, HttpServletResponse response){
-        PostDao postDao = PostDaoImpl.getInstance();
-        Post aboutPage = postDao.getPostById(1);
+
+    private void getAboutPage(HttpServletRequest request) {
+        Post aboutPage = postDao.getPostById(1); //ID 1 is about page
         request.setAttribute("aboutPage", aboutPage);
         request.setAttribute("requestedPage", "/jsp/about.jsp");
     }
-    private void read(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+    private void read(HttpServletRequest request) throws IOException {
         int postId = Integer.valueOf(request.getParameter("postId"));
         logger.debug(">> Requested post with ID = " + postId);
-        PostDao postDao = PostDaoImpl.getInstance();
         Post requestedPost = postDao.getPostById(postId);
         request.setAttribute("requestedPost", requestedPost);
         request.setAttribute("requestedPage", "singlePost.jsp");
@@ -56,7 +66,8 @@ public class RootServlet extends HttpServlet {
 
     /**
      * Method returns client ip in cases of use nginx
-     * @param request
+     *
+     * @param request HTTP request
      * @return String clientIP
      */
     private static String getClientIp(HttpServletRequest request) {
@@ -68,4 +79,6 @@ public class RootServlet extends HttpServlet {
         }
         return clientIp;
     }
+
+
 }

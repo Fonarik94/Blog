@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" name="theme-color" content="#8FF7A7">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/style.css">
-    <title>Go away</title>
+    <title>IT blog</title>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -31,7 +31,7 @@
         </div>
         <div id="social">
             <div class="socialbutton"><a href="https://t.me/fonark94" target="_blank" rel="noopener">
-                <img src="/resources/images/telegram.png" width=36px height=36px alt="Telegram"></a></div>
+                <img src="${pageContext.request.contextPath}/resources/images/telegram.png" width=36px height=36px alt="Telegram"></a></div>
             <div class="socialbutton"><a href="https://twitter.com/Fonarik94" target="_blank" rel="noopener">
                 <img src="${pageContext.request.contextPath}/resources/images/twitter.png" width=36px height=36px alt="Twitter"></a></div>
             <div class="socialbutton"><a href="https://www.instagram.com/fonarik94" target="_blank" rel="noopener">

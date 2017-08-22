@@ -36,7 +36,6 @@
             <AppenderRef ref="Warning" level="warn"/>
             <AppenderRef ref="FileOutput"/>
         </Root>
-        <Logger name="com.fonarik94.servlets.GoAwayServlet" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.filters.RequestDetectorFilter" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.servlets.FileRequestServlet" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.filters.ProcessingTimeFilter" level="debug" additivity="true"/>
@@ -44,7 +43,5 @@
         <Logger name="com.fonarik94.servlets.AdministrationServlet" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.dao.Post" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.dao.PostDaoImpl" level="debug" additivity="true"/>
-        <Logger name="com.fonarik94.dao.Post" level="debug" additivity="true"/>
-        <Logger name="com.fonarik94.dao.DBWorker" level="debug" additivity="true"/>
     </Loggers>
 </Configuration>

@@ -1,12 +1,7 @@
-<%@ page import="com.fonarik94.dao.PostDao" %>
-<%@ page import="com.fonarik94.dao.PostDaoImpl" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%
-    PostDao postDao = PostDaoImpl.getInstance();
-    request.setAttribute("post", postDao);
-%>
-<c:forEach items="${post.getListOfAllPosts(false)}" var="post">
+
+<c:forEach items="${postDao.getListOfAllPosts(false)}" var="post">
     <div class="post all">
         <div class="postHeader"><b>${post.getPostHeader()}</b><br></div>
         <div class="postPublicationDate">${post.getPublicationDateAsString()}<br></div>

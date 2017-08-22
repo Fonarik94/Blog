@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
-import static com.fonarik94.utils.WakeOnLan.wake;
 
 public class AdministrationServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
+    private PostDao postDao = new PostDaoImpl();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getRequestURI().replaceFirst("/administration/", "");
@@ -28,14 +28,14 @@ public class AdministrationServlet extends HttpServlet {
                 break;
             case "postWriter":
                 request.setAttribute("requestedPage", "/jsp/redactor.jsp");
-                request.setAttribute("redactor", 1);
+                request.setAttribute("postDao", postDao);
                 break;
             case "postWriter/addPost":
                 request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");
                 break;
             case "postWriter/edit":
                 logger.debug(">> Request to edit post with id: " + request.getParameter("editById"));
-                request.setAttribute("editMode", PostDaoImpl.getInstance().getPostById(Integer.parseInt(request.getParameter("editById"))));
+                request.setAttribute("editMode", postDao.getPostById(Integer.parseInt(request.getParameter("editById"))));
                 request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");
                 break;
             default:
@@ -72,7 +72,7 @@ public class AdministrationServlet extends HttpServlet {
     }
 
     private void addPost(HttpServletRequest request) {
-        PostDao postDao = PostDaoImpl.getInstance();
+
         String checkBoxParameter = request.getParameter("isPublished");
         logger.debug("Checkbox value is : " + checkBoxParameter);
         boolean isPublishedCheckBox = false;
@@ -96,14 +96,14 @@ public class AdministrationServlet extends HttpServlet {
                     .setPostId(id)
                     .build();
 
-            PostDaoImpl.getInstance().editPostById(id, updatedPost);
+            postDao.editPostById(id, updatedPost);
         } catch (NumberFormatException nfe) {
             logger.error(">> Wrong post ID while edit post" + nfe.toString());
         }
     }
 
     private void deletePost(int id) {
-        PostDao postDao = PostDaoImpl.getInstance();
+        PostDao postDao = new PostDaoImpl();
         postDao.deletePostByID(id);
     }
 }

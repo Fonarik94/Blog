@@ -75,7 +75,7 @@ A, A:visited{
 #menubar{
     display: flex;
     flex-grow: 1;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Параметры тени */
+    box-shadow: 1px 5px 20px rgba(0,0,0,0.5); /* Параметры тени */
     position: sticky;
 }
 #menu .item:hover, #social .socialbutton:hover, #content .item:hover, .post .postEditorItem:hover, .post .all{
@@ -102,7 +102,7 @@ A, A:visited{
 }
 #content .post{
     background-color: white;
-    box-shadow: 0 0 20px rgba(0,0,0,0.6); /* Параметры тени */
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.6); /* Параметры тени */
     display: block;
     padding: 20px;
     margin: 20px;

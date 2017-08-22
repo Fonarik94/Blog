@@ -1,18 +1,14 @@
 package com.fonarik94.servlets;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.activation.MimetypesFileTypeMap;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
-import static com.fonarik94.utils.ClassNameUtil.*;
-
-import java.util.Arrays;
+import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
 public class FileRequestServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
