@@ -42,6 +42,6 @@
         <Logger name="com.fonarik94.servlets.RootServlet" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.servlets.AdministrationServlet" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.dao.Post" level="debug" additivity="true"/>
-        <Logger name="com.fonarik94.dao.PostDaoImpl" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.dao.MySQLPostDao" level="debug" additivity="true"/>
     </Loggers>
 </Configuration>

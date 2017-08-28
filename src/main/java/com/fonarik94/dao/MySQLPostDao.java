@@ -14,7 +14,7 @@ import java.util.List;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
-public class PostDaoImpl implements PostDao {
+public class MySQLPostDao implements PostDao {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
 
     private static Connection getConnection() {

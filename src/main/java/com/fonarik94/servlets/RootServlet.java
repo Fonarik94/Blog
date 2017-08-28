@@ -2,7 +2,7 @@ package com.fonarik94.servlets;
 
 import com.fonarik94.dao.Post;
 import com.fonarik94.dao.PostDao;
-import com.fonarik94.dao.PostDaoImpl;
+import com.fonarik94.dao.MySQLPostDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,7 +21,7 @@ import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
  */
 public class RootServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
-    private PostDao postDao = new PostDaoImpl();
+    private PostDao postDao = new MySQLPostDao();
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         logger.info(">> Get request from IP: " + getClientIp(request));

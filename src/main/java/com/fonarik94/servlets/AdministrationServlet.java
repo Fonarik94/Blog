@@ -2,7 +2,7 @@ package com.fonarik94.servlets;
 
 import com.fonarik94.dao.Post;
 import com.fonarik94.dao.PostDao;
-import com.fonarik94.dao.PostDaoImpl;
+import com.fonarik94.dao.MySQLPostDao;
 import com.fonarik94.utils.WakeOnLan;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,8 +18,9 @@ import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
 
 public class AdministrationServlet extends HttpServlet {
     private static final Logger logger = LogManager.getLogger(getCurentClassName());
-    private PostDao postDao = new PostDaoImpl();
+    private PostDao postDao = new MySQLPostDao();
 
+    // TODO: 28.08.2017 Refactor this shit
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String path = request.getRequestURI().replaceFirst("/administration/", "");
         switch (path) {
@@ -31,15 +32,21 @@ public class AdministrationServlet extends HttpServlet {
                 request.setAttribute("postDao", postDao);
                 break;
             case "postWriter/addPost":
+                request.setAttribute("postHeader", "");
+                request.setAttribute("text", "");
+                request.setAttribute("mode", "add");
                 request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");
                 break;
             case "postWriter/edit":
                 logger.debug(">> Request to edit post with id: " + request.getParameter("editById"));
-                request.setAttribute("editMode", postDao.getPostById(Integer.parseInt(request.getParameter("editById"))));
+                Post post = postDao.getPostById(Integer.parseInt(request.getParameter("editById")));
+                request.setAttribute("postHeader", post.getPostHeader());
+                request.setAttribute("text", post.getPostText());
+                request.setAttribute("mode", "edit");
                 request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");
                 break;
             default:
-                request.setAttribute("requestedPage", "/jsp/wol.jsp"); //displayed page on path "/administration"
+                request.setAttribute("requestedPage", "/jsp/wol.jsp"); //viewed page on path "/administration"
         }
         logger.debug(">> requestedPage: " + request.getAttribute("requestedPage"));
         logger.debug(">> edit mode: " + request.getAttribute("editMode"));
@@ -55,11 +62,11 @@ public class AdministrationServlet extends HttpServlet {
                 deletePost(Integer.parseInt(request.getParameter("DeleteById")));
                 response.sendRedirect("/administration/postWriter");
                 break;
-            case "Add":
+            case "add":
                 addPost(request);
                 response.sendRedirect("/administration/postWriter");
                 break;
-            case "Edit":
+            case "edit":
                 logger.debug(">> edit by id: " + request.getParameter("editById"));
                 editPost(request);
                 response.sendRedirect("/administration/postWriter");
@@ -79,7 +86,8 @@ public class AdministrationServlet extends HttpServlet {
         if (checkBoxParameter != null) {
             isPublishedCheckBox = checkBoxParameter.equalsIgnoreCase("on");
         }
-        postDao.addPost(request.getParameter("postHeaderInput"),
+        postDao.addPost(
+                request.getParameter("postHeaderInput"),
                 request.getParameter("postTextInput"),
                 isPublishedCheckBox);
     }
@@ -103,7 +111,6 @@ public class AdministrationServlet extends HttpServlet {
     }
 
     private void deletePost(int id) {
-        PostDao postDao = new PostDaoImpl();
         postDao.deletePostByID(id);
     }
 }

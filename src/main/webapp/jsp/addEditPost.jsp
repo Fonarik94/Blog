@@ -1,18 +1,8 @@
-<%@ page import="com.fonarik94.dao.Post" %>
+<jsp:useBean id="text" scope="request" type="java.lang.String"/>
+<jsp:useBean id="mode" scope="request" type="java.lang.String"/>
+<jsp:useBean id="postHeader" scope="request" type="java.lang.String"/>
+
 <%@page contentType="text/html;charset=UTF-8" %>
-<%
-    Post post = (Post)request.getAttribute("editMode");
-    request.setAttribute("postHeader", "");
-    request.setAttribute("text", "");
-    request.setAttribute("published", "unchecked");
-    request.setAttribute("mode", "Add");
-    if(post!=null) {
-        request.setAttribute("postHeader", post.getPostHeader());
-        request.setAttribute("text", post.getPostText());
-        request.setAttribute("published", post.isPublished()?"checked":"unchecked");
-        request.setAttribute("mode", "Edit");
-    }
-%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/nicEdit.js"></script>
 <script type="text/javascript">
     bkLib.onDomLoaded(function() { new nicEditor({fullPanel : true, iconsPath : '/resources/images/nicEditorIcons.gif'}).panelInstance('textInput'); });
