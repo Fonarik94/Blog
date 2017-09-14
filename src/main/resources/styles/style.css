@@ -148,6 +148,12 @@ A, A:visited{
 .all a{
     text-decoration: none;
 }
+.all img{
+    max-width: 100%;
+}
 .single{
-    flex-basis: 1500px;
+    flex-basis: 1024px;
+}
+.single img{
+    max-width: 100%;
 }

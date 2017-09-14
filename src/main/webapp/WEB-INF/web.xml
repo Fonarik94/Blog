@@ -58,8 +58,6 @@
     <listener>
         <listener-class>com.fonarik94.utils.MyServletContexListener</listener-class>
     </listener>-->
-
-
     <!--Filters-->
     <!--<filter>
         <filter-name>RequestDetectorFilter</filter-name>

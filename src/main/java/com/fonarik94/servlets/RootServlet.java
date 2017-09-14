@@ -39,6 +39,7 @@ public class RootServlet extends HttpServlet {
             case "/read":
                 read(request);
                 break;
+
             default:
                 error = true;
         }
