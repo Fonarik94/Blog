@@ -2,7 +2,7 @@ package com.fonarik94.utils;
 
 public class ClassNameUtil {
     private ClassNameUtil(){}
-    public static String getCurentClassName(){
+    public static String getCurrentClassName(){
         try{
             throw new RuntimeException();
         }

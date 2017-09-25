@@ -2,115 +2,94 @@ package com.fonarik94.servlets;
 
 import com.fonarik94.dao.Post;
 import com.fonarik94.dao.PostDao;
-import com.fonarik94.dao.MySQLPostDao;
 import com.fonarik94.utils.WakeOnLan;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+@Controller
+public class AdministrationServlet {
+    private static final Logger log = LogManager.getLogger();
+    @Autowired
+    PostDao postDao;
 
-import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
-
-public class AdministrationServlet extends HttpServlet {
-    private static final Logger logger = LogManager.getLogger(getCurentClassName());
-    private PostDao postDao = new MySQLPostDao();
-
-    // TODO: 28.08.2017 Refactor this shit
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String path = request.getRequestURI().replaceFirst("/administration/", "");
-        switch (path) {
-            case "wol":
-                request.setAttribute("requestedPage", "/jsp/wol.jsp");
-                break;
-            case "postWriter":
-                request.setAttribute("requestedPage", "/jsp/redactor.jsp");
-                request.setAttribute("postDao", postDao);
-                break;
-            case "postWriter/addPost":
-                request.setAttribute("postHeader", "");
-                request.setAttribute("text", "");
-                request.setAttribute("mode", "add");
-                request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");
-                break;
-            case "postWriter/edit":
-                logger.debug(">> Request to edit post with id: " + request.getParameter("editById"));
-                Post post = postDao.getPostById(Integer.parseInt(request.getParameter("editById")));
-                request.setAttribute("postHeader", post.getPostHeader());
-                request.setAttribute("text", post.getPostText());
-                request.setAttribute("mode", "edit");
-                request.setAttribute("requestedPage", "/jsp/addEditPost.jsp");
-                break;
-            default:
-                request.setAttribute("requestedPage", "/jsp/wol.jsp"); //viewed page on path "/administration"
-        }
-        logger.debug(">> requestedPage: " + request.getAttribute("requestedPage"));
-        logger.debug(">> edit mode: " + request.getAttribute("editMode"));
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/administration.jsp");
-        dispatcher.forward(request, response);
+    @RequestMapping(value = "/administration")
+    public String wol(Model model) {
+        model.addAttribute("requestedPage", "/jsp/wol.jsp");
+        return "administration";
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String hiddenParameter = request.getParameter("Page");
-        logger.debug(">> Post hidden parameter value is: " + hiddenParameter);
-        switch (hiddenParameter) {
-            case "Delete":
-                deletePost(Integer.parseInt(request.getParameter("DeleteById")));
-                response.sendRedirect("/administration/postWriter");
-                break;
-            case "add":
-                addPost(request);
-                response.sendRedirect("/administration/postWriter");
-                break;
-            case "edit":
-                logger.debug(">> edit by id: " + request.getParameter("editById"));
-                editPost(request);
-                response.sendRedirect("/administration/postWriter");
-                break;
-            case "WOL":
-                WakeOnLan.wake(request.getParameter("MAC"));
-                response.sendRedirect("/administration/wol");
-                break;
-        }
+    @RequestMapping(value = "/administration/postwriter")
+    public String postWriter(Model model) {
+        model.addAttribute("postDao", postDao);
+        model.addAttribute("requestedPage", "/jsp/redactor.jsp");
+        return "administration";
     }
 
-    private void addPost(HttpServletRequest request) {
-
-        String checkBoxParameter = request.getParameter("isPublished");
-        logger.debug("Checkbox value is : " + checkBoxParameter);
-        boolean isPublishedCheckBox = false;
-        if (checkBoxParameter != null) {
-            isPublishedCheckBox = checkBoxParameter.equalsIgnoreCase("on");
-        }
-        postDao.addPost(
-                request.getParameter("postHeaderInput"),
-                request.getParameter("postTextInput"),
-                isPublishedCheckBox);
+    @RequestMapping(value = "/administration/postwriter/addpost")
+    public String addPostButton(Model model) {
+        model.addAttribute("postHeader", "");
+        model.addAttribute("text", "");
+        model.addAttribute("mode", "add");
+        model.addAttribute("requestedPage", "/jsp/addEditPost.jsp");
+        return "administration";
     }
 
-    private void editPost(HttpServletRequest request) {
-        try {
-            int id = Integer.parseInt(request.getParameter("editById"));
-            Post updatedPost = new Post.PostBuilder()
-                    .setPostHeader(request.getParameter("postHeaderInput"))
-                    .setPostText(request.getParameter("postTextInput"))
-                    .setPublished(request.getParameter("isPublished") != null)
-                    .setCreationDateTime(null)
-                    .setPublicationDateTime(null)
-                    .setPostId(id)
-                    .build();
-
-            postDao.editPostById(id, updatedPost);
-        } catch (NumberFormatException nfe) {
-            logger.error(">> Wrong post ID while edit post" + nfe.toString());
-        }
+    @RequestMapping(value = "/administration/postwriter/edit")
+    public String editPostButton(@RequestParam("editbyid") int id, Model model) {
+        Post post = postDao.getPostById(id);
+        model.addAttribute("postHeader", post.getPostHeader());
+        model.addAttribute("text", post.getPostText());
+        model.addAttribute("mode", "edit");
+        model.addAttribute("requestedPage", "/jsp/addEditPost.jsp");
+        return "administration";
     }
 
-    private void deletePost(int id) {
+    @RequestMapping(value = "/administration/postwriter/edit", method = RequestMethod.POST)
+    public ModelAndView editById(@RequestParam("editbyid") int id,
+                                 @RequestParam("postHeaderInput") String header,
+                                 @RequestParam("postTextInput") String text,
+                                 @RequestParam("isPublished") String isPublised,
+                                 Model model) {
+        Post editedPost = new Post.PostBuilder()
+                .setPostHeader(header)
+                .setPostText(text)
+                .setPublished(isPublised != null)
+                .setCreationDateTime(null)
+                .setPublicationDateTime(null)
+                .setPostId(id)
+                .build();
+        postDao.editPostById(id, editedPost);
+
+        return new ModelAndView("redirect:/administration/postwriter");
+    }
+
+    @RequestMapping(value = "/administration/postwriter/addpost", method = RequestMethod.POST)
+    public ModelAndView addPost(@RequestParam("postHeaderInput") String postHeader, @RequestParam("postTextInput") String text, @RequestParam("isPublished") String isPublished) {
+        boolean published;
+        published = isPublished != null;
+        postDao.addPost(postHeader, text, published);
+        log.debug(">> Post added");
+        return new ModelAndView("redirect:/administration/postwriter");
+    }
+
+    @RequestMapping(value = "/administration", method = RequestMethod.POST)
+    public ModelAndView wolSender(@RequestParam("mac") String mac){
+        WakeOnLan.wake(mac);
+        log.debug("Wake-on-lan request. MAC: " + mac);
+        return new ModelAndView("redirect:/administration");
+    }
+    @RequestMapping(value = "/administration/postwriter", method = RequestMethod.POST)
+    public ModelAndView deletePost(@RequestParam("deleteById") int id){
         postDao.deletePostByID(id);
+        log.info(">> Deleted post with id: " + id);
+        return new ModelAndView("redirect:/administration/postwriter");
     }
 }

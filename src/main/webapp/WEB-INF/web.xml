@@ -7,37 +7,12 @@
          metadata-complete="true">
     <!--Servlets-->
     <servlet>
-        <servlet-name>Root</servlet-name>
-        <servlet-class>com.fonarik94.servlets.RootServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Root</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>Administration</servlet-name>
-        <servlet-class>com.fonarik94.servlets.AdministrationServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Administration</servlet-name>
-        <url-pattern>/administration/*</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>Login</servlet-name>
-        <servlet-class>com.fonarik94.servlets.LoginServlet</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>fileRequestServlet</servlet-name>
         <servlet-class>com.fonarik94.servlets.FileRequestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-    <servlet-name>fileRequestServlet</servlet-name>
-    <url-pattern>/resources/*</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>Login</servlet-name>
-        <url-pattern>/login/*</url-pattern>
+        <servlet-name>fileRequestServlet</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>debug</servlet-name>
@@ -47,6 +22,24 @@
         <servlet-name>debug</servlet-name>
         <url-pattern>/debug</url-pattern>
     </servlet-mapping>
+
+    <!-- Processes application requests -->
+    <servlet>
+        <servlet-name>RootServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:/spring-context.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>RootServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
     <!--Resources-->
     <resource-ref>
         <description>DB Connection</description>
@@ -54,28 +47,7 @@
         <res-type>javax.sql.DataSource</res-type>
         <res-auth>Container</res-auth>
     </resource-ref>
-<!--Listeners
-    <listener>
-        <listener-class>com.fonarik94.utils.MyServletContexListener</listener-class>
-    </listener>-->
-    <!--Filters-->
-    <!--<filter>
-        <filter-name>RequestDetectorFilter</filter-name>
-        <filter-class>com.fonarik94.filters.RequestDetectorFilter</filter-class>
-    </filter>
-    <filter>
-        <filter-name>ProcessingTimeFilter</filter-name>
-        <filter-class>com.fonarik94.filters.ProcessingTimeFilter</filter-class>
-    </filter>
 
-    <filter-mapping>
-        <filter-name>ProcessingTimeFilter</filter-name>
-        <servlet-name>Root</servlet-name>
-    </filter-mapping>
-    <filter-mapping>
-        <filter-name>RequestDetectorFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-    </filter-mapping>-->
     <filter>
         <filter-name>encodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -95,8 +67,16 @@
 
     <context-param>
         <param-name>log4jConfiguration</param-name>
-        <param-value>/WEB-INF/log4j2.xml</param-value>
+        <param-value>classpath:/log4j2.xml</param-value>
     </context-param>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/spring-context.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <!--Login configuration-->
     <security-constraint>

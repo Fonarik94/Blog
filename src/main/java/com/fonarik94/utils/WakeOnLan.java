@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
-import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
+import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
 
 public class WakeOnLan {
-    private static final Logger logger = LogManager.getLogger(getCurentClassName());
+    private static final Logger logger = LogManager.getLogger(getCurrentClassName());
 
     /**
      * Sending Wake-on-lan packet to broadcast addresses over all network interfaces
@@ -38,7 +38,7 @@ public class WakeOnLan {
             }
         }
         else {
-            logger.info(">> MAC address id null. Nothing to do.");
+            logger.info(">> MAC address is null. Nothing to do.");
         }
     }
 

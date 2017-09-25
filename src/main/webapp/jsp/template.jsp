@@ -26,7 +26,7 @@
     <div id="menubar">
         <div id="menu">
             <%--<a class="item" href="/">Главная</a>--%>
-            <a class="item" href="/blog">Блог</a>
+            <a class="item" href="/">Блог</a>
             <a class="item" href="/about">О проекте</a>
             <%--<a class="item" href="/login">Войти</a>--%>
         </div>

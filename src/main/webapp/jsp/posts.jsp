@@ -3,7 +3,7 @@
 
 <c:forEach items="${publishedPosts}" var="post">
     <div class="post all">
-        <a href="read?postId=${post.getPostId()}">
+        <a href="read?postid=${post.getPostId()}">
             <h1>${post.getPostHeader()}</h1>
             <div class="postPublicationDate">${post.getPublicationDateAsString()}<br></div>
             <div class="postText"><p>${post.getPostText()}</p></div>

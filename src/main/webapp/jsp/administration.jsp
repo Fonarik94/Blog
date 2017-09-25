@@ -13,11 +13,11 @@
     <div id="menubar">
         <div id="menu">
             <a class="item" href="${pageContext.request.contextPath}/">Главная</a>
-            <a class="item" href="${pageContext.request.contextPath}/administration/wol">Wake-on-lan</a>
-            <a class="item" href="${pageContext.request.contextPath}/administration/postWriter">Редактор постов</a>
+            <a class="item" href="${pageContext.request.contextPath}/administration">Wake-on-lan</a>
+            <a class="item" href="${pageContext.request.contextPath}/administration/postwriter">Редактор постов</a>
             <c:if test="${requestedPage == '/jsp/redactor.jsp'}">
-                <a class="item" href="postWriter/addPost">Добавить</a>
-                <a class="item" href="postWriter/edit?editById=1">Редактировать aboutpage</a>
+                <a class="item" href="${pageContext.request.contextPath}/administration/postwriter/addpost">Добавить</a>
+                <a class="item" href="${pageContext.request.contextPath}/administration/postwriter/edit?editbyid=1">Редактировать aboutpage</a>
             </c:if>
         </div>
     </div>

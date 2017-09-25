@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
-
+import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
+//@Repository
 public class MySQLPostDao implements PostDao {
-    private static final Logger logger = LogManager.getLogger(getCurentClassName());
+    private static final Logger logger = LogManager.getLogger(getCurrentClassName());
 
     private static Connection getConnection() {
         InitialContext initialContext;

@@ -1,85 +1,48 @@
 package com.fonarik94.servlets;
 
-import com.fonarik94.dao.Post;
 import com.fonarik94.dao.PostDao;
-import com.fonarik94.dao.MySQLPostDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
-
-import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
-
-/**
- * Created by Ярослав on 15.02.2017.
- */
-public class RootServlet extends HttpServlet {
-    private static final Logger logger = LogManager.getLogger(getCurentClassName());
-    private PostDao postDao = new MySQLPostDao();
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        logger.info(">> Get request from IP: " + getClientIp(request));
-        boolean error = false;
-        String path = request.getRequestURI();
-        switch (path) {
-            case "/":
-            case "/blog":
-                request.setAttribute("requestedPage", "/jsp/posts.jsp");
-                request.setAttribute("publishedPosts", postDao.getListOfAllPosts(true));
-                break;
-            case "/about":
-                getAboutPage(request);
-                break;
-            case "/read":
-                read(request);
-                break;
-
-            default:
-                error = true;
-        }
-        if (error) {
-            response.sendError(404, "You are broke the internet!");
-        } else {
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/template.jsp");
-            dispatcher.forward(request, response);
-        }
+@Controller
+public class RootServlet {
+    @Autowired
+    PostDao postDao;
+    Logger logger = LogManager.getLogger();
+    @Autowired
+    HttpServletRequest request;
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String main(Model model){
+        model.addAttribute("requestedPage", "/jsp/posts.jsp");
+        model.addAttribute("publishedPosts", postDao.getListOfAllPosts(true));
+        logger.debug(">> Client IP: " + getClientIp(request));
+    return "template";
     }
-
-    private void getAboutPage(HttpServletRequest request) {
-        Post aboutPage = postDao.getPostById(1); //ID 1 is about page
-        request.setAttribute("aboutPage", aboutPage);
-        request.setAttribute("requestedPage", "/jsp/about.jsp");
+    @RequestMapping(value = "/about")
+    public String about(Model model){
+        model.addAttribute("aboutPage", postDao.getPostById(1)); //Post ID 1 is about page
+        model.addAttribute("requestedPage", "/jsp/about.jsp");
+        return "template";
     }
-
-    private void read(HttpServletRequest request) throws IOException {
-        int postId = Integer.valueOf(request.getParameter("postId"));
-        logger.debug(">> Requested post with ID = " + postId);
-        Post requestedPost = postDao.getPostById(postId);
-        request.setAttribute("requestedPost", requestedPost);
-        request.setAttribute("requestedPage", "singlePost.jsp");
+    @RequestMapping(value = "/read", method = RequestMethod.GET)
+    public String read (@RequestParam("postid") int id, Model model){
+        model.addAttribute("requestedPost", postDao.getPostById(id));
+        model.addAttribute("requestedPage", "/jsp/singlePost.jsp");
+        return "template";
     }
-
-    /**
-     * Method returns client ip in cases of use nginx
-     *
-     * @param request HTTP request
-     * @return String clientIP
-     */
-    private static String getClientIp(HttpServletRequest request) {
+    private String getClientIp(HttpServletRequest request){
         String clientIp = request.getHeader("X-FORWARDED-FOR");
-        if (clientIp == null) {
+        if(clientIp == null){
             clientIp = request.getRemoteAddr();
-        } else {
-            clientIp = clientIp.split(",")[0].trim();
         }
         return clientIp;
     }
-
-
 }

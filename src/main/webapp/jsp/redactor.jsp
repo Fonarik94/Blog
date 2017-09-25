@@ -8,11 +8,11 @@
         <div class="postText"><p>${post.getPostText()}</p></div>
         <hr>
         <div class="editorItems">
-            <div class="postEditorItem"><a href="postWriter/edit?editById=${post.getPostId()}">Edit</a></div>
+            <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.getPostId()}">Edit</a></div>
             <div class="postEditorItem">
                 <form id="deletePostById"  method="post">
                     <input type="hidden" name="Page" value="Delete">
-                    <input type="hidden" name="DeleteById" value="${post.getPostId()}">
+                    <input type="hidden" name="deleteById" value="${post.getPostId()}">
                     <input type="submit" value="Delete">
                 </form>
             </div>

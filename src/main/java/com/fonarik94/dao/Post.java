@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static com.fonarik94.utils.ClassNameUtil.getCurentClassName;
+import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
 
 public class Post {
     private int postId;
@@ -16,7 +16,7 @@ public class Post {
     private String postText;
     private boolean isPublished;
     private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-    private static final Logger logger = LogManager.getLogger(getCurentClassName());
+    private static final Logger logger = LogManager.getLogger(getCurrentClassName());
 
     public static class PostBuilder {
         private int postId = 0;
