@@ -5,10 +5,13 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/style.css">
+    <script src="${pageContext.request.contextPath}/resources/js/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
     <title>Admin</title>
 </head>
 <body>
-<div id="sidebar">
+<div id="topbar">
     <div id="logo">ADMINISTRATION</div>
     <div id="menubar">
         <div id="menu">

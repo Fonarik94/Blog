@@ -1,5 +1,5 @@
 <div class="post single">
-    <h1>${requestedPost.getPostHeader()}</h1>
+    <h1>${requestedPost.getHeader()}</h1>
     <div class="postPublicationDate">${requestedPost.getPublicationDateAsString()}</div>
-    <div class="postText"><p>${requestedPost.getPostText()}</p></div>
+    <div class="text"><p>${requestedPost.getText()}</p></div>
 </div>

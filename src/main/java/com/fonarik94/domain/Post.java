@@ -1,4 +1,4 @@
-package com.fonarik94.dao;
+package com.fonarik94.domain;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -6,17 +6,15 @@ import org.apache.logging.log4j.Logger;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
-
 public class Post {
-    private int postId;
-    private String postHeader;
+    private int id;
+    private String header;
     private LocalDateTime creationDate;
     private LocalDateTime publicationDateTime;
-    private String postText;
+    private String text;
     private boolean isPublished;
     private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-    private static final Logger logger = LogManager.getLogger(getCurrentClassName());
+    private static final Logger logger = LogManager.getLogger();
 
     public static class PostBuilder {
         private int postId = 0;
@@ -32,7 +30,7 @@ public class Post {
         }
 
         public PostBuilder setPostHeader(String header) {
-            this.postHeader = header;
+            this.postHeader = header.replaceAll(";", "\\;");
             return this;
         }
 
@@ -61,26 +59,21 @@ public class Post {
         }
     }
 
-    public int getPostId() {
-        return postId;
+    public int getId() {
+        return id;
     }
 
-    public void setPostId(int postId) {
-        this.postId = postId;
+    public String getHeader() {
+        return header;
     }
-
-    public String getPostHeader() {
-        return postHeader;
-    }
-
 
     public LocalDateTime getCreationDate() {
         return creationDate;
     }
 
-    public String getCreationDateAsString() {
-        return dateTimeFormat.format(creationDate);
-    }
+//    public String getCreationDateAsString() {
+//        return dateTimeFormat.format(creationDate);
+//    }
 
     public LocalDateTime getPublicationDateTime() {
         if (isPublished) {
@@ -98,37 +91,37 @@ public class Post {
         }
     }
 
-    public void setPublicationDateTime() {
-        this.publicationDateTime = LocalDateTime.now();
+//    public void setPublicationDateTime() {
+//        this.publicationDateTime = LocalDateTime.now();
+//    }
+
+    public String getText() {
+        return text;
     }
 
-    public String getPostText() {
-        return postText;
-    }
-
-    public void setPostText(String postText) {
-        this.postText = postText.replaceAll(";", "\\;");
+    public void setText(String text) {
+        this.text = text.replaceAll(";", "\\;");
     }
 
     public boolean isPublished() {
         return isPublished;
     }
 
-    public void setPublished(boolean published) {
-        isPublished = published;
-    }
+//    public void setPublished(boolean published) {
+//        isPublished = published;
+//    }
 
     private Post(PostBuilder builder) {
-        this.postId = builder.postId;
-        this.postHeader = builder.postHeader;
-        this.postText = builder.postText;
+        this.id = builder.postId;
+        this.header = builder.postHeader;
+        this.text = builder.postText;
         this.creationDate = builder.creationDateTime;
         this.publicationDateTime = builder.publicationDateTime;
         this.isPublished = builder.isPublished;
     }
 
     public String toString(){
-        return "ID: " + this.getPostId() + " Header: " + this.getPostHeader() + ";";
+        return "ID: " + this.getId() + " Header: " + this.getHeader() + ";";
     }
 
 }

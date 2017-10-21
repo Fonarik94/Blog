@@ -1,5 +1,6 @@
 package com.fonarik94.dao;
 
+import com.fonarik94.domain.Post;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -91,7 +92,7 @@ public class MySQLPostDao implements PostDao {
         return post;
     }
 
-    public List<Post> getListOfAllPosts(boolean published)  {
+    private List<Post> getListOfAllPosts(boolean published)  {
         List<Post> allPosts = new ArrayList<>();
         String query = published?SQLQueries.READ_PUBLISHED.getQueryString():SQLQueries.READ_ALL.getQueryString();
         try (Connection connection = getConnection()) {
@@ -137,8 +138,8 @@ public class MySQLPostDao implements PostDao {
         try (Connection connection = getConnection()) {
             connection.setAutoCommit(false);
             try (PreparedStatement editByIdPreparedStatement = connection.prepareStatement(SQLQueries.EDIT_BY_ID.getQueryString())) {
-                editByIdPreparedStatement.setString(1, updatedPost.getPostHeader());
-                editByIdPreparedStatement.setString(2, updatedPost.getPostText());
+                editByIdPreparedStatement.setString(1, updatedPost.getHeader());
+                editByIdPreparedStatement.setString(2, updatedPost.getText());
                 editByIdPreparedStatement.setInt(3, updatedPost.isPublished() ? 1 : 0);
                 editByIdPreparedStatement.setInt(4, id);
                 editByIdPreparedStatement.executeUpdate();
@@ -150,6 +151,16 @@ public class MySQLPostDao implements PostDao {
 
             logger.fatal(">> Cant't update post with ID: " + id + "; " + e.toString());
         }
+    }
+
+    @Override
+    public List<Post> getPublishedPosts() {
+        return getListOfAllPosts(true);
+    }
+
+    @Override
+    public List<Post> getAllPosts() {
+        return getListOfAllPosts(false);
     }
 
     private static void createTables(Statement statement) throws SQLException {

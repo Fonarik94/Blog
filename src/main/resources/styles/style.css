@@ -11,7 +11,11 @@ body{
 h1{
     font-size: 18pt;
     font-weight: bold;
-    margin-bottom: 0px;
+    margin: 0px;
+}
+h5{
+    margin: 2px;
+    color: gray;
 }
 A, A:visited{
     color: black;
@@ -37,7 +41,7 @@ A, A:visited{
     padding: 15px;
     margin: 30px;
     width: 300px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.6); /* Параметры тени */
+    box-shadow: 1px 5px 20px rgba(0,0,0,0.5);
 }
 #block{
     background-color: #51BBFE;
@@ -48,10 +52,10 @@ A, A:visited{
     background: #8FF7A7;
     -webkit-transition: background 0.5s ease-in-out;
 }
-#sidebar{
+#topbar{
     background-color: #51BBFE;
 }
-#sidebar #logo{
+#topbar #logo{
     background-color: #8FF7A7;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -59,7 +63,7 @@ A, A:visited{
     font-size: 300%;
 }
 
-#sidebar #menu{
+#menu{
     display: flex;
     flex-grow: 1;
 }
@@ -75,18 +79,21 @@ A, A:visited{
 #menubar{
     display: flex;
     flex-grow: 1;
-    box-shadow: 1px 5px 20px rgba(0,0,0,0.5); /* Параметры тени */
+    box-shadow: 1px 5px 20px rgba(0,0,0,0.5);
     position: sticky;
+    background-color: #51BBFE;
+    width: 100%;
 }
 #menu .item:hover, #social .socialbutton:hover, #content .item:hover, .post .postEditorItem:hover, .post .all{
     background: #8FF7A7;
     -webkit-transition: background 0.5s ease-in-out;
 }
-#sidebar #social{
+#menubar #social{
     display: flex;
 }
 #social .socialbutton{
-    margin-right: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
     flex-basis: 48px;
     display: flex;
     align-items: center
@@ -100,17 +107,11 @@ A, A:visited{
     flex-wrap: wrap;
     height: auto;
 }
-#content .post{
-    background-color: white;
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.6); /* Параметры тени */
-    display: block;
-    padding: 20px;
-    margin: 20px;
-}
+
 #content .item{
     background: #51BBFE;
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
     height: 28px;
 }
 #content #postEditorForm {
@@ -122,14 +123,16 @@ A, A:visited{
     margin: 20px;
     background-color: white;
     width: 90%;
+}
+#content .post{
+    background-color: white;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.6);
+    display: block;
+    padding: 20px;
 
 }
 .post .postHeader{
     font-size: 18pt;
-}
-.post .postPublicationDate{
-    font-size: 10pt;
-    color: gray;
 }
 .post .editorItems{
     display: flex;
@@ -144,15 +147,18 @@ A, A:visited{
 .all{
     flex-basis: 750px;
     background: white;
+    margin: 20px 10px;
 }
 .all a{
     text-decoration: none;
+    cursor: pointer;
 }
 .all img{
     max-width: 100%;
 }
 .single{
     flex-basis: 1024px;
+    margin: 20px;
 }
 .single img{
     max-width: 100%;

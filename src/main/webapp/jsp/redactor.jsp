@@ -1,20 +1,19 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%--<jsp:useBean id="postDao" type="com.fonarik94.dao.PostDao"/>--%>
 
-<c:forEach items="${postDao.getListOfAllPosts(false)}" var="post">
+<c:forEach items="${postDao.getAllPosts()}" var="post">
     <div class="post all">
-        <div class="postHeader"><b>${post.getPostHeader()}</b><br></div>
+        <div id="${post.getId()}">
+        <div class="postHeader"><b>${post.getHeader()}</b><br></div>
         <div class="postPublicationDate">${post.getPublicationDateAsString()}<br></div>
-        <div class="postText"><p>${post.getPostText()}</p></div>
+        <div class="text"><p>${post.getText()}</p></div>
         <hr>
         <div class="editorItems">
-            <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.getPostId()}">Edit</a></div>
+            <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.getId()}">Edit</a></div>
             <div class="postEditorItem">
-                <form id="deletePostById"  method="post">
-                    <input type="hidden" name="Page" value="Delete">
-                    <input type="hidden" name="deleteById" value="${post.getPostId()}">
-                    <input type="submit" value="Delete">
-                </form>
+             <button onclick="ajaxPost(${post.getId()})">Delete</button>
+                </div>
             </div>
         </div>
     </div>

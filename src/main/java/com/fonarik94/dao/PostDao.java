@@ -1,5 +1,7 @@
 package com.fonarik94.dao;
 
+import com.fonarik94.domain.Post;
+
 import java.util.List;
 
 public interface PostDao {
@@ -7,5 +9,6 @@ public interface PostDao {
     Post getPostById(int id);
     void deletePostByID(int id);
     void editPostById(int id, Post editedPost);
-    List<Post> getListOfAllPosts(boolean published);
+    List<Post> getPublishedPosts();
+    List<Post> getAllPosts();
 }

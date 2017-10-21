@@ -6,14 +6,14 @@
          version="3.1"
          metadata-complete="true">
     <!--Servlets-->
-    <servlet>
+<!--    <servlet>
         <servlet-name>fileRequestServlet</servlet-name>
         <servlet-class>com.fonarik94.servlets.FileRequestServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>fileRequestServlet</servlet-name>
         <url-pattern>/resources/*</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping>-->
     <servlet>
         <servlet-name>debug</servlet-name>
         <jsp-file>/jsp/debug.jsp</jsp-file>
