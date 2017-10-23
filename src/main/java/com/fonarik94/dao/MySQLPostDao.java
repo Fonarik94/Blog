@@ -70,19 +70,18 @@ public class MySQLPostDao implements PostDao {
     }
 
     public Post getPostById(int id) {
-        Post post = null;
+        Post post = new Post();
         try (Connection connection = getConnection()) {
             try (PreparedStatement postReadByIdPreparedStatement = connection.prepareStatement(SQLQueries.READ_BY_ID.getQueryString())) {
                 postReadByIdPreparedStatement.setInt(1, id);
                 ResultSet resultSet = postReadByIdPreparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    post = new Post.PostBuilder().setPostId(resultSet.getInt("id"))
-                            .setPostHeader(resultSet.getString("header"))
-                            .setPostText(resultSet.getString("text"))
-                            .setCreationDateTime(resultSet.getTimestamp("creationDate").toLocalDateTime())
-                            .setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime())
-                            .setPublished(resultSet.getBoolean("isPublished"))
-                            .build();
+                    post.setId(resultSet.getInt("id"));
+                    post.setHeader(resultSet.getString("header"));
+                    post.setText("text");
+                    post.setCreationDate(resultSet.getTimestamp("creationDate").toLocalDateTime());
+                    post.setCreationDate(resultSet.getTimestamp("publicationDate").toLocalDateTime());
+                    post.setPublished(resultSet.getBoolean("isPublished"));
                 }
             }
         } catch (SQLException e) {
@@ -99,14 +98,13 @@ public class MySQLPostDao implements PostDao {
             try (PreparedStatement postReadAllPreparedStatement = connection.prepareStatement(query)) {
                 ResultSet resultSet = postReadAllPreparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    Post post = new Post.PostBuilder()
-                            .setPostId(resultSet.getInt("id"))
-                            .setPostHeader(resultSet.getString("header"))
-                            .setPostText(resultSet.getString(3) + "...")
-                            .setCreationDateTime(resultSet.getTimestamp("creationDate").toLocalDateTime())
-                            .setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime())
-                            .setPublished((resultSet.getInt("isPublished")) == 1)
-                            .build();
+                    Post post = new Post();
+                    post.setId(resultSet.getInt("id"));
+                    post.setHeader(resultSet.getString("header"));
+                    post.setText(resultSet.getString("text")+"...");
+                    post.setCreationDate(resultSet.getTimestamp("creationDate").toLocalDateTime());
+                    post.setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime());
+                    post.setPublished(resultSet.getBoolean("isPublished"));
                     allPosts.add(post);
                 }
             }

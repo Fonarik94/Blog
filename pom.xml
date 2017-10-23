@@ -7,11 +7,11 @@
     <name>Blog</name>
     <url>http://maven.apache.org</url>
     <!--Spring Boot standard config-->
-<!--    <parent>
+    <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.5.4.RELEASE</version>
-    </parent>-->
+    </parent>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -27,6 +27,7 @@
         <commons.lang.version>2.4</commons.lang.version>
         <commons.io.version>2.0.1</commons.io.version>
         <jackson.version>2.9.1</jackson.version>
+        <lombok.version>1.16.18</lombok.version>
     </properties>
 
     <dependencies>
@@ -110,10 +111,10 @@
         </dependency>
 
         <!--Spring Boot-->
-<!--        <dependency>
+        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>-->
+        </dependency>
 
         <!-- Jackson JSON Mapper -->
         <dependency>
@@ -128,6 +129,14 @@
             <version>${jackson.version}</version>
         </dependency>
 
+        <!--Lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
     </dependencies>
 
     <!--Build-->
@@ -135,6 +144,10 @@
         <finalName>Blog</finalName>
 
         <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>

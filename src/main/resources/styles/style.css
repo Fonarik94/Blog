@@ -91,6 +91,10 @@ A, A:visited{
 #menubar #social{
     display: flex;
 }
+
+#social .socialbutton:
+{}
+
 #social .socialbutton{
     padding-left: 10px;
     padding-right: 10px;
