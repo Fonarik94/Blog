@@ -1,5 +1,6 @@
 package com.fonarik94.servlets;
 
+import com.fonarik94.dao.MySQLPostDao;
 import com.fonarik94.dao.PostDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -23,7 +24,7 @@ public class RootServlet {
     HttpServletRequest request;
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main(Model model){
-        model.addAttribute("requestedPage", "/jsp/posts.jsp");
+        model.addAttribute("requestedPage", "posts.ftl");
         model.addAttribute("publishedPosts", postDao.getPublishedPosts());
         log.debug(">> Client IP: " + getClientIp(request));
     return "template";
@@ -31,13 +32,13 @@ public class RootServlet {
     @RequestMapping(value = "/about")
     public String about(Model model){
         model.addAttribute("aboutPage", postDao.getPostById(1)); //Post ID 1 is about page
-        model.addAttribute("requestedPage", "/jsp/about.jsp");
+        model.addAttribute("requestedPage", "about.ftl");
         return "template";
     }
     @RequestMapping(value = "/post/{id}")
     public String getPost(@PathVariable ("id") int id, Model model){
         model.addAttribute("requestedPost", postDao.getPostById(id));
-        model.addAttribute("requestedPage", "/jsp/singlePost.jsp");
+        model.addAttribute("requestedPage", "singlePost.ftl");
         return "template";
     }
 

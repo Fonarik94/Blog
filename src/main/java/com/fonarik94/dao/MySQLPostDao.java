@@ -3,6 +3,14 @@ package com.fonarik94.dao;
 import com.fonarik94.domain.Post;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.lang.Nullable;
+import org.springframework.stereotype.Component;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -11,21 +19,34 @@ import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
 //@Repository
+@Component
 public class MySQLPostDao implements PostDao {
-    private static final Logger logger = LogManager.getLogger(getCurrentClassName());
-
+    private static final Logger logger = LogManager.getLogger();
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    private RowMapper<Post> ROW_MAPPER = new RowMapper<Post>() {
+        @Nullable
+        @Override
+        public Post mapRow(ResultSet resultSet, int i) throws SQLException {
+            Post post = new Post();
+            post.setId(resultSet.getInt("id"));
+            post.setHeader(resultSet.getString("header"));
+            post.setText(resultSet.getString(3));
+            post.setCreationDate(resultSet.getTimestamp("creationDate").toLocalDateTime());
+            post.setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime());
+            post.setPublished(resultSet.getBoolean("isPublished"));
+            return post;
+        }
+    };
+    private static DataSource dataSource;
     private static Connection getConnection() {
-        InitialContext initialContext;
-        DataSource dataSource;
         Connection connection = null;
         try {
-            initialContext = new InitialContext();
-            Context envCont = (Context) initialContext.lookup("java:comp/env");
-            dataSource = (DataSource) envCont.lookup("jdbc/blog");
             connection = dataSource.getConnection();
             try (Statement statement = connection.createStatement()) {
                 statement.execute(SQLQueries.USE_DB.getQueryString());
@@ -38,8 +59,6 @@ public class MySQLPostDao implements PostDao {
                 }
             }
 
-        } catch (NamingException e) {
-            logger.fatal(">> Fatal exception when creating InitialContext instance: " + e.toString());
         } catch (SQLException e) {
             logger.fatal(">> SQL: " + e.toString());
         }
@@ -69,53 +88,20 @@ public class MySQLPostDao implements PostDao {
         }
     }
 
+
+    @Override
     public Post getPostById(int id) {
-        Post post = new Post();
-        try (Connection connection = getConnection()) {
-            try (PreparedStatement postReadByIdPreparedStatement = connection.prepareStatement(SQLQueries.READ_BY_ID.getQueryString())) {
-                postReadByIdPreparedStatement.setInt(1, id);
-                ResultSet resultSet = postReadByIdPreparedStatement.executeQuery();
-                while (resultSet.next()) {
-                    post.setId(resultSet.getInt("id"));
-                    post.setHeader(resultSet.getString("header"));
-                    post.setText("text");
-                    post.setCreationDate(resultSet.getTimestamp("creationDate").toLocalDateTime());
-                    post.setCreationDate(resultSet.getTimestamp("publicationDate").toLocalDateTime());
-                    post.setPublished(resultSet.getBoolean("isPublished"));
-                }
-            }
-        } catch (SQLException e) {
-            logger.fatal(">> Can't select post with id = " + id + ": " + e.toString());
-        }
-//        logger.debug(">> Post retrieved from DB: " + post.toString());
-        return post;
+        return jdbcTemplate.queryForObject(SQLQueries.READ_BY_ID.getQueryString(), ROW_MAPPER, id);
     }
 
-    private List<Post> getListOfAllPosts(boolean published)  {
-        List<Post> allPosts = new ArrayList<>();
+    private List<Post> getListOfAllPosts(boolean published){
+        List<Post> allPosts = new LinkedList<>();
         String query = published?SQLQueries.READ_PUBLISHED.getQueryString():SQLQueries.READ_ALL.getQueryString();
-        try (Connection connection = getConnection()) {
-            try (PreparedStatement postReadAllPreparedStatement = connection.prepareStatement(query)) {
-                ResultSet resultSet = postReadAllPreparedStatement.executeQuery();
-                while (resultSet.next()) {
-                    Post post = new Post();
-                    post.setId(resultSet.getInt("id"));
-                    post.setHeader(resultSet.getString("header"));
-                    post.setText(resultSet.getString("text")+"...");
-                    post.setCreationDate(resultSet.getTimestamp("creationDate").toLocalDateTime());
-                    post.setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime());
-                    post.setPublished(resultSet.getBoolean("isPublished"));
-                    allPosts.add(post);
-                }
-            }
-        } catch (SQLException e) {
-            logger.fatal("Can't read all posts : " + e.toString());
-        }
-
+        allPosts.addAll(jdbcTemplate.query(query, ROW_MAPPER));
         return allPosts;
     }
 
-    public void deletePostByID(int id) {
+/*    public void deletePostByID(int id) {
         try (Connection connection = getConnection()) {
             connection.setAutoCommit(false);
             try (PreparedStatement deletePostByIdPreparedStatement = connection.prepareStatement(SQLQueries.DELETE_BY_ID.getQueryString())) {
@@ -130,6 +116,10 @@ public class MySQLPostDao implements PostDao {
             logger.error(">> Can't delete post with id " + id + ": " + e.toString());
         }
 
+    }*/
+
+    public void deletePostById(int id){
+        jdbcTemplate.update(SQLQueries.DELETE_BY_ID.getQueryString(), id);
     }
 
     public void editPostById(int id, Post updatedPost) {

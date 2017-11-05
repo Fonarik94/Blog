@@ -22,14 +22,14 @@ public class AdministrationServlet {
 
     @RequestMapping(value = "/administration")
     public String wol(Model model) {
-        model.addAttribute("requestedPage", "/jsp/wol.jsp");
+        model.addAttribute("requestedPage", "/wol.ftl");
         return "administration";
     }
 
     @RequestMapping(value = "/administration/postwriter")
     public String postWriter(Model model) {
-        model.addAttribute("postDao", postDao);
-        model.addAttribute("requestedPage", "/jsp/redactor.jsp");
+        model.addAttribute("allPosts", postDao.getAllPosts());
+        model.addAttribute("requestedPage", "/redactor.ftl");
         return "administration";
     }
 
@@ -37,7 +37,7 @@ public class AdministrationServlet {
     public String addPostButton(Model model) {
         model.addAttribute("postHeader", "");
         model.addAttribute("text", "");
-        model.addAttribute("requestedPage", "/jsp/addEditPost.jsp");
+        model.addAttribute("requestedPage", "/addEditPost.ftl");
         return "administration";
     }
 
@@ -46,7 +46,7 @@ public class AdministrationServlet {
         Post post = postDao.getPostById(id);
         model.addAttribute("postHeader", post.getHeader());
         model.addAttribute("text", post.getText());
-        model.addAttribute("requestedPage", "/jsp/addEditPost.jsp");
+        model.addAttribute("requestedPage", "/addEditPost.ftl");
         return "administration";
     }
 
@@ -55,14 +55,7 @@ public class AdministrationServlet {
                                  @RequestParam("postHeaderInput") String header,
                                  @RequestParam("postTextInput") String text,
                                  @RequestParam(value = "isPublished", required = false) String isPublised) {
-        Post editedPost = new Post.PostBuilder()
-                .setPostHeader(header)
-                .setPostText(text)
-                .setPublished(isPublised != null)
-                .setCreationDateTime(null)
-                .setPublicationDateTime(null)
-                .setPostId(id)
-                .build();
+        Post editedPost = new Post(id, header, text, isPublised!=null);
         postDao.editPostById(id, editedPost);
         log.debug(">> Edited post with id: " + id);
         return new ModelAndView("redirect:/administration/postwriter");
@@ -85,7 +78,7 @@ public class AdministrationServlet {
     }
     @RequestMapping(value = "/administration/postwriter", method = RequestMethod.POST)
     public ModelAndView deletePost(@RequestParam("deleteById") int id){
-        postDao.deletePostByID(id);
+        postDao.deletePostById(id);
         log.info(">> Deleted post with id: " + id);
         return new ModelAndView("redirect:/administration/postwriter");
     }
@@ -94,7 +87,7 @@ public class AdministrationServlet {
     @ResponseBody
     public String ajaxDelete(@RequestParam("deleteById") int id){
         log.debug(">> ajax post delete id = " + id);
-        postDao.deletePostByID(id);
+        postDao.deletePostById(id);
         return "deleted";
     }
 

@@ -40,7 +40,6 @@
         <Logger name="com.fonarik94.servlets.RootServlet" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.servlets.AdministrationServlet" level="debug" additivity="true"/>
         <Logger name="org.springframework.beans.factory.support.SimpleInstantiationStrategy" level="debug" additivity="true"/>
-        <Logger name="com.fonarik94.servlets.FileRequestServlet" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.domain.Post" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.dao.MySQLPostDao" level="debug" additivity="true"/>
     </Loggers>
