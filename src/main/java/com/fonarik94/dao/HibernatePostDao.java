@@ -21,7 +21,7 @@ public class HibernatePostDao implements PostDao{
     }
 
     @Override
-    public void editPostById(int id, Post editedPost) {
+    public void editPostById(int id, String header, String text, boolean isPublished) {
 
     }
 

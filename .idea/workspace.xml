@@ -8,29 +8,13 @@
   </component>
   <component name="ChangeListManager">
     <list id="b6bc9fda-2a7f-4a5b-a5ed-15830404f575" name="Rejected commit: Default" comment="Rejected commit: Default" />
-    <list default="true" id="c6a2b314-7f8c-42b2-87d7-dc8d7d095b49" name="Rejected commit: Default (2)" comment="Minor optimization, front end changes">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/DataSourceConfiguration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/Run.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/WebMvcConfiguration.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/HibernatePostDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/ErrorServlet.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/addEditPost.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/administration.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/posts.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/redactor.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/singlePost.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/template.ftl" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/wol.ftl" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_3_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_7_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_7_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_7_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_7_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_7_RELEASE.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_7_RELEASE.xml" afterPath="" />
+    <list default="true" id="c6a2b314-7f8c-42b2-87d7-dc8d7d095b49" name="Rejected commit: Default (2)" comment="Freemarker instead jsp">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/HibernatePostDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/HibernatePostDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/MySQLPostDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/MySQLPostDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/PostDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/PostDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <list id="cb94ab68-fb14-4d8a-a62b-85de189ef686" name="Default" comment="Fixed wake-on-lan module">
       <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/WebEngine/Example$1.class" afterPath="" />
@@ -84,18 +68,16 @@
       <file leaf-file-name="MySQLPostDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/MySQLPostDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+            <state relative-caret-position="51">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <element signature="class#1135:1763" expanded="false" />
+                <element signature="class#1122:1750" expanded="false" />
                 <element signature="method#getConnection#0;class#MySQLPostDao#0" expanded="false" />
                 <element signature="method#addPost#0;class#MySQLPostDao#0" expanded="false" />
-                <element signature="e#5043#5044#0" expanded="true" />
-                <element signature="e#5124#5125#0" expanded="true" />
+                <element signature="method#getPostById#0;class#MySQLPostDao#0" expanded="false" />
+                <element signature="method#getListOfAllPosts#0;class#MySQLPostDao#0" expanded="false" />
+                <element signature="e#3361#3362#0" expanded="true" />
                 <element signature="method#editPostById#0;class#MySQLPostDao#0" expanded="false" />
-                <element signature="e#6173#6174#0" expanded="true" />
-                <element signature="e#6226#6227#0" expanded="true" />
-                <element signature="e#6273#6274#0" expanded="true" />
                 <element signature="method#createTables#0;class#MySQLPostDao#0" expanded="false" />
               </folding>
             </state>
@@ -105,7 +87,7 @@
       <file leaf-file-name="RootServlet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
+            <state relative-caret-position="145">
               <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
@@ -115,18 +97,8 @@
       <file leaf-file-name="PostDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/PostDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="template.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/template.ftl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-436">
-              <caret line="7" column="47" lean-forward="false" selection-start-line="7" selection-start-column="47" selection-end-line="7" selection-end-column="47" />
+            <state relative-caret-position="136">
+              <caret line="10" column="77" lean-forward="false" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
               <folding />
             </state>
           </provider>
@@ -142,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdministrationServlet.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="AdministrationServlet.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
+            <state relative-caret-position="748">
+              <caret line="56" column="107" lean-forward="false" selection-start-line="56" selection-start-column="107" selection-end-line="56" selection-end-column="107" />
               <folding>
                 <element signature="method#editById#0;class#AdministrationServlet#0" expanded="false" />
               </folding>
@@ -157,8 +129,18 @@
       <file leaf-file-name="HibernatePostDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/HibernatePostDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state relative-caret-position="306">
+              <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="67" lean-forward="false" selection-start-line="2" selection-start-column="67" selection-end-line="2" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -174,21 +156,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="redactor.ftl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/redactor.ftl">
+      <file leaf-file-name="DBProperties.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/sql/DBProperties.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="7" lean-forward="false" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Run.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/Run.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -273,7 +245,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/Run.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/DataSourceConfiguration.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/WebMvcConfiguration.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/test.java" />
         <option value="$PROJECT_DIR$/src/main/resources/spring-context.xml" />
@@ -290,10 +261,11 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/administration.ftl" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addEditPost.flt" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/addEditPost.ftl" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/MySQLPostDao.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/PostDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/HibernatePostDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/dao/MySQLPostDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java" />
       </list>
     </option>
   </component>
@@ -1338,7 +1310,7 @@
       <workItem from="1507883942744" duration="18382000" />
       <workItem from="1508757184280" duration="6302000" />
       <workItem from="1508767167499" duration="24290000" />
-      <workItem from="1508870207793" duration="46082000" />
+      <workItem from="1508870207793" duration="49899000" />
     </task>
     <task id="LOCAL-00001">
       <created>1488834623539</created>
@@ -1515,11 +1487,18 @@
       <option name="project" value="LOCAL" />
       <updated>1509891215810</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Freemarker instead jsp">
+      <created>1509892550232</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1509892550232</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="906037000" />
+    <option name="totallyTimeSpent" value="909854000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1541,7 +1520,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38006482" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12153518" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.121224165" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30683625" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1556,7 +1535,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33479214" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932165" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10214626" sideWeight="0.5656878" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20429252" sideWeight="0.5656878" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17249602" sideWeight="0.43431222" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32822758" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1683,11 +1662,12 @@
     <MESSAGE value="Spring MVC and IOC first version" />
     <MESSAGE value="Minor optimization, front end changes" />
     <MESSAGE value="Spring boot integration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Spring boot integration" />
+    <MESSAGE value="Freemarker instead jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="Freemarker instead jsp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="38" />
+      <option name="time" value="39" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory">
@@ -1701,13 +1681,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/js/common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/js/administration.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1854,14 +1827,6 @@
             <element signature="method#setForceRequestEncoding#0;class#CharacterEncodingFilter#0" expanded="false" />
             <element signature="method#setForceResponseEncoding#0;class#CharacterEncodingFilter#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="135" lean-forward="false" selection-start-line="1" selection-start-column="135" selection-end-line="1" selection-end-column="135" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2058,10 +2023,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/Run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="27" column="1" lean-forward="false" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/sql/DBProperties.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/administration.ftl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="39" lean-forward="false" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="67" lean-forward="false" selection-start-line="2" selection-start-column="67" selection-end-line="2" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/PostDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="77" lean-forward="false" selection-start-line="10" selection-start-column="77" selection-end-line="10" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/HibernatePostDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="4" lean-forward="false" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -2074,46 +2079,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/PostDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="93" column="1" lean-forward="false" selection-start-line="93" selection-start-column="1" selection-end-line="93" selection-end-column="1" />
-          <folding>
-            <element signature="method#editById#0;class#AdministrationServlet#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/HibernatePostDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/dao/MySQLPostDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="145" column="0" lean-forward="false" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+        <state relative-caret-position="51">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding>
-            <element signature="class#1135:1763" expanded="false" />
+            <element signature="class#1122:1750" expanded="false" />
             <element signature="method#getConnection#0;class#MySQLPostDao#0" expanded="false" />
             <element signature="method#addPost#0;class#MySQLPostDao#0" expanded="false" />
-            <element signature="e#5043#5044#0" expanded="true" />
-            <element signature="e#5124#5125#0" expanded="true" />
+            <element signature="method#getPostById#0;class#MySQLPostDao#0" expanded="false" />
+            <element signature="method#getListOfAllPosts#0;class#MySQLPostDao#0" expanded="false" />
+            <element signature="e#3361#3362#0" expanded="true" />
             <element signature="method#editPostById#0;class#MySQLPostDao#0" expanded="false" />
-            <element signature="e#6173#6174#0" expanded="true" />
-            <element signature="e#6226#6227#0" expanded="true" />
-            <element signature="e#6273#6274#0" expanded="true" />
             <element signature="method#createTables#0;class#MySQLPostDao#0" expanded="false" />
           </folding>
         </state>
@@ -2121,17 +2098,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/RootServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
+        <state relative-caret-position="145">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/Run.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/fonarik94/servlets/AdministrationServlet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="27" column="1" lean-forward="true" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="748">
+          <caret line="56" column="107" lean-forward="false" selection-start-line="56" selection-start-column="107" selection-end-line="56" selection-end-column="107" />
+          <folding>
+            <element signature="method#editById#0;class#AdministrationServlet#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

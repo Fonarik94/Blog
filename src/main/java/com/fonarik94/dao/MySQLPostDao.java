@@ -23,7 +23,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
-//@Repository
+
 @Component
 public class MySQLPostDao implements PostDao {
     private static final Logger logger = LogManager.getLogger();
@@ -44,6 +44,7 @@ public class MySQLPostDao implements PostDao {
         }
     };
     private static DataSource dataSource;
+
     private static Connection getConnection() {
         Connection connection = null;
         try {
@@ -51,10 +52,10 @@ public class MySQLPostDao implements PostDao {
             try (Statement statement = connection.createStatement()) {
                 statement.execute(SQLQueries.USE_DB.getQueryString());
             } catch (SQLException e) {
-                logger.error(">> Cant't use DB "  + SQLQueries.DB_NAME.getQueryString() + "; Try create DB and tables...");
+                logger.error(">> Cant't use DB " + SQLQueries.DB_NAME.getQueryString() + "; Try create DB and tables...");
                 try {
                     createTables(connection.createStatement());
-                } catch (SQLException ce){
+                } catch (SQLException ce) {
                     logger.fatal(">> Can't create database or something!");
                 }
             }
@@ -66,79 +67,27 @@ public class MySQLPostDao implements PostDao {
     }
 
     public void addPost(String header, String text, boolean isPublished) {
-        try (Connection connection = getConnection()) {
-            connection.setAutoCommit(false);
-            try (PreparedStatement postInsertPreparedStatement = connection.prepareStatement(SQLQueries.INSERT.getQueryString())) {
-                postInsertPreparedStatement.setString(1, header);
-                postInsertPreparedStatement.setString(2, text);
-                if (isPublished) {
-                    postInsertPreparedStatement.setTimestamp(3, Timestamp.valueOf(LocalDateTime.now()));
-                } else {
-                    postInsertPreparedStatement.setTimestamp(3, null);
-                }
-                postInsertPreparedStatement.setInt(4, isPublished ? 1 : 0);
-                postInsertPreparedStatement.executeUpdate();
-            } catch (SQLException sqlE) {
-                connection.rollback();
-                logger.fatal(">> Rollback: " + sqlE.toString());
-            }
-            connection.commit();
-        } catch (SQLException ex) {
-            logger.debug(">> Can't save post to DB: " + ex.toString());
-        }
+        jdbcTemplate.update(SQLQueries.INSERT.getQueryString(), header, text, Timestamp.valueOf(LocalDateTime.now()), isPublished);
     }
-
 
     @Override
     public Post getPostById(int id) {
         return jdbcTemplate.queryForObject(SQLQueries.READ_BY_ID.getQueryString(), ROW_MAPPER, id);
     }
 
-    private List<Post> getListOfAllPosts(boolean published){
+    private List<Post> getListOfAllPosts(boolean published) {
         List<Post> allPosts = new LinkedList<>();
-        String query = published?SQLQueries.READ_PUBLISHED.getQueryString():SQLQueries.READ_ALL.getQueryString();
+        String query = published ? SQLQueries.READ_PUBLISHED.getQueryString() : SQLQueries.READ_ALL.getQueryString();
         allPosts.addAll(jdbcTemplate.query(query, ROW_MAPPER));
         return allPosts;
     }
 
-/*    public void deletePostByID(int id) {
-        try (Connection connection = getConnection()) {
-            connection.setAutoCommit(false);
-            try (PreparedStatement deletePostByIdPreparedStatement = connection.prepareStatement(SQLQueries.DELETE_BY_ID.getQueryString())) {
-                deletePostByIdPreparedStatement.setInt(1, id);
-                deletePostByIdPreparedStatement.executeUpdate();
-            } catch (SQLException e) {
-                connection.rollback();
-                logger.error(">> Rollback: " + e.toString());
-            }
-            connection.commit();
-        } catch (SQLException e) {
-            logger.error(">> Can't delete post with id " + id + ": " + e.toString());
-        }
-
-    }*/
-
-    public void deletePostById(int id){
+    public void deletePostById(int id) {
         jdbcTemplate.update(SQLQueries.DELETE_BY_ID.getQueryString(), id);
     }
 
-    public void editPostById(int id, Post updatedPost) {
-        try (Connection connection = getConnection()) {
-            connection.setAutoCommit(false);
-            try (PreparedStatement editByIdPreparedStatement = connection.prepareStatement(SQLQueries.EDIT_BY_ID.getQueryString())) {
-                editByIdPreparedStatement.setString(1, updatedPost.getHeader());
-                editByIdPreparedStatement.setString(2, updatedPost.getText());
-                editByIdPreparedStatement.setInt(3, updatedPost.isPublished() ? 1 : 0);
-                editByIdPreparedStatement.setInt(4, id);
-                editByIdPreparedStatement.executeUpdate();
-            } catch (SQLException ex) {
-                logger.fatal("Rollback: " + ex.toString());
-            }
-            connection.commit();
-        } catch (SQLException e) {
-
-            logger.fatal(">> Cant't update post with ID: " + id + "; " + e.toString());
-        }
+    public void editPostById(int id, String header, String text, boolean isPublished) {
+        jdbcTemplate.update(SQLQueries.EDIT_BY_ID.getQueryString(), header, text, isPublished, id);
     }
 
     @Override

@@ -55,8 +55,8 @@ public class AdministrationServlet {
                                  @RequestParam("postHeaderInput") String header,
                                  @RequestParam("postTextInput") String text,
                                  @RequestParam(value = "isPublished", required = false) String isPublised) {
-        Post editedPost = new Post(id, header, text, isPublised!=null);
-        postDao.editPostById(id, editedPost);
+
+        postDao.editPostById(id, header, text, isPublised != null);
         log.debug(">> Edited post with id: " + id);
         return new ModelAndView("redirect:/administration/postwriter");
     }
@@ -71,21 +71,22 @@ public class AdministrationServlet {
     }
 
     @RequestMapping(value = "/administration", method = RequestMethod.POST)
-    public ModelAndView wolSender(@RequestParam("mac") String mac){
+    public ModelAndView wolSender(@RequestParam("mac") String mac) {
         WakeOnLan.wake(mac);
         log.debug("Wake-on-lan request. MAC: " + mac);
         return new ModelAndView("redirect:/administration");
     }
+
     @RequestMapping(value = "/administration/postwriter", method = RequestMethod.POST)
-    public ModelAndView deletePost(@RequestParam("deleteById") int id){
+    public ModelAndView deletePost(@RequestParam("deleteById") int id) {
         postDao.deletePostById(id);
         log.info(">> Deleted post with id: " + id);
         return new ModelAndView("redirect:/administration/postwriter");
     }
 
-    @RequestMapping(value ="/administration/postwriter/ajaxdelete", method = RequestMethod.POST)
+    @RequestMapping(value = "/administration/postwriter/ajaxdelete", method = RequestMethod.POST)
     @ResponseBody
-    public String ajaxDelete(@RequestParam("deleteById") int id){
+    public String ajaxDelete(@RequestParam("deleteById") int id) {
         log.debug(">> ajax post delete id = " + id);
         postDao.deletePostById(id);
         return "deleted";
