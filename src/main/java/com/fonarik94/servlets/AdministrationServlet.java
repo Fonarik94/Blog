@@ -77,17 +77,10 @@ public class AdministrationServlet {
         return new ModelAndView("redirect:/administration");
     }
 
-    @RequestMapping(value = "/administration/postwriter", method = RequestMethod.POST)
-    public ModelAndView deletePost(@RequestParam("deleteById") int id) {
-        postDao.deletePostById(id);
-        log.info(">> Deleted post with id: " + id);
-        return new ModelAndView("redirect:/administration/postwriter");
-    }
-
-    @RequestMapping(value = "/administration/postwriter/ajaxdelete", method = RequestMethod.POST)
+    @RequestMapping(value = "/administration/postwriter/delete", method = RequestMethod.POST)
     @ResponseBody
     public String ajaxDelete(@RequestParam("deleteById") int id) {
-        log.debug(">> ajax post delete id = " + id);
+        log.debug(">> Deleted post with ID = " + id);
         postDao.deletePostById(id);
         return "deleted";
     }

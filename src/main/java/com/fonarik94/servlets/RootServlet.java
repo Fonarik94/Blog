@@ -35,7 +35,7 @@ public class RootServlet {
         model.addAttribute("requestedPage", "about.ftl");
         return "template";
     }
-    @RequestMapping(value = "/post/{id}")
+    @RequestMapping(value = "/post/{id:[\\d]+}")
     public String getPost(@PathVariable ("id") int id, Model model){
         model.addAttribute("requestedPost", postDao.getPostById(id));
         model.addAttribute("requestedPage", "singlePost.ftl");

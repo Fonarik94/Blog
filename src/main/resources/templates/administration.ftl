@@ -4,7 +4,7 @@
             <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
             <script src="/resources/js/jquery/2.2.4/jquery.min.js"></script>
             <script type="text/javascript" src="/resources/js/common.js"></script>
-            <script src="/resources/js/common.js"></script>
+            <script src="/resources/js/administration.js"></script>
             <title>Admin</title>
         </head>
     <body>

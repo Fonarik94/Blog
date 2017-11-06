@@ -7,9 +7,7 @@
         <hr>
         <div class="editorItems">
             <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.id}">Edit</a></div>
-            <div class="postEditorItem">
-             <button onclick="ajaxPost(${post.id})">Delete</button>
-                </div>
+            <div class="postEditorItem" onclick="deletePost(${post.id})">Delete</div>
             </div>
         </div>
     </div>

@@ -1,0 +1,167 @@
+@import "fonts.css";
+body{
+    margin:0;
+    display: flex;
+    background-color: #f0f0f0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    font-family: Arial;
+}
+h1{
+    font-size: 18pt;
+    font-weight: bold;
+    margin: 0;
+}
+h5{
+    margin: 2px;
+    color: gray;
+}
+A, A:visited{
+    color: black;
+}
+.center-area{
+    background-color: #51BBFE;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+}
+#authform, #wol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background-color: white;
+    padding: 15px;
+    margin: 30px;
+    width: 300px;
+    box-shadow: 1px 5px 20px rgba(0,0,0,0.5);
+}
+#block{
+    background-color: #51BBFE;
+    height: 40px;
+    width: auto;
+}
+#block:hover{
+    background: #8FF7A7;
+    -webkit-transition: background 0.5s ease-in-out;
+}
+#topbar{
+    background-color: #51BBFE;
+}
+#topbar #logo{
+    background-color: #8FF7A7;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 300%;
+}
+
+#menu{
+    display: flex;
+    flex-grow: 1;
+}
+#menu .item{
+    font-family:Arial;
+    font-style:normal;
+    font-size:150%;
+    padding:10px;
+    margin-left: 45px;
+    text-decoration: none;
+    text-align: center;
+}
+#menubar{
+    display: flex;
+    flex-grow: 1;
+    box-shadow: 1px 5px 20px rgba(0,0,0,0.5);
+    position: sticky;
+    background-color: #51BBFE;
+    width: 100%;
+}
+#menu .item:hover, #social .socialbutton:hover, #content .item:hover, .post .postEditorItem:hover, .post .all{
+    background: #8FF7A7;
+    -webkit-transition: background 0.5s ease-in-out;
+}
+#menubar #social{
+    display: flex;
+}
+
+#social .socialbutton{
+    padding-left: 10px;
+    padding-right: 10px;
+    flex-basis: 48px;
+    display: flex;
+    align-items: center
+}
+#content{
+    background-color: #f0f0f0;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+#content .item{
+    background: #51BBFE;
+    padding: 10px;
+    margin: 20px;
+    height: 28px;
+}
+#content #postEditorForm {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
+    width: 90%;
+}
+#content .post{
+    background-color: white;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.6);
+    display: block;
+    padding: 20px;
+
+}
+.post .postHeader{
+    font-size: 18pt;
+}
+.post .editorItems{
+    display: flex;
+    flex-direction: row;
+}
+.post .postEditorItem{
+    display: block;
+    background: #51BBFE;
+    padding: 20px;
+    margin-right: 15px;
+}
+.all{
+    flex-basis: 750px;
+    background: white;
+    margin: 20px 10px;
+}
+.all a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.all img{
+    max-width: 100%;
+}
+.single{
+    flex-basis: 1024px;
+    margin: 20px;
+}
+.single img{
+    max-width: 100%;
+}
