@@ -1,5 +1,7 @@
 package com.fonarik94.dao;
 
+import com.fonarik94.exceptions.DAOException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;

@@ -85,4 +85,9 @@ public class AdministrationServlet {
         return "deleted";
     }
 
+    @RequestMapping(value = "/login")
+    public String login(){
+        return "login";
+    }
+
 }

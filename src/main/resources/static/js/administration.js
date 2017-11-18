@@ -3,6 +3,10 @@ function deletePost(id) {
         var post = $("#"+id).parent();
         $(post).hide("slow", function(){post.remove});
     })
+}function logout(){
+    $.get("/logout", function () {
+        
+    });
 }
 $(document).ready(function () {
     

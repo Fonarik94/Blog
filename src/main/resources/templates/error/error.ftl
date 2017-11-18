@@ -6,9 +6,10 @@
     <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
 </head>
 <body>
-    <div class="center-area">
-        <h1 style="font-size: 76pt">404</h1>
-        <h1>Page not found</h1>
-    </div>
+<div class="center-area">
+    <h1 style="font-size: 76pt">${code}</h1>
+    <h1>${message}</h1>
+    3
+</div>
 </body>
 </html>

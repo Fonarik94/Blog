@@ -6,7 +6,7 @@
 <body>
 <div class="center-area">
     <div class="center">
-        <form id="authform" name="authform"  action="@{/login}" method="post">
+        <form id="authform" name="authform"  action="/login" method="post">
             <h2>Авторизация</h2><br>
             <label for="user">Login</label>
             <input id="user" type="text" name="username"><br>

@@ -16,9 +16,10 @@
             <a class="item" href="/administration">Wake-on-lan</a>
             <a class="item" href="/administration/postwriter">Редактор постов</a>
             <#if requestedPage == "/redactor.ftl">
-                 <a class="item" href="/administration/postwriter/addpost">Добавить</a>
-                 <a class="item" href="/administration/postwriter/edit?editbyid=1">Редактировать aboutpage</a>
-              </#if>
+                <a class="item" href="/administration/postwriter/addpost">Добавить</a>
+                <a class="item" href="/administration/postwriter/edit?editbyid=1">Редактировать aboutpage</a>
+            </#if>
+            <a class="item" href="/logout" style="background-color: #f09b9b">Выйти</a>
         </div>
         </div>
         </div>
