@@ -4,8 +4,8 @@
     <entry key="DB_NAME">blog</entry>
     <entry key="INSERT">INSERT INTO posts (header, text, creationDate, publicationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?, ?)</entry>
     <entry key="READ_BY_ID">SELECT id, header, text, creationDate, publicationDate, isPublished FROM posts WHERE id = ?</entry>
-    <entry key="READ_ALL">SELECT id, header, SUBSTRING(text, 1, 500), creationDate, publicationDate, isPublished FROM posts WHERE id>=2 ORDER BY id DESC</entry>
-    <entry key="READ_PUBLISHED">SELECT id, header, SUBSTRING(text, 1, 500), creationDate, publicationDate, isPublished FROM posts WHERE id>=2 &amp;&amp; isPublished=1 ORDER BY id DESC</entry>
+    <entry key="READ_ALL">SELECT id, header, SUBSTRING(text, 1, 500) AS text, creationDate, publicationDate, isPublished FROM posts WHERE id>=2 ORDER BY id DESC</entry>
+    <entry key="READ_PUBLISHED">SELECT id, header, SUBSTRING(text, 1, 500) AS text, creationDate, publicationDate, isPublished FROM posts WHERE id>=2 &amp;&amp; isPublished=1 ORDER BY id DESC</entry>
     <entry key="DELETE_BY_ID">DELETE FROM posts WHERE id = ?</entry>
     <entry key="EDIT_BY_ID">UPDATE posts SET header = ?, text = ?, isPublished = ? WHERE id = ?</entry>
     <entry key="USE_DB">USE blog</entry>

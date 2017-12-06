@@ -99,7 +99,8 @@ border-radius: 5px;
     padding-right: 10px;
     flex-basis: 48px;
     display: flex;
-    align-items: center
+    align-items: center;
+    border-radius: 5px;
 }
 #content{
     background-color: #f0f0f0;
@@ -132,6 +133,7 @@ border-radius: 5px;
     box-shadow: 4px 4px 20px rgba(0,0,0,0.6);
     display: block;
     padding: 20px;
+    border-radius: 5px;
 
 }
 .post .postHeader{

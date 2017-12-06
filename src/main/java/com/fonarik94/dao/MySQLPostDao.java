@@ -18,15 +18,14 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
 
 @Component
 public class MySQLPostDao implements PostDao {
     private static final Logger logger = LogManager.getLogger();
+    private static Map<Integer, Post> cache = new IdentityHashMap<>();
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private RowMapper<Post> ROW_MAPPER = new RowMapper<Post>() {
@@ -36,35 +35,13 @@ public class MySQLPostDao implements PostDao {
             Post post = new Post();
             post.setId(resultSet.getInt("id"));
             post.setHeader(resultSet.getString("header"));
-            post.setText(resultSet.getString(3));
+            post.setText(resultSet.getString("text"));
             post.setCreationDate(resultSet.getTimestamp("creationDate").toLocalDateTime());
             post.setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime());
             post.setPublished(resultSet.getBoolean("isPublished"));
             return post;
         }
     };
-    private static DataSource dataSource;
-
-    private static Connection getConnection() {
-        Connection connection = null;
-        try {
-            connection = dataSource.getConnection();
-            try (Statement statement = connection.createStatement()) {
-                statement.execute(SQLQueries.USE_DB.getQueryString());
-            } catch (SQLException e) {
-                logger.error(">> Cant't use DB " + SQLQueries.DB_NAME.getQueryString() + "; Try create DB and tables...");
-                try {
-                    createTables(connection.createStatement());
-                } catch (SQLException ce) {
-                    logger.fatal(">> Can't create database or something!");
-                }
-            }
-
-        } catch (SQLException e) {
-            logger.fatal(">> SQL: " + e.toString());
-        }
-        return connection;
-    }
 
     public void addPost(String header, String text, boolean isPublished) {
         jdbcTemplate.update(SQLQueries.INSERT.getQueryString(), header, text, Timestamp.valueOf(LocalDateTime.now()), isPublished);
@@ -72,7 +49,13 @@ public class MySQLPostDao implements PostDao {
 
     @Override
     public Post getPostById(int id) {
-        return jdbcTemplate.queryForObject(SQLQueries.READ_BY_ID.getQueryString(), ROW_MAPPER, id);
+        Post post = cache.get(id);
+        if(post == null){
+            logger.debug("loaded from db");
+            post =  jdbcTemplate.queryForObject(SQLQueries.READ_BY_ID.getQueryString(), ROW_MAPPER, id);
+            cache.put(id, post);
+        }
+        return post;
     }
 
     private List<Post> getListOfAllPosts(boolean published) {
@@ -83,10 +66,12 @@ public class MySQLPostDao implements PostDao {
     }
 
     public void deletePostById(int id) {
-        jdbcTemplate.update(SQLQueries.DELETE_BY_ID.getQueryString(), id);
+        if(cache.containsKey(id)){cache.remove(id);}
+            jdbcTemplate.update(SQLQueries.DELETE_BY_ID.getQueryString(), id);
     }
 
     public void editPostById(int id, String header, String text, boolean isPublished) {
+        if(cache.containsKey(id)){cache.remove(id);}
         jdbcTemplate.update(SQLQueries.EDIT_BY_ID.getQueryString(), header, text, isPublished, id);
     }
 
