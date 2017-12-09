@@ -43,6 +43,19 @@ function showPosts(){
     }
 }
 
+function chooseLoginMethod(method){
+    switch (method){
+        case 1:
+            $('#authblock').css("display","block");
+            $('#registerblock').css("display","none");
+            break;
+        case 2:
+            $('#authblock').css("display","none");
+            $('#registerblock').css("display","block");
+            break;
+
+    }
+}
 
 $(document).ready(function(){
     stickyTop();

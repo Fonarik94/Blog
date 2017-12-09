@@ -33,25 +33,47 @@ A, A:visited{
     justify-content: center;
     overflow: auto;
 }
-#authform, #wol{
+.center{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 15px;
+    width: 300px;
+    box-shadow: 1px 5px 20px rgba(0,0,0,0.5);
+    border-radius: 5px;
+    justify-content: center;
+    align-items: stretch;
+
+}
+#authform, #registerform, #wol {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
-    background-color: white;
-    padding: 15px;
-    margin: 30px;
-    width: 300px;
-    box-shadow: 1px 5px 20px rgba(0,0,0,0.5);
+}
+#loginmethod{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 120%;
+    padding-bottom: 10px;
+}
+#auth, #register{
+    transition: all 0.3s ease-in-out;
+
+}
+#auth:hover, #register:hover{
+    font-size: 120%;
 }
 #block{
     background-color: #51BBFE;
     height: 40px;
     width: auto;
+    transition: background 0.5s ease-in-out;
 }
 #block:hover{
     background: #8FF7A7;
-    -webkit-transition: background 0.5s ease-in-out;
 }
 #topbar{
     background-color: #51BBFE;
@@ -75,8 +97,9 @@ A, A:visited{
     padding:10px;
     margin-left: 45px;
     text-decoration: none;
-border-radius: 5px;
+    border-radius: 5px;
     text-align: center;
+    transition: background 0.4s ease-in-out;
 }
 #menubar{
     display: flex;
@@ -88,7 +111,7 @@ border-radius: 5px;
 }
 #menu .item:hover, #social .socialbutton:hover, #content .item:hover, .post .postEditorItem:hover, .post .all{
     background: #8FF7A7;
-    -webkit-transition: background 0.5s ease-in-out;
+
 }
 #menubar #social{
     display: flex;
@@ -101,6 +124,7 @@ border-radius: 5px;
     display: flex;
     align-items: center;
     border-radius: 5px;
+    transition: background 0.4s ease-in-out;
 }
 #content{
     background-color: #f0f0f0;
