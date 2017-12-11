@@ -48,10 +48,12 @@ function chooseLoginMethod(method){
         case 1:
             $('#authblock').css("display","block");
             $('#registerblock').css("display","none");
+            history.pushState(null, null, "/login");
             break;
         case 2:
             $('#authblock').css("display","none");
             $('#registerblock').css("display","block");
+            history.pushState(null, null, "/register");
             break;
 
     }

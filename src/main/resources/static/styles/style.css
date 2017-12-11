@@ -43,7 +43,7 @@ A, A:visited{
     border-radius: 5px;
     justify-content: center;
     align-items: stretch;
-
+    transition: all 0.4s ease-in-out;
 }
 #authform, #registerform, #wol {
     display: flex;
