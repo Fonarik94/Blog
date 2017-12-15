@@ -14,8 +14,8 @@
             </PatternLayout>
         </Console>
 
-        <RollingFile name="FileOutput" fileName="${sys:catalina.base}/logs/root/${date:dd-MM-yyyy}/LastLog.txt"
-                     filePattern="${sys:catalina.base}/logs/root/${date:dd-MM-yyyy}/%d{dd-MM-yyyy}-%i.txt"
+        <RollingFile name="FileOutput" fileName="/logs/root/${date:dd-MM-yyyy}/LastLog.txt"
+                     filePattern="/logs/root/${date:dd-MM-yyyy}/%d{dd-MM-yyyy}-%i.txt"
                      bufferedIO="true"
                      append="true"
                      ignoreExceptions="false">
@@ -36,9 +36,9 @@
             <AppenderRef ref="Warning" level="warn"/>
             <AppenderRef ref="FileOutput"/>
         </Root>
-        <Logger name="com.fonarik94.servlets.RestApi" level="debug" additivity="true"/>
-        <Logger name="com.fonarik94.servlets.RootServlet" level="debug" additivity="true"/>
-        <Logger name="com.fonarik94.servlets.AdministrationServlet" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.controllers.RestApi" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.controllers.IndexController" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.controllers.AdministrationServlet" level="debug" additivity="true"/>
         <Logger name="org.springframework.beans.factory.support.SimpleInstantiationStrategy" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.domain.Post" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.dao.MySQLPostDao" level="debug" additivity="true"/>

@@ -30,7 +30,6 @@
 <body>
 <div id="topbar">
     <div id="logo">¯\_(ツ)_/¯</div>
-
 </div>
 <div id="menubar">
     <div id="menu">

@@ -1,23 +1,22 @@
-package com.fonarik94.servlets;
+package com.fonarik94.controllers;
 
-import com.fonarik94.dao.MySQLPostDao;
 import com.fonarik94.dao.PostDao;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class RootServlet {
-    private static Logger log = LogManager.getLogger();
+public class IndexController {
+//    private static Logger log = LogManager.getLogger();
+    private static Logger log = LoggerFactory.getLogger(IndexController.class);
     @Autowired
     PostDao postDao;
     @Autowired

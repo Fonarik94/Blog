@@ -1,4 +1,4 @@
-package com.fonarik94.servlets;
+package com.fonarik94.controllers;
 
 import com.fonarik94.dao.PostDao;
 import com.fonarik94.domain.Post;
@@ -31,7 +31,7 @@ public class RestApi {
     return postResourceList;
     }
 
-    @RequestMapping(value = ("/post/{id}.json"), produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = ("/post/{id:[\\d]+}.json"), produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     @ResponseStatus(value = HttpStatus.OK)
     public PostResource getPost(@PathVariable("id") int id){
         return new PostResource(postDao.getPostById(id));

@@ -1,4 +1,4 @@
-package com.fonarik94.servlets;
+package com.fonarik94.controllers;
 
 import com.fonarik94.domain.Post;
 import com.fonarik94.dao.PostDao;
