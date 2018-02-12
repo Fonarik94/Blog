@@ -1,9 +1,7 @@
 package com.fonarik94.controllers;
 
 import com.fonarik94.dao.PostDao;
-import org.apache.logging.log4j.LogManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@Slf4j
 public class IndexController {
 //    private static Logger log = LogManager.getLogger();
-    private static Logger log = LoggerFactory.getLogger(IndexController.class);
+//    private static Logger log = LoggerFactory.getLogger(IndexController.class);
     @Autowired
     PostDao postDao;
     @Autowired
@@ -25,6 +24,7 @@ public class IndexController {
     public String main(Model model){
         model.addAttribute("requestedPage", "posts.ftl");
         model.addAttribute("publishedPosts", postDao.getPublishedPosts());
+
         log.debug(">> Client IP: " + getClientIp(request));
     return "template";
     }

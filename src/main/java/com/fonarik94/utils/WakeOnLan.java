@@ -1,18 +1,14 @@
 package com.fonarik94.utils;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
-
-import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
-
+@Slf4j
 public class WakeOnLan {
-    private static final Logger logger = LogManager.getLogger(getCurrentClassName());
 
     /**
      * Sending Wake-on-lan packet to broadcast addresses over all network interfaces
@@ -25,20 +21,20 @@ public class WakeOnLan {
             try (DatagramSocket udpSocket = new DatagramSocket()) {
                 List<InetAddress> broadcastIP = getBroadcastIP();
                 for (InetAddress ip : broadcastIP) {
-                    logger.info(">> Sending WOL packet with MAC address " + mac + " on broadcast ip: " + ip.toString());
+                    log.info(">> Sending WOL packet with MAC address " + mac + " on broadcast ip: " + ip.toString());
                     DatagramPacket udpPacket = getWolPacket(mac, ip);
                     for (int i = 0; i < 10; i++) {
                         udpSocket.send(udpPacket);
                     }
                 }
             } catch (SocketException e) {
-                logger.error(">> Cant create new datagram socket" + e.toString());
+                log.error(">> Cant create new datagram socket" + e.toString());
             } catch (IOException e){
-                logger.error(">> Cant send UDP packet: " + e.toString());
+                log.error(">> Cant send UDP packet: " + e.toString());
             }
         }
         else {
-            logger.info(">> MAC address is null. Nothing to do.");
+            log.info(">> MAC address is null. Nothing to do.");
         }
     }
 
@@ -94,11 +90,12 @@ public class WakeOnLan {
                 }
             }
         } catch (SocketException e) {
-            logger.error(">> Cant get network interfaces: " + e.toString());
+            log.error(">> Cant get network interfaces: " + e.toString());
         } catch (UnknownHostException e) {
-            logger.error(">> Unknown host: " + e.toString());
+            log.error(">> Unknown host: " + e.toString());
         }
         return broadcastInetAddresses;
     }
+
 }
 

@@ -1,22 +1,16 @@
 package com.fonarik94.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
-
+import lombok.*;
 import java.time.LocalDateTime;
 @Data
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class User {
-    private LocalDateTime registrationDate;
+    @NonNull
     private String name;
+    @NonNull
     private String mail;
+    @NonNull
     private String password;
-
-    public User(String name, String mail, String password){
-        this.name = name;
-        this.mail = mail;
-        this.password = password;
-        this.registrationDate = LocalDateTime.now();
-    }
+    private LocalDateTime registrationDate;
 }

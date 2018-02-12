@@ -1,10 +1,9 @@
 package com.fonarik94.controllers;
 
-import com.fonarik94.domain.Post;
 import com.fonarik94.dao.PostDao;
+import com.fonarik94.domain.Post;
 import com.fonarik94.utils.WakeOnLan;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@Slf4j
 public class AdministrationServlet {
-    private static final Logger log = LogManager.getLogger();
     @Autowired
     PostDao postDao;
 

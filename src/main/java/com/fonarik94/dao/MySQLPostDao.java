@@ -1,31 +1,27 @@
 package com.fonarik94.dao;
 
 import com.fonarik94.domain.Post;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Bean;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.*;
-
-import static com.fonarik94.utils.ClassNameUtil.getCurrentClassName;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 @Component
+@Slf4j
 public class MySQLPostDao implements PostDao {
-    private static final Logger logger = LogManager.getLogger();
-    private static Map<Integer, Post> cache = new IdentityHashMap<>();
+    private static Map<Integer, Post> cache = new HashMap<>();
     @Autowired
     private JdbcTemplate jdbcTemplate;
     private RowMapper<Post> ROW_MAPPER = new RowMapper<Post>() {
@@ -47,11 +43,10 @@ public class MySQLPostDao implements PostDao {
         jdbcTemplate.update(SQLQueries.INSERT.getQueryString(), header, text, Timestamp.valueOf(LocalDateTime.now()), isPublished);
     }
 
-    @Override
     public Post getPostById(int id) {
         Post post = cache.get(id);
         if(post == null){
-            logger.debug("loaded from db");
+            log.debug("loaded from db");
             post =  jdbcTemplate.queryForObject(SQLQueries.READ_BY_ID.getQueryString(), ROW_MAPPER, id);
             cache.put(id, post);
         }
@@ -75,12 +70,10 @@ public class MySQLPostDao implements PostDao {
         jdbcTemplate.update(SQLQueries.EDIT_BY_ID.getQueryString(), header, text, isPublished, id);
     }
 
-    @Override
     public List<Post> getPublishedPosts() {
         return getListOfAllPosts(true);
     }
 
-    @Override
     public List<Post> getAllPosts() {
         return getListOfAllPosts(false);
     }
@@ -88,10 +81,10 @@ public class MySQLPostDao implements PostDao {
     private static void createTables(Statement statement) throws SQLException {
         statement.execute(SQLQueries.CREATE_DB.getQueryString());
         statement.execute(SQLQueries.USE_DB.getQueryString());
-        logger.info(">> Database created...");
+        log.info(">> Database created...");
         statement.execute(SQLQueries.CREATE_TABLE.getQueryString());
-        logger.info(">> Table created...");
+        log.info(">> Table created...");
         statement.execute(SQLQueries.CREATE_ABOUT_PAGE.getQueryString());
-        logger.info(">> About page crated");
+        log.info(">> About page crated");
     }
 }

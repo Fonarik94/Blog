@@ -35,12 +35,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-    <!--        <exclusions>
-                <exclusion>
-                    <groupId>ch.qos.logback</groupId>
-                    <artifactId>logback-classic</artifactId>
-                </exclusion>
-            </exclusions>-->
+
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -67,26 +62,6 @@
             <version>6.0.6</version>
         </dependency>
 
-
-        <!--Logging-->
-        <!--Log4J-->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-web</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-log4j12 -->
-
         <!-- Jackson JSON Mapper -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -108,6 +83,14 @@
             <scope>provided</scope>
         </dependency>
 
+        <!--Test-->
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <!--Build-->
@@ -120,71 +103,5 @@
             </plugin>
         </plugins>
     </build>
-    <!--<build>
-        <finalName>Blog</finalName>
 
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${war-plugin.version}</version>
-                <configuration>
-                    <webXml>.\src\main\webapp\WEB-INF\web.xml</webXml>
-                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
-                    <webResources>
-                        <resource>
-                            <directory>src/main/webapp/META-INF</directory>
-                            <targetPath>/META-INF</targetPath>
-                            <filtering>true</filtering>
-                        </resource>
-                    </webResources>
-                </configuration>
-
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <url>${deploy_url}</url>
-                    <server>${deploy_server}</server>
-                    <path>/</path>
-                    <username>${deploy_username}</username>
-                    <password>${deploy_password}</password>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>-->
-    <!--<profiles>
-        <profile>
-            <id>RPIServer</id>
-            &lt;!&ndash; Activated when -Denv=RPIServer is given as parameter. &ndash;&gt;
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <deploy_url>http://10.10.25.25:8080/manager/text</deploy_url>
-                <deploy_server>RPIServer</deploy_server>
-                <deploy_username>root</deploy_username>
-                <deploy_password>Gerasimenkotomcat09</deploy_password>
-            </properties>
-        </profile>
-        <profile>
-            <id>local</id>
-            &lt;!&ndash; Activated when -Denv=local is given as parameter. &ndash;&gt;
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <deploy_url>http://localhost:8080/manager/text</deploy_url>
-                <deploy_server>local</deploy_server>
-                <deploy_username>root</deploy_username>
-                <deploy_password>Gerasimenkotomcat09</deploy_password>
-            </properties>
-        </profile>
-    </profiles>-->
 </project>

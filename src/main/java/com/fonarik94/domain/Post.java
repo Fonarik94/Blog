@@ -1,17 +1,25 @@
 package com.fonarik94.domain;
 
-import lombok.Data;
+import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 @Data
+@RequiredArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Post {
+    @NonNull
     private int id;
+    @NonNull
     private String header;
+    @NonNull
+    private String text;
+    @NotNull
+    private boolean isPublished;
     private LocalDateTime creationDate;
     private LocalDateTime publicationDateTime;
-    private String text;
-    private boolean isPublished;
     private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
     public String getPublicationDateAsString() {
@@ -22,11 +30,4 @@ public class Post {
         }
     }
 
-    public Post(int id, String header, String text, boolean isPublished) {
-        this.id = id;
-        this.header = header;
-        this.text = text;
-        this.isPublished = isPublished;
-    }
-    public Post(){}
 }
