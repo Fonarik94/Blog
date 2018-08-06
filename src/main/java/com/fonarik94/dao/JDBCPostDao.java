@@ -20,7 +20,7 @@ import java.util.Map;
 
 @Component
 @Slf4j
-public class MySQLPostDao implements PostDao {
+public class JDBCPostDao implements PostDao {
     private static Map<Integer, Post> cache = new HashMap<>();
     @Autowired
     private JdbcTemplate jdbcTemplate;

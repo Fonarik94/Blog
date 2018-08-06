@@ -66,12 +66,13 @@ A, A:visited{
 #auth:hover, #register:hover{
     font-size: 120%;
 }
-#block{
+/*#block{
     background-color: #51BBFE;
     height: 40px;
     width: auto;
     transition: background 0.5s ease-in-out;
-}
+    border-radius: 5px;
+}*/
 #block:hover{
     background: #8FF7A7;
 }
@@ -85,7 +86,6 @@ A, A:visited{
     text-align: center;
     font-size: 300%;
 }
-
 #menu{
     display: flex;
     flex-grow: 1;
@@ -109,14 +109,15 @@ A, A:visited{
     width: 100%;
     margin-bottom: 10px;
 }
-#menu .item:hover, #social .socialbutton:hover, #content .item:hover, .post .postEditorItem:hover, .post .all{
+#menu .item:hover, #social .socialbutton:hover, #content .item:hover, .postEditorItem:hover, .post .all{
     background: #8FF7A7;
+    cursor: pointer;
 }
 #menubar #social{
     display: flex;
 }
 
-#social .socialbutton{
+#social .socialbutton {
     padding-left: 10px;
     padding-right: 10px;
     flex-basis: 48px;
@@ -135,12 +136,12 @@ A, A:visited{
     height: auto;
 }
 
-#content .item{
+/*#content .item{
     background: #51BBFE;
     padding: 10px;
     margin: 20px;
     height: 28px;
-}
+}*/
 #content #postEditorForm {
     display: flex;
     align-items: stretch;
@@ -151,43 +152,49 @@ A, A:visited{
     background-color: white;
     width: 90%;
 }
-#content .post{
-    background-color: white;
-    box-shadow: 4px 4px 20px rgba(0,0,0,0.6);
-    display: block;
-    padding: 20px;
-    border-radius: 5px;
-}
-.post .postHeader{
+.postHeader{
     font-size: 18pt;
 }
-.post .editorItems{
+.editorItems{
     display: flex;
+    flex-basis: inherit;
     flex-direction: row;
 }
-.post .postEditorItem{
+.postEditorItem, #block{
     display: block;
     background: #51BBFE;
     border-radius: 5px;
     padding: 10px;
     margin-right: 15px;
+    transition: background 0.4s ease-in-out;
 }
 .all{
     flex-basis: 750px;
-    background: white;
-    margin: 10px;
 }
 .all a{
     text-decoration: none;
     cursor: pointer;
 }
-.all img{
-    max-width: 100%;
-}
-.single{
+#single{
     flex-basis: 1024px;
-    margin: 10px;
+    flex-direction: column;
 }
-.single img{
+#single img .all img{
     max-width: 100%;
+}
+.square{
+    background-color: white;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.6);
+    display: flex;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
+#editor{
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    height: auto;
+    background-color: white;
+    width: 100%;
 }

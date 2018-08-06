@@ -41,6 +41,6 @@
         <Logger name="com.fonarik94.controllers.AdministrationServlet" level="debug" additivity="true"/>
         <Logger name="org.springframework.beans.factory.support.SimpleInstantiationStrategy" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.domain.Post" level="debug" additivity="true"/>
-        <Logger name="com.fonarik94.dao.MySQLPostDao" level="debug" additivity="true"/>
+        <Logger name="com.fonarik94.dao.JDBCPostDao" level="debug" additivity="true"/>
     </Loggers>
 </Configuration>

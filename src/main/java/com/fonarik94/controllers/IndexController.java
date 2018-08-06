@@ -16,10 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController {
 //    private static Logger log = LogManager.getLogger();
 //    private static Logger log = LoggerFactory.getLogger(IndexController.class);
-    @Autowired
-    PostDao postDao;
-    @Autowired
-    HttpServletRequest request;
+    @Autowired PostDao postDao;
+    @Autowired HttpServletRequest request;
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main(Model model){
         model.addAttribute("requestedPage", "posts.ftl");
