@@ -23,26 +23,6 @@ function stickyTop(){
     });
 }
 
-function showPosts(){
-    $.getJSON(document.location.href+".json", function(posts){
-        if(posts.length > 1){
-            $.each(posts, function(index, el) { drawPost(el, 'all')});
-        } else{
-            drawPost(posts, 'single');
-        }
-    });
-
-    function drawPost(post, amount){
-        var template = '<div class="post' + amount + '">\
-            <h1>${post.header}</h1>\
-            <h5>${post.publicationDateTime}</h5>\
-            <div class="text">${post.text}</div>\
-        </div>';
-        $.template('postTemplate', template);
-        $.tmpl('postTemplate', post).append('#content');
-    }
-}
-
 function chooseLoginMethod(method){
     switch (method){
         case 1:
@@ -57,6 +37,12 @@ function chooseLoginMethod(method){
             break;
 
     }
+}
+
+function postComment(postId){
+    $.post("/post/"+postId+"/addcomment", "commentText="+$('#textInput').val(), function (result) {
+        alert(result);
+    })
 }
 
 $(document).ready(function(){

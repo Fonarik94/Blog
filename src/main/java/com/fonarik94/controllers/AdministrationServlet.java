@@ -13,23 +13,22 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @Slf4j
 public class AdministrationServlet {
-    @Autowired
-    PostDao postDao;
+    @Autowired PostDao postDao;
 
-    @RequestMapping(value = "/administration")
+    @GetMapping(value = "/administration")
     public String wol(Model model) {
         model.addAttribute("requestedPage", "/wol.ftl");
         return "administration";
     }
 
-    @RequestMapping(value = "/administration/postwriter")
+    @GetMapping(value = "/administration/postwriter")
     public String postWriter(Model model) {
         model.addAttribute("allPosts", postDao.getAllPosts());
         model.addAttribute("requestedPage", "/redactor.ftl");
         return "administration";
     }
 
-    @RequestMapping(value = "/administration/postwriter/addpost")
+    @GetMapping(value = "/administration/postwriter/addpost")
     public String addPostButton(Model model) {
         model.addAttribute("postHeader", "");
         model.addAttribute("text", "");
@@ -37,7 +36,7 @@ public class AdministrationServlet {
         return "administration";
     }
 
-    @RequestMapping(value = "/administration/postwriter/edit")
+    @GetMapping(value = "/administration/postwriter/edit")
     public String editPostButton(@RequestParam("editbyid") int id, Model model) {
         Post post = postDao.getPostById(id);
         model.addAttribute("postHeader", post.getHeader());
@@ -46,7 +45,7 @@ public class AdministrationServlet {
         return "administration";
     }
 
-    @RequestMapping(value = "/administration/postwriter/edit", method = RequestMethod.POST)
+    @PostMapping(value = "/administration/postwriter/edit")
     public ModelAndView editById(@RequestParam("editbyid") int id,
                                  @RequestParam("postHeaderInput") String header,
                                  @RequestParam("postTextInput") String text,
