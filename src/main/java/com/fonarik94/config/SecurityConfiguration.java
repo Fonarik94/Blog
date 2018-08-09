@@ -12,8 +12,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-
-                .authorizeRequests()
+                .authorizeRequests().antMatchers("/favicon.ico").permitAll()
                 .antMatchers("/resources").permitAll()
                 .antMatchers("/administration")
                 .hasRole("ADMIN")

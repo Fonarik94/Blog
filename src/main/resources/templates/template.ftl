@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" name="theme-color" content="#8FF7A7">
     <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
-    <script defer src="/resources/js/jquery/2.2.4/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer type="text/javascript" src="/resources/js/common.js"></script>
     <title>IT blog</title>
 

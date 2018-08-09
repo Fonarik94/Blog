@@ -39,6 +39,10 @@ public class IndexController {
         return "template";
     }
 
+//    @RequestMapping("favicon.ico")
+//        String favicon() {
+//            return "forward:/resources/favicon.ico";
+//    }
     private String getClientIp(HttpServletRequest request){
         String clientIp = request.getHeader("X-FORWARDED-FOR");
         if(clientIp == null){

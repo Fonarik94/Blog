@@ -13,4 +13,5 @@ public class User {
     @NonNull
     private String password;
     private LocalDateTime registrationDate;
+
 }
