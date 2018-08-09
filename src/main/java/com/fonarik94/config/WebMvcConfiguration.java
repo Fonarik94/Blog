@@ -10,7 +10,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry){
         registry
-                .addResourceHandler("/resources/**")
+                .addResourceHandler("/resources/**", "/favicon.ico")
                 .addResourceLocations("/resources/", "classpath:/static/")
                 .setCachePeriod(0);//1209600
     }
