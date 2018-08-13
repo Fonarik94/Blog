@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
-    <script src="/resources/js/jquery/2.2.4/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="/resources/js/common.js"></script>
     <script src="/resources/js/administration.js"></script>
     <title>Admin</title>

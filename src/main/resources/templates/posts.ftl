@@ -1,5 +1,5 @@
 <#list publishedPosts as post>
-    <div class="square" id="single">
+    <div class="square">
         <a href="post/${post.id}">
             <h1>${post.header}</h1>
             <div class="postPublicationDate">${post.getPublicationDateAsString()}<br></div>

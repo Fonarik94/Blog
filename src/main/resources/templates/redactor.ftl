@@ -14,7 +14,7 @@
             <p>
                 ${post.text}
             </p>
-            <hr style="width: 750px">
+            <hr>
             <div class="editorItems">
                 <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.id}">Edit</a></div>
                 <div class="postEditorItem" onclick="deletePost(${post.id})">Delete</div>

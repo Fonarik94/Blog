@@ -66,13 +66,7 @@ A, A:visited{
 #auth:hover, #register:hover{
     font-size: 120%;
 }
-/*#block{
-    background-color: #51BBFE;
-    height: 40px;
-    width: auto;
-    transition: background 0.5s ease-in-out;
-    border-radius: 5px;
-}*/
+
 #block:hover{
     background: #8FF7A7;
 }
@@ -109,7 +103,7 @@ A, A:visited{
     width: 100%;
     margin-bottom: 10px;
 }
-#menu .item:hover, #social .socialbutton:hover, #content .item:hover, .postEditorItem:hover, .post .all{
+#menu .item:hover, #social .socialbutton:hover, #content .item:hover, .postEditorItem:hover, .post .square{
     background: #8FF7A7;
     cursor: pointer;
 }
@@ -136,12 +130,6 @@ A, A:visited{
     height: auto;
 }
 
-/*#content .item{
-    background: #51BBFE;
-    padding: 10px;
-    margin: 20px;
-    height: 28px;
-}*/
 #content #postEditorForm {
     display: flex;
     align-items: stretch;
@@ -168,20 +156,13 @@ A, A:visited{
     margin-right: 15px;
     transition: background 0.4s ease-in-out;
 }
-.all{
-    width: 1024px;
-    /*flex-basis: 750px;*/
-}
-.all a{
+
+.square a{
     text-decoration: none;
     cursor: pointer;
 }
-#single{
-    width: 1024px;
-    /*flex-basis: 1024px;*/
-    flex-direction: column;
-}
-#single img .all img{
+
+.square img{
     max-width: 100%;
 }
 .square{
@@ -191,6 +172,9 @@ A, A:visited{
     padding: 20px;
     margin: 10px;
     border-radius: 5px;
+    flex-direction: column;
+    width: 1024px;
+    max-width: 90%;
 }
 #editor{
     display: flex;
