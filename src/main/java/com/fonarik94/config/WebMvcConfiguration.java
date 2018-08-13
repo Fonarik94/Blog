@@ -17,5 +17,5 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                 .resourceChain(true)
                 .addResolver(new GzipResourceResolver());
     }
-    
+
 }
