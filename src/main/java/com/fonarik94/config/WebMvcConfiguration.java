@@ -14,7 +14,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                 .addResourceHandler("/resources/**", "/favicon.ico")
                 .addResourceLocations("/resources/", "classpath:/static/")
                 .setCachePeriod(3600)
-                .resourceChain(true)
+                .resourceChain(false)
                 .addResolver(new GzipResourceResolver());
     }
 
