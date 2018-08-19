@@ -57,7 +57,9 @@ public class AdministrationServlet {
     }
 
     @PostMapping(value = "/administration/postwriter/addpost")
-    public ModelAndView addPost(@RequestParam("postHeaderInput") String postHeader, @RequestParam("postTextInput") String text, @RequestParam(value = "isPublished", required = false) String isPublished) {
+    public ModelAndView addPost(@RequestParam("postHeaderInput") String postHeader,
+                                @RequestParam("postTextInput") String text,
+                                @RequestParam(value = "isPublished", required = false) String isPublished) {
         boolean published;
         published = isPublished != null;
         postDao.addPost(postHeader, text, published);

@@ -1,5 +1,7 @@
-<div class="post" id="comment">
-    ${comment.author.name}
-    ${comment.publicationDate}
-    ${comment.text}
+<#list comments as comment>
+<div class="square">
+    <h2>${comment.author}</h2>
+    <h5>${comment.getPublicationDateAsString()}</h5>
+        <p>${comment.text}</p>
 </div>
+</#list>

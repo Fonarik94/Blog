@@ -36,6 +36,7 @@ public class IndexController {
     @GetMapping(value = "/post/{id:[\\d]+}")
     public String getPost(@PathVariable ("id") int id, Model model){
         model.addAttribute("requestedPost", postDao.getPostById(id));
+        model.addAttribute("comments", postDao.getComments(id));
         model.addAttribute("requestedPage", "singlePost.ftl");
         return "template";
     }

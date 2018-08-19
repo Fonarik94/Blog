@@ -1,5 +1,6 @@
 package com.fonarik94.dao;
 
+import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,16 @@ public class JDBCPostDao implements PostDao {
             return post;
         }
     };
+    private RowMapper<Comment>  COMMENT_ROW_MAPPER = new RowMapper<Comment>() {
+        @Override
+        public Comment mapRow(ResultSet resultSet, int i) throws SQLException {
+            Comment comment = new Comment();
+            comment.setId(resultSet.getInt("id"));
+            comment.setAuthor(resultSet.getString("author"));
+            comment.setText(resultSet.getString("text"));
+            return comment;
+        }
+    };
 
     public void addPost(String header, String text, boolean isPublished) {
         jdbcTemplate.update(SQLQueries.INSERT.getQueryString(), header, text, Timestamp.valueOf(LocalDateTime.now()), isPublished);
@@ -45,10 +56,11 @@ public class JDBCPostDao implements PostDao {
 
     public Post getPostById(int id) {
         Post post = cache.get(id);
-        if(post == null){
+        if (post == null) {
             log.debug("loaded from db");
-            post =  jdbcTemplate.queryForObject(SQLQueries.READ_BY_ID.getQueryString(), ROW_MAPPER, id);
+            post = jdbcTemplate.queryForObject(SQLQueries.READ_BY_ID.getQueryString(), ROW_MAPPER, id);
             cache.put(id, post);
+            post.addAllCommnets(this.getCommentsForPost(post));
         }
         return post;
     }
@@ -61,12 +73,16 @@ public class JDBCPostDao implements PostDao {
     }
 
     public void deletePostById(int id) {
-        if(cache.containsKey(id)){cache.remove(id);}
-            jdbcTemplate.update(SQLQueries.DELETE_BY_ID.getQueryString(), id);
+        if (cache.containsKey(id)) {
+            cache.remove(id);
+        }
+        jdbcTemplate.update(SQLQueries.DELETE_BY_ID.getQueryString(), id);
     }
 
     public void editPostById(int id, String header, String text, boolean isPublished) {
-        if(cache.containsKey(id)){cache.remove(id);}
+        if (cache.containsKey(id)) {
+            cache.remove(id);
+        }
         jdbcTemplate.update(SQLQueries.EDIT_BY_ID.getQueryString(), header, text, isPublished, id);
     }
 
@@ -76,6 +92,22 @@ public class JDBCPostDao implements PostDao {
 
     public List<Post> getAllPosts() {
         return getListOfAllPosts(false);
+    }
+
+    public void addComment(int postId, Comment comment) {
+        jdbcTemplate.update("INSERT INTO comments (author, text, publicationDate, post_id) values (?, ?, ?, ?)", comment.getAuthor(), comment.getText(), comment.getPublicationDate(), postId);
+        Post post = getPostById(postId);
+        post.addComment(comment);
+        cache.remove(postId);
+        cache.put(post.getId(), post);
+    }
+
+    private List<Comment> getCommentsForPost(Post post){
+        return jdbcTemplate.query("SELECT id, author, text, publicationDate FROM comments where post_id = "+post.getId(), COMMENT_ROW_MAPPER);
+    }
+
+    public List<Comment> getComments(int postId){
+        return getPostById(postId).getCommentList();
     }
 
     private static void createTables(Statement statement) throws SQLException {

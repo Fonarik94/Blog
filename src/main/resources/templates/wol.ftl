@@ -1,4 +1,4 @@
-<div class="square">
+<div class="square" style="width: auto">
     <form id="editor" name="wol" method="post">
         <h3> Wake-on-lan </h3>
         <div>

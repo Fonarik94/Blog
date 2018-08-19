@@ -7,7 +7,7 @@
                 </b>
                 <br>
             </div>
-            <div class="postPublicationDate">
+            <div class="publicationDate">
                 ${post.getPublicationDateAsString()}
                 <br>
             </div>

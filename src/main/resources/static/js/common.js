@@ -40,9 +40,7 @@ function chooseLoginMethod(method){
 }
 
 function postComment(postId){
-    $.post("/post/"+postId+"/addcomment", "commentText="+$('#textInput').val(), function (result) {
-        alert(result);
-    })
+    $.post("/post/"+postId+"/addcomment", "text="+$('#textInput').val() + "&author="+$('#author').val())
 }
 
 $(document).ready(function(){
