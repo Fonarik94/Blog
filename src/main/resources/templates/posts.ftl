@@ -1,3 +1,5 @@
+<#import "parts/common.ftl" as c>
+<@c.commonTemplate>
 <#list publishedPosts as post>
     <div class="square">
         <a href="post/${post.id}">
@@ -7,3 +9,4 @@
         </a>
     </div>
 </#list>
+</@c.commonTemplate>

@@ -2,7 +2,9 @@
 <#-- @ftlvariable name="comment" type="com.fonarik94.domain.Comment" -->
 <#-- @ftlvariable name="requestedPost" type="com.fonarik94.domain.Post" -->
 <#import "/spring.ftl" as spring/>
+<#import "parts/common.ftl" as c>
 <#assign xhtmlCompliant = true in spring>
+<@c.commonTemplate>
 <div class="square">
     <h1>${requestedPost.header}</h1>
     <h5>${requestedPost.getPublicationDateAsString()}</h5>
@@ -37,8 +39,5 @@
         </div>
     </form>
 </div>
+</@c.commonTemplate>
 
-<#--
-<div class="square" id="addComment" &lt;#&ndash;style="display: none"&ndash;&gt;>
-
-</div>-->

@@ -23,29 +23,26 @@ public class AdministrationController {
     @GetMapping(value = "/administration")
     public String wol(Model model) {
         model.addAttribute("requestedPage", "/wol.ftl");
-        return "administration";
+        return "wol";
     }
 
     @GetMapping(value = "/administration/postwriter")
     public String postWriter(Model model) {
         model.addAttribute("allPosts", postDao.getAllPosts());
-        model.addAttribute("requestedPage", "/redactor.ftl");
-        return "administration";
+        return "redactor";
     }
 
     @GetMapping(value = "/administration/postwriter/addpost")
     public String addPostButton(Model model) {
         model.addAttribute("post", new Post());
-        model.addAttribute("requestedPage", "/addEditPost.ftl");
-        return "administration";
+        return "addEditPost";
     }
 
     @GetMapping(value = "/administration/postwriter/edit")
     public String editPostButton(@RequestParam("editbyid") int id, Model model) {
         model.addAttribute("post", postDao.getPostById(id));
         model.addAttribute("comments", postDao.getComments(id));
-        model.addAttribute("requestedPage", "/addEditPost.ftl");
-        return "administration";
+        return "addEditPost";
     }
 
     @PostMapping(value = "/administration/postwriter/edit")

@@ -19,17 +19,15 @@ public class IndexController {
 
     @GetMapping(value = "/")
     public String main(Model model){
-        model.addAttribute("requestedPage", "posts.ftl");
         model.addAttribute("publishedPosts", postDao.getPublishedPosts());
         log.debug(">> Client IP: " + getClientIp(request));
-        return "template";
+        return "posts";
     }
 
     @GetMapping(value = "/about")
     public String about(Model model){
         model.addAttribute("aboutPage", postDao.getPostById(1)); //Post ID 1 is about page
-        model.addAttribute("requestedPage", "about.ftl");
-        return "template";
+        return "about";
     }
 
 
@@ -37,11 +35,10 @@ public class IndexController {
     public String getPost(@PathVariable ("id") int id, Model model){
         model.addAttribute("comments", postDao.getComments(id));
         model.addAttribute("requestedPost", postDao.getPostById(id));
-        model.addAttribute("requestedPage", "singlePost.ftl");
         if(!model.containsAttribute("comment")) {
             model.addAttribute("comment", new Comment()); // for validation
         }
-        return "template";
+        return "singlePost";
     }
 
     private String getClientIp(HttpServletRequest request){

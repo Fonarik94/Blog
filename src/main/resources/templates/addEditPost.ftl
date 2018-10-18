@@ -1,6 +1,8 @@
 <#--@ftlvariable name="comments" type="List"-->
 <#--@ftlvariable name="post" type="com.fonarik94.domain.Post"-->
 <#import "/spring.ftl" as spring/>
+<#import "parts/common.ftl" as c>
+<@c.adminTemplate>
 <script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
 <div class="square" id="single">
     <form id="editor" method="post" accept-charset="UTF-8">
@@ -40,3 +42,4 @@
 <script>
     CKEDITOR.replace('text');
 </script>
+</@c.adminTemplate>

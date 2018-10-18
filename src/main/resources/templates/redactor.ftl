@@ -1,3 +1,5 @@
+<#import "parts/common.ftl" as c>
+<@c.adminTemplate>
 <#list allPosts as post>
     <div class="square all">
         <div id="${post.id}">
@@ -22,3 +24,4 @@
         </div>
     </div>
 </#list>
+</@c.adminTemplate>

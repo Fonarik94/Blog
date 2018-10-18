@@ -1,3 +1,5 @@
+<#import "parts/common.ftl" as c>
+<@c.adminTemplate>
 <div class="square" style="width: auto">
     <form id="editor" name="wol" method="post">
         <h3> Wake-on-lan </h3>
@@ -9,3 +11,4 @@
         <button id="block" type="submit" autofocus>Разбудить</button>
     </form>
 </div>
+</@c.adminTemplate>
