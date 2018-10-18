@@ -1,4 +1,21 @@
+//JQuery "PUT" and "DELETE" shortcut
+jQuery.each( [ "put", "delete" ], function( i, method ) {
+    jQuery[ method ] = function( url, data, callback, type ) {
+        if ( jQuery.isFunction( data ) ) {
+            type = type || callback;
+            callback = data;
+            data = undefined;
+        }
 
+        return jQuery.ajax({
+            url: url,
+            type: method,
+            dataType: type,
+            data: data,
+            success: callback
+        });
+    };
+});
 
 function stickyTop(){
     $(window).scroll(function(){
@@ -43,7 +60,11 @@ function postComment(postId){
     $.post("/post/"+postId+"/addcomment", "text="+$('#textInput').val() + "&author="+$('#author').val())
 }
 
+function showAddCommentForm(){
+    $('#addComment').show("slow");
+    $('#showForm').hide("slow");
+}
+
 $(document).ready(function(){
     stickyTop();
-    // showPosts();
 });

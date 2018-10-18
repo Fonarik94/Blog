@@ -13,7 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Post {
-    @NonNull
     private int id;
     @NonNull
     private String header;
@@ -26,11 +25,12 @@ public class Post {
     private List<Comment> commentList = new ArrayList<>();
     private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
+
     public void addComment(Comment comment){
         commentList.add(comment);
     }
 
-    public void addAllCommnets(List<Comment> comments){
+    public void addAllComments(List<Comment> comments){
         commentList.addAll(comments);
     }
 

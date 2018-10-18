@@ -9,6 +9,7 @@ public interface PostDao {
     void addPost(String postHeader, String postText, boolean isPublished);
     Post getPostById(int id);
     void deletePostById(int id);
+    void deleteCommentById(int id);
     void editPostById(int id, String header, String text, boolean isPublished);
     void addComment(int postId, Comment comment);
     List<Comment> getComments(int postId);

@@ -5,22 +5,19 @@
     <packaging>jar</packaging>
     <version>0.6-SNAPSHOT</version>
     <name>Blog</name>
-    <!--Spring Boot standard config-->
+    <!--Spring Boot default config-->
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.4.RELEASE</version>
-        <relativePath/>
+        <version>2.0.6.RELEASE</version>
     </parent>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-boot-maven-plugin.version>2.0.4.RELEASE</spring-boot-maven-plugin.version>
+        <maven.compiler.source>1.10</maven.compiler.source>
+        <maven.compiler.target>1.10</maven.compiler.target>
         <servlet-api.version>3.1.0</servlet-api.version>
         <log4j.version>2.10.0</log4j.version>
-        <war-plugin.version>3.0.0</war-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons.fileupload.version>1.2.1</commons.fileupload.version>
         <commons.io.version>2.0.1</commons.io.version>
@@ -29,9 +26,18 @@
         <commons.io.version>2.0.1</commons.io.version>
         <jackson.version>2.9.1</jackson.version>
         <lombok.version>1.18.2</lombok.version>
+        <tomcat.version>9.0.4</tomcat.version>
+        <java.version>1.10</java.version>
     </properties>
 
     <dependencies>
+        <!--Java HTML parser for safe HTML validation-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.11.3</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -98,7 +104,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${spring-boot-maven-plugin.version}</version>
             </plugin>
         </plugins>
     </build>

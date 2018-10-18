@@ -7,17 +7,15 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public enum SQLQueries {
-    DB_NAME("DB_NAME"),
     INSERT("INSERT"),
     READ_BY_ID("READ_BY_ID"),
     READ_ALL("READ_ALL"),
     READ_PUBLISHED("READ_PUBLISHED"),
     DELETE_BY_ID("DELETE_BY_ID"),
     EDIT_BY_ID("EDIT_BY_ID"),
-    USE_DB("USE_DB"),
-    CREATE_DB("CREATE_DB"),
-    CREATE_TABLE("CREATE_TABLE"),
-    CREATE_ABOUT_PAGE("CREATE_ABOUT_PAGE");
+    GET_POST_ID_BY_COMMENT_ID("GET_POST_ID_BY_COMMENT_ID"),
+    DELETE_COMMENT_BY_ID("DELETE_COMMENT_BY_ID");
+
     private  String queryString = null;
 
     public String getQueryString(){

@@ -1,29 +1,28 @@
 package com.fonarik94.controllers;
 
 import com.fonarik94.dao.PostDao;
+import com.fonarik94.domain.Comment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @Slf4j
 public class IndexController {
-    @Autowired PostDao postDao;
-    @Autowired HttpServletRequest request;
+    private final PostDao postDao;
+    private final HttpServletRequest request;
+
     @GetMapping(value = "/")
     public String main(Model model){
         model.addAttribute("requestedPage", "posts.ftl");
         model.addAttribute("publishedPosts", postDao.getPublishedPosts());
-
         log.debug(">> Client IP: " + getClientIp(request));
-    return "template";
+        return "template";
     }
 
     @GetMapping(value = "/about")
@@ -33,11 +32,15 @@ public class IndexController {
         return "template";
     }
 
+
     @GetMapping(value = "/post/{id:[\\d]+}")
     public String getPost(@PathVariable ("id") int id, Model model){
-        model.addAttribute("requestedPost", postDao.getPostById(id));
         model.addAttribute("comments", postDao.getComments(id));
+        model.addAttribute("requestedPost", postDao.getPostById(id));
         model.addAttribute("requestedPage", "singlePost.ftl");
+        if(!model.containsAttribute("comment")) {
+            model.addAttribute("comment", new Comment()); // for validation
+        }
         return "template";
     }
 
@@ -47,5 +50,11 @@ public class IndexController {
             clientIp = request.getRemoteAddr();
         }
         return clientIp;
+    }
+
+    @Autowired
+    public IndexController(PostDao postDao, HttpServletRequest request) {
+        this.postDao = postDao;
+        this.request = request;
     }
 }

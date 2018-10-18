@@ -22,6 +22,11 @@ public class HibernatePostDao implements PostDao{
     }
 
     @Override
+    public void deleteCommentById(int id) {
+
+    }
+
+    @Override
     public void editPostById(int id, String header, String text, boolean isPublished) {
 
     }

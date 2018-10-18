@@ -1,24 +1,28 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <comment>SQL queries for DAO</comment>
-    <entry key="DB_NAME">blog</entry>
-    <entry key="INSERT">INSERT INTO posts (header, text, creationDate, publicationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?, ?)</entry>
-    <entry key="READ_BY_ID">SELECT id, header, text, creationDate, publicationDate, isPublished FROM posts WHERE id = ?</entry>
-    <entry key="READ_ALL">SELECT id, header, SUBSTRING(text, 1, 500) AS text, creationDate, publicationDate, isPublished FROM posts WHERE id>=2 ORDER BY id DESC</entry>
-    <entry key="READ_PUBLISHED">SELECT id, header, SUBSTRING(text, 1, 500) AS text, creationDate, publicationDate, isPublished FROM posts WHERE id>=2 &amp;&amp; isPublished=1 ORDER BY id DESC</entry>
-    <entry key="DELETE_BY_ID">DELETE FROM posts WHERE id = ?</entry>
-    <entry key="EDIT_BY_ID">UPDATE posts SET header = ?, text = ?, isPublished = ? WHERE id = ?</entry>
-    <entry key="USE_DB">USE blog</entry>
-    <entry key="CREATE_DB">CREATE DATABASE IF NOT EXISTS `blog` CHARACTER SET  = utf8</entry>
-    <entry key="CREATE_TABLE">CREATE TABLE IF NOT EXISTS `posts`(
-        `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-        `header` VARCHAR(256) NOT NULL,
-        `text` TEXT NOT NULL,
-        `creationDate` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        `publicationDate` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00',
-        `isPublished` TINYINT(4) NOT NULL,
-        PRIMARY KEY (`id`),
-        UNIQUE KEY `id_UNIQUE` (`id`))
-        ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;</entry>
-    <entry key="CREATE_ABOUT_PAGE">INSERT INTO posts (header, text, creationDate, publicationDate, isPublished, id ) VALUES ('About page', 'about...',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, 1, 1);</entry>
+    <entry key="INSERT">
+        INSERT INTO posts (header, text, creationDate, publicationDate, isPublished ) VALUES (?,?,CURRENT_TIMESTAMP, ?, ?)
+    </entry>
+    <entry key="READ_BY_ID">
+        SELECT id, header, text, creationDate, publicationDate, isPublished FROM posts WHERE id = ?
+    </entry>
+    <entry key="READ_ALL">
+        SELECT id, header, SUBSTRING(text, 1, 500) AS text, creationDate, publicationDate, isPublished FROM posts WHERE id>=2 ORDER BY id DESC
+    </entry>
+    <entry key="READ_PUBLISHED">
+        SELECT id, header, SUBSTRING(text, 1, 500) AS text, creationDate, publicationDate, isPublished FROM posts WHERE id>=2 &amp;&amp; isPublished=1 ORDER BY id DESC
+    </entry>
+    <entry key="DELETE_BY_ID">
+        DELETE FROM posts WHERE id = ?
+    </entry>
+    <entry key="EDIT_BY_ID">
+        UPDATE posts SET header = ?, text = ?, isPublished = ? WHERE id = ?
+    </entry>
+    <entry key="GET_POST_ID_BY_COMMENT_ID">
+        SELECT post_id FROM comments where id =
+    </entry>
+    <entry key="DELETE_COMMENT_BY_ID">
+        DELETE from comments where id = ?
+    </entry>
 </properties>

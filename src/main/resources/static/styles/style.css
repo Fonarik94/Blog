@@ -13,6 +13,9 @@ h1{
     font-weight: bold;
     margin: 0;
 }
+hr{
+    width: 100%;
+}
 h2{
     margin: 0;
 }
@@ -186,4 +189,8 @@ A, A:visited{
     height: auto;
     background-color: white;
     width: 100%;
+}
+.error{
+    font-weight: bold;
+    color: firebrick;
 }

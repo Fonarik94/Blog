@@ -12,8 +12,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Slf4j
-public class AdministrationServlet {
-    @Autowired PostDao postDao;
+public class AdministrationController {
+    private final PostDao postDao;
+
+    @Autowired
+    public AdministrationController(PostDao postDao) {
+        this.postDao = postDao;
+    }
 
     @GetMapping(value = "/administration")
     public String wol(Model model) {
@@ -30,58 +35,50 @@ public class AdministrationServlet {
 
     @GetMapping(value = "/administration/postwriter/addpost")
     public String addPostButton(Model model) {
-        model.addAttribute("postHeader", "");
-        model.addAttribute("text", "");
+        model.addAttribute("post", new Post());
         model.addAttribute("requestedPage", "/addEditPost.ftl");
         return "administration";
     }
 
     @GetMapping(value = "/administration/postwriter/edit")
     public String editPostButton(@RequestParam("editbyid") int id, Model model) {
-        Post post = postDao.getPostById(id);
-        model.addAttribute("postHeader", post.getHeader());
-        model.addAttribute("text", post.getText());
+        model.addAttribute("post", postDao.getPostById(id));
+        model.addAttribute("comments", postDao.getComments(id));
         model.addAttribute("requestedPage", "/addEditPost.ftl");
         return "administration";
     }
 
     @PostMapping(value = "/administration/postwriter/edit")
-    public ModelAndView editById(@RequestParam("editbyid") int id,
-                                 @RequestParam("postHeaderInput") String header,
-                                 @RequestParam("postTextInput") String text,
-                                 @RequestParam(value = "isPublished", required = false) String isPublised) {
-
-        postDao.editPostById(id, header, text, isPublised != null);
-        log.debug(">> Edited post with id: " + id);
+    public ModelAndView editById(@ModelAttribute("post") Post post) {
+        postDao.editPostById(post.getId(), post.getHeader(), post.getText(), post.isPublished());
+        log.debug(">> Edited post with id: " + post.getId());
         return new ModelAndView("redirect:/administration/postwriter");
     }
 
     @PostMapping(value = "/administration/postwriter/addpost")
-    public ModelAndView addPost(@RequestParam("postHeaderInput") String postHeader,
-                                @RequestParam("postTextInput") String text,
-                                @RequestParam(value = "isPublished", required = false) String isPublished) {
-        boolean published;
-        published = isPublished != null;
-        postDao.addPost(postHeader, text, published);
+    public ModelAndView addPost( @ModelAttribute("post") Post post) {
+        postDao.addPost(post.getHeader(), post.getText(), post.isPublished());
         log.debug(">> Post added");
         return new ModelAndView("redirect:/administration/postwriter");
     }
 
-    @RequestMapping(value = "/administration", method = RequestMethod.POST)
+    @PostMapping(value = "/administration")
     public ModelAndView wolSender(@RequestParam("mac") String mac) {
         WakeOnLan.wake(mac);
         log.debug("Wake-on-lan request. MAC: " + mac);
         return new ModelAndView("redirect:/administration");
     }
 
-    @RequestMapping(value = "/administration/postwriter/delete", method = RequestMethod.POST)
+    @DeleteMapping(value = "/administration/postwriter/delete/{type:[\\w]+}/{id:[\\d]+}")
     @ResponseBody
-    public String ajaxDelete(@RequestParam("deleteById") int id) {
-        log.debug(">> Deleted post with ID = " + id);
-        postDao.deletePostById(id);
+    public String ajaxDelete(@PathVariable String type, @PathVariable int id) {
+        log.debug(">> Delete "+type+" with ID = " + id);
+        if(type.equalsIgnoreCase("post")){
+            postDao.deletePostById(id);
+        }else if (type.equalsIgnoreCase("comment")){
+            postDao.deleteCommentById(id);
+        }
         return "deleted";
     }
-
-
 
 }

@@ -44,33 +44,4 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
 
-    <!--Login configuration-->
-    <security-constraint>
-        <web-resource-collection>
-            <web-resource-name>secured</web-resource-name>
-            <url-pattern>/administration/*</url-pattern>
-            <http-method>GET</http-method>
-            <http-method>POST</http-method>
-            <http-method>DELETE</http-method>
-            <http-method>HEAD</http-method>
-            <http-method>UPDATE</http-method>
-        </web-resource-collection>
-
-        <auth-constraint>
-            <role-name>manager</role-name>
-        </auth-constraint>
-    </security-constraint>
-
-    <security-role>
-        <role-name>manager</role-name>
-    </security-role>
-
-    <login-config>
-        <auth-method>FORM</auth-method>
-        <form-login-config>
-            <form-login-page>/jsp/login.jsp</form-login-page>
-            <form-error-page>/jsp/error.jsp</form-error-page>
-        </form-login-config>
-    </login-config>
-
 </web-app>

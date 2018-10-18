@@ -16,8 +16,8 @@
             </p>
             <hr>
             <div class="editorItems">
-                <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.id}">Edit</a></div>
-                <div class="postEditorItem" onclick="deletePost(${post.id})">Delete</div>
+                <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.id}">Редактировать</a></div>
+                <div class="postEditorItem" style="background-color: #f09b9b" onclick="deleteEntity('post',${post.id})">Удалить</div>
             </div>
         </div>
     </div>
