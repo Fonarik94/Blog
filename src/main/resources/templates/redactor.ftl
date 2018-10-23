@@ -10,7 +10,11 @@
                 <br>
             </div>
             <div class="publicationDate">
-                ${post.getPublicationDateAsString()}
+                <#if post.publicationDateTime??>
+                    ${post.getPublicationDateAsString()}
+                <#else>
+                    Not published
+                </#if>
                 <br>
             </div>
             <p>
@@ -19,7 +23,7 @@
             <hr>
             <div class="editorItems">
                 <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.id}">Редактировать</a></div>
-                <div class="postEditorItem" style="background-color: #f09b9b" onclick="deleteEntity('post',${post.id})">Удалить</div>
+                <div class="postEditorItem" style="background-color: #f09b9b" onclick="deletePost(${post.id})">Удалить</div>
             </div>
         </div>
     </div>

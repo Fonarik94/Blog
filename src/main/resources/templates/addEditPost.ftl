@@ -1,4 +1,4 @@
-<#--@ftlvariable name="comments" type="List"-->
+<#--@ftlvariable name="comment" type="com.fonarik94.domain.Comment"-->
 <#--@ftlvariable name="post" type="com.fonarik94.domain.Post"-->
 <#import "/spring.ftl" as spring/>
 <#import "parts/common.ftl" as c>
@@ -12,6 +12,7 @@
         <label for="text">Текст поста</label>
         <@spring.formTextarea "post.text",'rows=30 cols=80 id="textInput" name="postTextInput"'/>
         <@spring.formHiddenInput "post.id", 'value=${post.id}'/>
+        <#--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
         <div>
             <label for="isPublished">Опубликовано</label>
             <@spring.formCheckbox "post.published"/>
@@ -21,14 +22,14 @@
 </div>
 
 <div class="square">
-    <#if comments?has_content>
-        <#list comments as comment>
+    <#if post.comments?has_content>
+        <#list post.comments as comment>
             <div class="comment" id=${comment.getId()}>
                 <h2>${comment.author}</h2>
                 <h5>${comment.getPublicationDateAsString()}</h5>
                 <p>${comment.text}</p>
                 <div class="editorItems">
-                    <div class="postEditorItem" style="background-color: #f09b9b" onclick="deleteEntity('comment', ${comment.id})">
+                    <div class="postEditorItem" style="background-color: #f09b9b" onclick="deleteComment(${comment.id})">
                         Удалить
                     </div>
                 </div>

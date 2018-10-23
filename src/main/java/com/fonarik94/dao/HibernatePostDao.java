@@ -2,10 +2,11 @@ package com.fonarik94.dao;
 
 import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
+import com.fonarik94.repo.PostDao;
 
 import java.util.List;
 
-public class HibernatePostDao implements PostDao{
+public class HibernatePostDao implements PostDao {
     @Override
     public void addPost(String postHeader, String postText, boolean isPublished) {
 

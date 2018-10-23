@@ -12,18 +12,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
-                .authorizeRequests().antMatchers("/favicon.ico").permitAll()
-                .antMatchers("/resources").permitAll()
+        http.csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/", "/resources")
+                .permitAll()
                 .antMatchers("/administration")
                 .hasRole("ADMIN")
                 .and()
                 .formLogin()
-                .loginPage("/login").permitAll()
+                .loginPage("/login")
+                .permitAll()
                 .and()
-                .logout().permitAll().logoutUrl("/logout").logoutSuccessUrl("/");
+                .logout()
+                .permitAll()
+                .logoutUrl("/logout").logoutSuccessUrl("/")
+        ;
+
     }
+
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

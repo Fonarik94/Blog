@@ -2,7 +2,9 @@ package com.fonarik94.domain;
 
 import lombok.*;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,30 +14,35 @@ import java.util.List;
 @RequiredArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+@Entity(name = "Post")
+@Table(name = "posts")
 public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NonNull
     private String header;
     @NonNull
     private String text;
     @NotNull
-    private boolean isPublished;
+    private boolean published;
     private LocalDateTime creationDate;
     private LocalDateTime publicationDateTime;
-    private List<Comment> commentList = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "post_id")
+    private List<Comment> comments = new ArrayList<>();
     private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
-
     public void addComment(Comment comment){
-        commentList.add(comment);
+        comments.add(comment);
     }
 
     public void addAllComments(List<Comment> comments){
-        commentList.addAll(comments);
+        this.comments.addAll(comments);
     }
 
     public String getPublicationDateAsString() {
-        if (isPublished) {
+        if (published) {
             return dateTimeFormat.format(publicationDateTime);
         } else {
             return "Not published";

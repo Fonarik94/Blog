@@ -8,6 +8,7 @@
             <input id="mac" type="text" name="mac" value="BC-AE-C5-74-0E-BB">
         </div>
         <br>
+        <#--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
         <button id="block" type="submit" autofocus>Разбудить</button>
     </form>
 </div>

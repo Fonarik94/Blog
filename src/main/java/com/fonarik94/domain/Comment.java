@@ -1,11 +1,10 @@
 package com.fonarik94.domain;
 
 import lombok.*;
-import org.hibernate.validator.constraints.*;
-import org.springframework.lang.Nullable;
+import org.hibernate.validator.constraints.SafeHtml;
 
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -13,7 +12,11 @@ import java.time.format.DateTimeFormatter;
 @EqualsAndHashCode
 @RequiredArgsConstructor
 @NoArgsConstructor
+@Entity(name = "Comment")
+@Table(name = "comments")
 public class Comment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     @NonNull
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
@@ -24,7 +27,6 @@ public class Comment {
     @SafeHtml(whitelistType = SafeHtml.WhiteListType.NONE)
     @NotBlank(message = "Коментарий не может быть пустым")
     private String text;
-    private Comment answer;
     private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
     public String getPublicationDateAsString(){

@@ -2,18 +2,16 @@ package com.fonarik94.dao;
 
 import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
+import com.fonarik94.repo.PostDao;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.lang.Nullable;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -36,7 +34,7 @@ public class JDBCPostDao implements PostDao {
             post.setText(resultSet.getString("text"));
             post.setCreationDate(resultSet.getTimestamp("creationDate").toLocalDateTime());
             post.setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime());
-            post.setPublished(resultSet.getBoolean("isPublished"));
+            post.setPublished(resultSet.getBoolean("published"));
             return post;
         }
     };
@@ -121,7 +119,7 @@ public class JDBCPostDao implements PostDao {
     }
 
     public List<Comment> getComments(int postId){
-        return getPostById(postId).getCommentList();
+        return getPostById(postId).getComments();
     }
 
 }

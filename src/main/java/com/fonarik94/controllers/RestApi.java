@@ -1,6 +1,6 @@
 package com.fonarik94.controllers;
 
-import com.fonarik94.dao.PostDao;
+import com.fonarik94.repo.PostDao;
 import com.fonarik94.domain.Post;
 import com.fonarik94.domain.PostResource;
 import lombok.extern.slf4j.Slf4j;

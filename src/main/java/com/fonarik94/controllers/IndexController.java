@@ -1,40 +1,41 @@
 package com.fonarik94.controllers;
 
-import com.fonarik94.dao.PostDao;
+import com.fonarik94.domain.Post;
+import com.fonarik94.repo.PostDao;
 import com.fonarik94.domain.Comment;
+import com.fonarik94.repo.PostRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @Slf4j
+@RequestMapping(value = "/")
 public class IndexController {
-    private final PostDao postDao;
     private final HttpServletRequest request;
+    private final PostRepository postRepository;
 
-    @GetMapping(value = "/")
+    @GetMapping()
     public String main(Model model){
-        model.addAttribute("publishedPosts", postDao.getPublishedPosts());
+        model.addAttribute("publishedPosts", postRepository.findByPublishedTrueOrderByPublicationDateTimeDesc());
         log.debug(">> Client IP: " + getClientIp(request));
         return "posts";
     }
 
-    @GetMapping(value = "/about")
+    @GetMapping(value = "about")
     public String about(Model model){
-        model.addAttribute("aboutPage", postDao.getPostById(1)); //Post ID 1 is about page
+        model.addAttribute("aboutPage", postRepository.findById(1)); //Post ID 1 is about page
         return "about";
     }
 
-
-    @GetMapping(value = "/post/{id:[\\d]+}")
+    @GetMapping(value = "post/{id:[\\d]+}")
     public String getPost(@PathVariable ("id") int id, Model model){
-        model.addAttribute("comments", postDao.getComments(id));
-        model.addAttribute("requestedPost", postDao.getPostById(id));
+        Post post = postRepository.findById(id).get();
+        model.addAttribute("post", post);
         if(!model.containsAttribute("comment")) {
             model.addAttribute("comment", new Comment()); // for validation
         }
@@ -50,8 +51,8 @@ public class IndexController {
     }
 
     @Autowired
-    public IndexController(PostDao postDao, HttpServletRequest request) {
-        this.postDao = postDao;
+    public IndexController(HttpServletRequest request, PostRepository postRepository) {
         this.request = request;
+        this.postRepository = postRepository;
     }
 }

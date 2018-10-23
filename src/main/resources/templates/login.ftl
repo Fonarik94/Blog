@@ -23,6 +23,7 @@
                 <label for="password">Password</label>
                 <input id="password" type="password" name="password">
                 <br>
+                <#--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
                 <input id="block" type="submit" autofocus value="Войти">
             </form>
         </div>
@@ -37,6 +38,7 @@
                 <label for="password">Пароль</label>
                 <input id="password" type="password" name="password">
                 <br>
+                <#--<input type="hidden" name="${_csrf}" value="${_csrf.token}"/>-->
                 <input id="block" type="submit" autofocus value="Зарегистрироваться">
             </form>
         </div>

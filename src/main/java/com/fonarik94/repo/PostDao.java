@@ -1,4 +1,4 @@
-package com.fonarik94.dao;
+package com.fonarik94.repo;
 
 import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
