@@ -1,3 +1,4 @@
+<#-- @ftlvariable name="captcha_error" type="java.lang.String" -->
 <#-- @ftlvariable name="comments" type="java.util.List" -->
 <#-- @ftlvariable name="comment" type="com.fonarik94.domain.Comment" -->
 <#-- @ftlvariable name="post" type="com.fonarik94.domain.Post" -->
@@ -35,7 +36,13 @@
         <@spring.showErrors "<br>", 'error'/>
         <br>
     <#--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
-        <input type="hidden" name="post" value="${post.id}"/>
+        <div>
+            <div class="g-recaptcha" data-sitekey="6LdbcnYUAAAAABc9JALRpKnT6S9yBPVVhYhlZ4D4"></div>
+            <#if captcha_error??>
+                <span class="error">${captcha_error}</span>
+            </#if>
+            <br>
+        </div>
         <div class="postEditorItems">
             <input type="submit" class="postEditorItem" value="Опубликовать"/>
         </div>

@@ -5,8 +5,10 @@
 <head>
     <meta charset="UTF-8" name="theme-color" content="#8FF7A7">
     <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer type="text/javascript" src="/resources/js/common.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <title>IT blog</title>
 
     <script>
@@ -65,6 +67,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script defer type="text/javascript" src="/resources/js/common.js"></script>
     <script defer src="/resources/js/administration.js"></script>
