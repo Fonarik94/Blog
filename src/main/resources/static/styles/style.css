@@ -1,4 +1,4 @@
-@import "fonts.css";
+/*@import "fonts.css";*/
 body{
     margin:0;
     display: flex;
@@ -8,24 +8,24 @@ body{
     align-items: stretch;
     font-family: Arial;
 }
-h1{
-    font-size: 18pt;
-    font-weight: bold;
-    margin: 0;
-}
-hr{
-    width: 100%;
-}
-h2{
-    margin: 0;
-}
-h5{
-    margin: 2px;
-    color: gray;
-}
-A, A:visited{
-    color: black;
-}
+/*h1{*/
+    /*font-size: 18pt;*/
+    /*font-weight: bold;*/
+    /*margin: 0;*/
+/*}*/
+/*hr{*/
+    /*width: 100%;*/
+/*}*/
+/*h2{*/
+    /*margin: 0;*/
+/*}*/
+/*h5{*/
+    /*margin: 2px;*/
+    /*color: gray;*/
+/*}*/
+/*A, A:visited{*/
+    /*color: black;*/
+/*}*/
 .center-area{
     background-color: #51BBFE;
     flex-direction: column;

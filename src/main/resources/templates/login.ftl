@@ -1,51 +1,24 @@
-<html>
+<html class="mdl-js">
 <head>
     <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/resources/js/common.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.1/examples/sign-in/signin.css">
     <title>Login</title>
 </head>
-<body>
+<body class="text-center">
+<form class="form-signin" name="authform" action="/login" method="post">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <#--<label for="user" class="sr-only">Login</label>-->
+    <input class="form-control" placeholder="Login" type="text" name="username">
+    <br>
+    <#--<label for="password" class="sr-only">Password</label>-->
+    <input class="form-control" placeholder="Password" type="password" name="password">
+    <br>
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    <button class="btn btn-lg btn-primary btn-block" autofocus type="submit">Sign in</button>
+</form>
 
-<div class="center-area">
-    <div class="center">
-
-        <div id="loginmethod">
-
-            <div id="auth" onclick="chooseLoginMethod(1)">Sing in</div>
-            <div id="register" onclick="chooseLoginMethod(2)">Sing up</div>
-        </div>
-        <div id="authblock">
-            <form id="authform" name="authform" action="/login" method="post">
-                <label for="user">Login</label>
-                <input id="user" type="text" name="username">
-                <br>
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password">
-                <br>
-                <#--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
-                <input id="block" type="submit" autofocus value="Войти">
-            </form>
-        </div>
-        <div id="registerblock" style="display: none">
-            <form id="registerform" name="registerform" action="/register" method="post" >
-                <label for="email">E-mail</label>
-                <input id="email" type="text" name="email">
-                <br>
-                <label for="username">Имя пользователя</label>
-                <input id="username" type="text" name="username">
-                <br>
-                <label for="password">Пароль</label>
-                <input id="password" type="password" name="password">
-                <br>
-                <#--<input type="hidden" name="${_csrf}" value="${_csrf.token}"/>-->
-                <input id="block" type="submit" autofocus value="Зарегистрироваться">
-            </form>
-        </div>
-    </div>
-</div>
 </body>
-<#if requestedURI == "/register">
-<script language="JavaScript">chooseLoginMethod(2);</script>
-</#if>
 </html>

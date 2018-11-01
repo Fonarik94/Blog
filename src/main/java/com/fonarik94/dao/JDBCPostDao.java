@@ -33,7 +33,7 @@ public class JDBCPostDao implements PostDao {
             post.setHeader(resultSet.getString("header"));
             post.setText(resultSet.getString("text"));
             post.setCreationDate(resultSet.getTimestamp("creationDate").toLocalDateTime());
-            post.setPublicationDateTime(resultSet.getTimestamp("publicationDate").toLocalDateTime());
+            post.setPublicationDate(resultSet.getTimestamp("publicationDate").toLocalDateTime());
             post.setPublished(resultSet.getBoolean("published"));
             return post;
         }

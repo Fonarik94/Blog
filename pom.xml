@@ -11,12 +11,13 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.0.6.RELEASE</version>
+        <relativePath/>
     </parent>
 
     <properties>
 <!--        <maven.compiler.source>1.10</maven.compiler.source>
         <maven.compiler.target>1.10</maven.compiler.target>-->
-        <servlet-api.version>3.1.0</servlet-api.version>
+        <!--<servlet-api.version>3.1.0</servlet-api.version>-->
         <log4j.version>2.10.0</log4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <commons.fileupload.version>1.2.1</commons.fileupload.version>
@@ -26,9 +27,9 @@
         <commons.io.version>2.0.1</commons.io.version>
         <jackson.version>2.9.7</jackson.version>
         <lombok.version>1.18.2</lombok.version>
-        <spring.version>5.1.1.RELEASE</spring.version>
-        <tomcat.version>9.0.4</tomcat.version>
-        <java.version>1.10</java.version>
+        <!--<spring.version>5.1.1.RELEASE</spring.version>-->
+        <!--<tomcat.version>9.0.4</tomcat.version>-->
+        <!--<java.version>1.8</java.version>-->
     </properties>
 
     <dependencies>
@@ -67,6 +68,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
         </dependency>
         <!--Security-->
         <dependency>

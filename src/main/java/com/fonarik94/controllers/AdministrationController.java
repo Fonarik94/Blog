@@ -7,6 +7,7 @@ import com.fonarik94.repo.PostRepository;
 import com.fonarik94.utils.WakeOnLan;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,13 +23,13 @@ public class AdministrationController {
     private final CommentRepository commentRepository;
 
     @Autowired
-    public AdministrationController(PostDao postDao, PostRepository postRepository, CommentRepository commentRepository) {
+    public AdministrationController(PostRepository postRepository, CommentRepository commentRepository) {
         this.postRepository = postRepository;
         this.commentRepository = commentRepository;
     }
 
-    @GetMapping()
-    public String wol(Model model) {
+    @GetMapping("wol")
+    public String wol() {
         return "wol";
     }
 
@@ -64,7 +65,7 @@ public class AdministrationController {
     @PostMapping(value = "/postwriter/addpost")
     public ModelAndView addPost( @ModelAttribute("post") Post post) {
         if (post.isPublished()){
-            post.setPublicationDateTime(LocalDateTime.now());
+            post.setPublicationDate(LocalDateTime.now());
         }
         postRepository.save(post);
         log.debug(">> Post added");

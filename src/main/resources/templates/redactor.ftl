@@ -1,31 +1,24 @@
 <#import "parts/common.ftl" as c>
-<@c.adminTemplate>
+<@c.commonTemplate>
 <#list allPosts as post>
-    <div class="square all">
+    <div class="card p-3 m-3 shadow">
         <div id="${post.id}">
-            <div class="postHeader">
-                <b>
-                    ${post.header}
-                </b>
-                <br>
-            </div>
-            <div class="publicationDate">
-                <#if post.publicationDateTime??>
+            <h4 class="card-title">${post.header}</h4>
+            <h6 class="card-subtitle text-muted mb-2">
+                <#if post.publicationDate??>
                     ${post.getPublicationDateAsString()}
                 <#else>
                     Not published
                 </#if>
                 <br>
-            </div>
-            <p>
-                ${post.text}
-            </p>
+            </h6>
+<#--            <p class="card-text">
+                ${post.text[0..400]}
+            </p>-->
             <hr>
-            <div class="editorItems">
-                <div class="postEditorItem"><a href="postwriter/edit?editbyid=${post.id}">Редактировать</a></div>
-                <div class="postEditorItem" style="background-color: #f09b9b" onclick="deletePost(${post.id})">Удалить</div>
-            </div>
+                <a class="btn btn-primary" href="postwriter/edit?editbyid=${post.id}">Редактировать</a>
+                <div class="btn btn-danger"  onclick="deletePost(${post.id})">Удалить</div>
         </div>
     </div>
 </#list>
-</@c.adminTemplate>
+</@c.commonTemplate>

@@ -7,6 +7,7 @@ function deleteComment(commentId) {
             })
         })
     }
+}
 
     function deletePost(id) {
         if (confirm("Удалить пост " + id + " ?")) {
@@ -18,15 +19,4 @@ function deleteComment(commentId) {
                 }
             )
         }
-    }
-
-
-    function deleteComment(id) {
-
-    }
-
-    function logout() {
-        $.get("/logout", function () {
-        });
-    }
 }

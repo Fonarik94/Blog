@@ -27,7 +27,7 @@ public class Post {
     @NotNull
     private boolean published;
     private LocalDateTime creationDate;
-    private LocalDateTime publicationDateTime;
+    private LocalDateTime publicationDate;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "post_id")
     private List<Comment> comments = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Post {
 
     public String getPublicationDateAsString() {
         if (published) {
-            return dateTimeFormat.format(publicationDateTime);
+            return dateTimeFormat.format(publicationDate);
         } else {
             return "Not published";
         }

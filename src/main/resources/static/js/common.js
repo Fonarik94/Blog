@@ -17,25 +17,10 @@ jQuery.each( [ "put", "delete" ], function( i, method ) {
     };
 });
 
-function stickyTop(){
-    $(window).scroll(function(){
-        if($(this).scrollTop() >= parseInt($('#topbar').css("height"))){
-            $('#menubar').css({
-                top: '0',
-                position: 'fixed'
-            })
-            $('#content').css({
-                "padding-top": $('#menubar').css("height")
-            });
-        }
-        else{
-            $('#menubar').css({
-                top:'auto',
-                position:'sticky'
-            });
-            $('#content').css({
-                "padding-top": 0
-            });
+function ajaxCsrf(name, token) {
+    jQuery.ajaxSetup({
+        headers:{
+            [name] : token
         }
     });
 }
@@ -60,11 +45,6 @@ function postComment(postId){
     $.post("/post/"+postId+"/addcomment", "text="+$('#textInput').val() + "&author="+$('#author').val())
 }
 
-function showAddCommentForm(){
-    $('#addComment').show("slow");
-    $('#showForm').hide("slow");
-}
 
 $(document).ready(function(){
-    stickyTop();
 });

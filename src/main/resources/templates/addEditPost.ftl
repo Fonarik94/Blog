@@ -2,45 +2,52 @@
 <#--@ftlvariable name="post" type="com.fonarik94.domain.Post"-->
 <#import "/spring.ftl" as spring/>
 <#import "parts/common.ftl" as c>
-<@c.adminTemplate>
+<@c.commonTemplate>
 <script type="text/javascript" src="/resources/ckeditor/ckeditor.js"></script>
-<div class="square" id="single">
+<div class="card p-3 m-3 shadow">
     <form id="editor" method="post" accept-charset="UTF-8">
         <@spring.bind "post"/>
-        <label for="headerInput">Заголовок</label>
-        <@spring.formTextarea "post.header", 'rows=2 id="headerInput" name="postHeaderInput"'/>
-        <label for="text">Текст поста</label>
-        <@spring.formTextarea "post.text",'rows=30 cols=80 id="textInput" name="postTextInput"'/>
-        <@spring.formHiddenInput "post.id", 'value=${post.id}'/>
-        <#--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
-        <div>
-            <label for="isPublished">Опубликовано</label>
-            <@spring.formCheckbox "post.published"/>
+        <div class="form-group">
+            <label for="headerInput">Заголовок</label>
+            <@spring.formInput "post.header", 'class="form-control" name="headerInput"'/>
         </div>
-        <input id="block" type="submit" name="saveButton" value="Сохранить">
+        <div class="form-group">
+            <label for="text">Текст поста</label>
+            <@spring.formTextarea "post.text",'class="form-control" rows=50 cols=80 name="text"'/>
+        </div>
+        <@spring.formHiddenInput "post.id", 'value=${post.id}'/>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <div class="checkbox">
+            <label for="published">
+                <@spring.formCheckbox "post.published"/>Опубликовано
+            </label>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="Сохранить">
+        </div>
     </form>
 </div>
 
-<div class="square">
+<div class="card p-3 m-3 shadow">
     <#if post.comments?has_content>
         <#list post.comments as comment>
             <div class="comment" id=${comment.getId()}>
-                <h2>${comment.author}</h2>
-                <h5>${comment.getPublicationDateAsString()}</h5>
+                <h5>${comment.author}</h5>
+                <h6 class="card-subtitle text-muted mb-2">
+                    ${comment.getPublicationDateAsString()}
+                </h6>
                 <p>${comment.text}</p>
-                <div class="editorItems">
-                    <div class="postEditorItem" style="background-color: #f09b9b" onclick="deleteComment(${comment.id})">
+                    <div class="btn btn-danger" onclick="deleteComment(${comment.id})">
                         Удалить
                     </div>
-                </div>
-                <hr>
             </div>
-            </#list>
-        <#else>
+            <#sep ><hr>
+        </#list>
+    <#else>
             <p>Коментариев пока нет</p>
     </#if>
 </div>
 <script>
     CKEDITOR.replace('text');
 </script>
-</@c.adminTemplate>
+</@c.commonTemplate>
