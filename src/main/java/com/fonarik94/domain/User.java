@@ -2,17 +2,16 @@ package com.fonarik94.domain;
 
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Set;
+
 @Slf4j
 @Data
-@NoArgsConstructor
-@RequiredArgsConstructor
+@Builder
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@AllArgsConstructor
 @Entity(name = "User")
 @Table(name = "users")
 public class User implements UserDetails {
@@ -21,11 +20,13 @@ public class User implements UserDetails {
     int id;
     @NonNull
     private String username;
+    private String email;
     @NonNull
     private String password;
     @ElementCollection(targetClass = Roles.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
+    @Singular
     private Set<Roles> authorities;
     boolean accountNonExpired;
     boolean accountNonLocked;
@@ -33,3 +34,4 @@ public class User implements UserDetails {
     boolean enabled;
 
 }
+

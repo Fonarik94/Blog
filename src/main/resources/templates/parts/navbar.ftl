@@ -27,7 +27,7 @@
         </ul>
         <div class="navbar-right">
         <#if known>
-            <a class="btn btn-outline-danger" href="/logout">Выйти</a>
+            <button class="btn btn-outline-danger" onclick="logout()">Выйти</button>
         <#else>
             <a class="btn btn-outline-success" href="/login">Войти</a>
         </#if>

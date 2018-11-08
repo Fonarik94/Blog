@@ -25,6 +25,12 @@ function ajaxCsrf(name, token) {
     });
 }
 
+function logout() {
+    $.post("/logout", function () {
+        document.location.href = "/";
+    });
+}
+
 function chooseLoginMethod(method){
     switch (method){
         case 1:

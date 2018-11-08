@@ -7,7 +7,13 @@
         </a>
         <div class="card-body">
             <h6 class="card-subtitle text-muted mb-2">${post.getPublicationDateAsString()}</h6>
-            <p class="card-text">${post.text[0..500]}...</p>
+            <p class="card-text">
+                <#if post.text?length gte 500>
+                    ${post.text[0..500]}...
+                <#else>
+                    ${post.text}
+                </#if>
+                </p>
         </div>
     </div>
     </#list>

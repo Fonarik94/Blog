@@ -3,33 +3,20 @@
     <groupId>com.fonarik94</groupId>
     <artifactId>Blog</artifactId>
     <packaging>jar</packaging>
-    <version>0.6-SNAPSHOT</version>
+    <version>0.7-SNAPSHOT</version>
     <name>Blog</name>
     <!--Spring Boot default config-->
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.6.RELEASE</version>
+        <version>2.1.0.RELEASE</version>
         <relativePath/>
     </parent>
 
     <properties>
-<!--        <maven.compiler.source>1.10</maven.compiler.source>
-        <maven.compiler.target>1.10</maven.compiler.target>-->
-        <!--<servlet-api.version>3.1.0</servlet-api.version>-->
-        <log4j.version>2.10.0</log4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <commons.fileupload.version>1.2.1</commons.fileupload.version>
-        <commons.io.version>2.0.1</commons.io.version>
-        <commons.logging.version>1.1.1</commons.logging.version>
-        <commons.lang.version>2.4</commons.lang.version>
-        <commons.io.version>2.0.1</commons.io.version>
-        <jackson.version>2.9.7</jackson.version>
-        <lombok.version>1.18.2</lombok.version>
-        <!--<spring.version>5.1.1.RELEASE</spring.version>-->
-        <!--<tomcat.version>9.0.4</tomcat.version>-->
-        <!--<java.version>1.8</java.version>-->
+        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -47,10 +34,14 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-            <scope>runtime</scope>
         </dependency>
-        <!--Percistance-->
+        <!--actuator-->
+        <!--        <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-actuator</artifactId>
+                    <scope>compile</scope>
+                </dependency>-->
+        <!--Persistence-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
@@ -62,16 +53,11 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.3.7.Final</version>
         </dependency>
         <!--Template engine-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
         </dependency>
         <!--Security-->
         <dependency>
@@ -82,14 +68,12 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.12</version>
         </dependency>
 
         <!-- Jackson JSON Mapper -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-            <version>${jackson.version}</version>
         </dependency>
 
         <dependency>
@@ -102,17 +86,12 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-            <scope>provided</scope>
         </dependency>
-
         <!--Test-->
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 

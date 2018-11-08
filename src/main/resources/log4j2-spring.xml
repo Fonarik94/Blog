@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="warn" monitorInterval="300">
+<Configuration>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
             <ThresholdFilter level="WARN" onMatch="DENY" onMisMatch="ACCEPT"/>
@@ -14,8 +14,8 @@
             </PatternLayout>
         </Console>
 
-        <RollingFile name="FileOutput" fileName="/logs/root/${date:dd-MM-yyyy}/LastLog.txt"
-                     filePattern="/logs/root/${date:dd-MM-yyyy}/%d{dd-MM-yyyy}-%i.txt"
+        <RollingFile name="FileOutput" fileName="${date:dd-MM-yyyy}/LastLog.txt"
+                     filePattern="${date:dd-MM-yyyy}/%d{dd-MM-yyyy}-%i.txt"
                      bufferedIO="true"
                      append="true"
                      ignoreExceptions="false">
@@ -41,6 +41,5 @@
         <Logger name="com.fonarik94.controllers.AdministrationController" level="debug" additivity="true"/>
         <Logger name="org.springframework.beans.factory.support.SimpleInstantiationStrategy" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.domain.Post" level="debug" additivity="true"/>
-        <Logger name="com.fonarik94.dao.JDBCPostDao" level="debug" additivity="true"/>
     </Loggers>
 </Configuration>

@@ -22,6 +22,7 @@ import java.util.Map;
 @Repository
 @Slf4j
 @Scope("prototype")
+@Deprecated
 public class JDBCPostDao implements PostDao {
     private static Map<Integer, Post> cache = new HashMap<>();
     private final JdbcTemplate jdbcTemplate;

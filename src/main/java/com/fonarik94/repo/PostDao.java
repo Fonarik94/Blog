@@ -4,7 +4,7 @@ import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
 
 import java.util.List;
-
+@Deprecated
 public interface PostDao {
     void addPost(String postHeader, String postText, boolean isPublished);
     Post getPostById(int id);

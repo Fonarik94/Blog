@@ -24,18 +24,23 @@
                 </h6>
                 <p>${comment.text}</p>
             </div>
-            <#sep><hr>
+            <#sep>
+                <hr>
         </#list>
     <#else>
         <p>Коментариев пока нет, будьте первым!</p>
     </#if>
     <form id="editor" action="/post/${post.id}" method="post" accept-charset="UTF-8">
         <@spring.bind "comment"/>
+        <div class="form-group">
         <@spring.formInput "comment.author", 'class="form-control mb-3" id="author" name="author" placeholder="Имя"'/>
         <@spring.showErrors "<br>", 'alert alert-danger mb-3'/>
-        <@spring.formTextarea "comment.text", 'class="form-control mb-3" "rows="6" cols="20" placeholder="Ваш коментарий" name="text"' />
+        </div>
+        <div class="form-group">
+        <@spring.formTextarea "comment.text", 'class="form-control mb-3" "rows="6" cols="20" placeholder="Ваш коментарий"'/>
         <@spring.showErrors "<br>", 'alert alert-danger mb-3'/>
-    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </div>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div class="mb-3">
             <div class="g-recaptcha" data-sitekey="6LdbcnYUAAAAABc9JALRpKnT6S9yBPVVhYhlZ4D4"></div>
             <#if captcha_error??>

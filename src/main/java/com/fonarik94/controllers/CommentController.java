@@ -27,8 +27,15 @@ public class CommentController {
     private static final String CAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
     @Value("${recaptcha.secret}")
     private String captchaSecret;
-    @Autowired private PostRepository postRepository;
-    @Autowired private RestTemplate restTemplate;
+    private final PostRepository postRepository;
+    private final RestTemplate restTemplate;
+
+    @Autowired
+    public CommentController(PostRepository postRepository, RestTemplate restTemplate) {
+        this.postRepository = postRepository;
+        this.restTemplate = restTemplate;
+    }
+
     @PostMapping(value = "/post/{id:[\\d]+}")
     public String addComment(@Valid @ModelAttribute Comment comment,
                              BindingResult bindingResult,
