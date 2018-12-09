@@ -1,4 +1,4 @@
-package com.fonarik94.dao.dto;
+package com.fonarik94.dto;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

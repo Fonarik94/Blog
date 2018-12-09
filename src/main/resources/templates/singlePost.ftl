@@ -12,7 +12,7 @@
         <small class="card-text text-muted ml-3">
             ${post.getPublicationDateAsString()}
         </small>
-        <div class="card-body pt-1">${post.text}</div>
+        <div class="card-body pt-1 ">${post.text}</div>
     </div>
 
     <div class="card p-3 mt-3 mb-3 shadow">

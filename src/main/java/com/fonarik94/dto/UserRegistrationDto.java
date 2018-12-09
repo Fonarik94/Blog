@@ -1,4 +1,4 @@
-package com.fonarik94.dao.dto;
+package com.fonarik94.dto;
 
 import lombok.Data;
 import org.springframework.stereotype.Component;

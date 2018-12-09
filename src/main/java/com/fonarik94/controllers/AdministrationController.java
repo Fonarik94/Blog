@@ -1,18 +1,15 @@
 package com.fonarik94.controllers;
 
-import com.fonarik94.repo.CommentRepository;
-import com.fonarik94.repo.PostDao;
 import com.fonarik94.domain.Post;
+import com.fonarik94.repo.CommentRepository;
 import com.fonarik94.repo.PostRepository;
 import com.fonarik94.utils.WakeOnLan;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import java.time.LocalDateTime;
 
 @Controller
@@ -26,11 +23,6 @@ public class AdministrationController {
     public AdministrationController(PostRepository postRepository, CommentRepository commentRepository) {
         this.postRepository = postRepository;
         this.commentRepository = commentRepository;
-    }
-
-    @GetMapping("wol")
-    public String wol() {
-        return "wol";
     }
 
     @GetMapping(value = "/postwriter")
@@ -72,11 +64,16 @@ public class AdministrationController {
         return new ModelAndView("redirect:/administration/postwriter");
     }
 
-    @PostMapping()
+    @GetMapping(value = "/wol")
+    public String wol(){
+        return "wol";
+    }
+
+    @PostMapping(value = "/wol")
     public ModelAndView wolSender(@RequestParam("mac") String mac) {
         WakeOnLan.wake(mac);
         log.debug("Wake-on-lan request. MAC: " + mac);
-        return new ModelAndView("redirect:/administration");
+        return new ModelAndView("redirect:/administration/wol");
     }
 
     @DeleteMapping(value = "/postwriter/delete/comment/{commentId:[\\d]+}")

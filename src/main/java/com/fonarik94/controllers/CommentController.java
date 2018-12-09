@@ -1,6 +1,6 @@
 package com.fonarik94.controllers;
 
-import com.fonarik94.dao.dto.CaptchaResponseDto;
+import com.fonarik94.dto.CaptchaResponseDto;
 import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
 import com.fonarik94.repo.PostRepository;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +17,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.Collection;
 import java.util.Collections;
 
 @Controller

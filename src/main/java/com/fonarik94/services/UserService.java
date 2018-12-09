@@ -1,4 +1,4 @@
-package com.fonarik94.service;
+package com.fonarik94.services;
 
 import com.fonarik94.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;

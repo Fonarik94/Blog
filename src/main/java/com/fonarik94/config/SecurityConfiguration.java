@@ -1,7 +1,7 @@
 package com.fonarik94.config;
 
 import com.fonarik94.domain.Roles;
-import com.fonarik94.service.UserService;
+import com.fonarik94.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,12 +16,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private UserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
+
     @Autowired
     public SecurityConfiguration(UserService userService) {
         this.userService = userService;
     }
+
     @Bean
-    public PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -29,7 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/resources")
+                .antMatchers("/*", "/resources/**")
                 .permitAll()
                 .antMatchers("/administration/**")
                 .hasAuthority(Roles.ADMIN.name())

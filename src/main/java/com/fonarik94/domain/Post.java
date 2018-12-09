@@ -1,6 +1,7 @@
 package com.fonarik94.domain;
 
 import lombok.*;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Entity(name = "Post")
 @Table(name = "posts")
+@Cacheable("posts")
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

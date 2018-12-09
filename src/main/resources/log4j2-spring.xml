@@ -36,7 +36,6 @@
             <AppenderRef ref="Warning" level="warn"/>
             <AppenderRef ref="FileOutput"/>
         </Root>
-        <Logger name="com.fonarik94.controllers.RestApi" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.controllers.IndexController" level="debug" additivity="true"/>
         <Logger name="com.fonarik94.controllers.AdministrationController" level="debug" additivity="true"/>
         <Logger name="org.springframework.beans.factory.support.SimpleInstantiationStrategy" level="debug" additivity="true"/>

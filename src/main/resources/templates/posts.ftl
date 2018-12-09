@@ -1,8 +1,9 @@
 <#import "parts/common.ftl" as c>
 <@c.commonTemplate>
-<div class="col-md-6 offset-md-3 p-0">
+<div class="col-md-8 offset-md-2 p-0">
+    <div class="card-deck">
     <#list publishedPosts as post>
-        <div class="card m-md-3 shadow">
+        <div class="card m-md-2 mt-md-3 shadow">
             <a href="post/${post.id}">
                 <h4 class="card-header">${post.header}</h4>
             </a>
@@ -18,5 +19,6 @@
             </div>
         </div>
     </#list>
+    </div>
 </div>
 </@c.commonTemplate>

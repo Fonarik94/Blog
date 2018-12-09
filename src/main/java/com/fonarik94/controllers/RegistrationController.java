@@ -1,6 +1,6 @@
 package com.fonarik94.controllers;
 
-import com.fonarik94.dao.dto.UserRegistrationDto;
+import com.fonarik94.dto.UserRegistrationDto;
 import com.fonarik94.domain.Roles;
 import com.fonarik94.domain.User;
 import com.fonarik94.repo.UserRepo;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.Collections;
 
 @Controller
 @Slf4j
