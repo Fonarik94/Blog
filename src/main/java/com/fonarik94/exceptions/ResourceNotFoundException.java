@@ -1,9 +1,8 @@
 package com.fonarik94.exceptions;
 
-import lombok.Data;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-@Data
-public class HttpException {
-    private int errorCode;
-    private String errorMessage;
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+public class ResourceNotFoundException extends RuntimeException {
 }

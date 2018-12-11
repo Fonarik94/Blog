@@ -44,7 +44,7 @@ public class CommentController {
         String captchaValidationUrl = String.format(CAPTCHA_URL, captchaSecret, captchaResponse);
         CaptchaResponseDto responseDto = restTemplate.postForObject(captchaValidationUrl, Collections.emptyList(), CaptchaResponseDto.class);
         boolean hasAnyErrors = false;
-        if(!responseDto.isSuccess()) {
+        if(captchaResponse!=null & !responseDto.isSuccess()) {
             redirectAttr.addFlashAttribute("captcha_error", "Заполните капчу");
             hasAnyErrors = true;
 

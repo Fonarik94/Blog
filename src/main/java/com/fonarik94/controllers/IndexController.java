@@ -2,6 +2,7 @@ package com.fonarik94.controllers;
 
 import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
+import com.fonarik94.exceptions.ResourceNotFoundException;
 import com.fonarik94.repo.PostRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +34,7 @@ public class IndexController {
 
     @GetMapping(value = "post/{id:[\\d]+}")
     public String getPost(@PathVariable ("id") int id, Model model){
-        Post post = postRepository.findById(id).get();
+        Post post = postRepository.findById(id).orElseThrow(ResourceNotFoundException::new);
         model.addAttribute("post", post);
         if(!model.containsAttribute("comment")) {
             model.addAttribute("comment", new Comment()); // for validation

@@ -1,6 +1,7 @@
 package com.fonarik94.controllers;
 
 import com.fonarik94.domain.Post;
+import com.fonarik94.exceptions.ResourceNotFoundException;
 import com.fonarik94.repo.CommentRepository;
 import com.fonarik94.repo.PostRepository;
 import com.fonarik94.utils.WakeOnLan;
@@ -46,7 +47,9 @@ public class AdministrationController {
 
     @PostMapping(value = "/postwriter/edit")
     public ModelAndView editById(@ModelAttribute("post") Post post) {
-        Post oldPost = postRepository.findById(post.getId()).get();
+        Post oldPost = postRepository
+                .findById(post.getId())
+                .orElseThrow(ResourceNotFoundException::new);
         oldPost.setHeader(post.getHeader());
         oldPost.setText(post.getText());
         oldPost.setPublished(post.isPublished());
@@ -86,7 +89,11 @@ public class AdministrationController {
     @DeleteMapping(value = "postwriter/delete/post/{postId:[\\d]+}")
     @ResponseBody
     public String deletePost(@PathVariable int postId){
-        postRepository.deleteById(postId);
+        if (!postRepository.existsById(postId)){
+            throw new ResourceNotFoundException();
+        }else {
+            postRepository.deleteById(postId);
+        }
         return "deleted";
     }
 
