@@ -45,7 +45,7 @@
             <div class="comment" id=${comment.getId()}>
                 <h5>${comment.author}</h5>
                 <h6 class="card-subtitle text-muted mb-2">
-                    ${comment.getPublicationDateAsString()}
+                    <small>${comment.getPublicationDateAsString()}</small>
                 </h6>
                 <p>${comment.text}</p>
                 <div class="btn btn-danger" onclick="deleteComment(${comment.id})">

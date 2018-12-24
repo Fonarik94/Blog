@@ -19,15 +19,15 @@
         <#if post.comments?has_content>
             <#list post.comments as comment>
                 <div class="media">
-                <div class="media-body">
-                <h5 class="mt-0">
-                ${comment.author}
-                </h5>
-                <h6 class="card-subtitle text-muted mb-2">
-                <small>${comment.getPublicationDateAsString()}</small>
-                </h6>
-                ${comment.text}
-                </div>
+                    <div class="media-body">
+                    <h5 class="mt-0">
+                    ${comment.author}
+                    </h5>
+                    <h6 class="card-subtitle text-muted mb-2">
+                        <small>${comment.getPublicationDateAsString()}</small>
+                    </h6>
+                        ${comment.text}
+                    </div>
                 </div>
                 <#sep>
                     <hr>

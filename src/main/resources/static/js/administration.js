@@ -1,8 +1,9 @@
 function deleteComment(commentId) {
     if (confirm("Уладилить коментарий " + commentId + "?")) {
-        $.delete("/administration/postwriter/delete/comment/" + commentId, function () {
+        var postid = getUrlParameter('editbyid');
+        $.delete("/administration/postwriter/delete/post/" + postid + "/comment/" + commentId, function () {
             let comment = $("#" + commentId);
-            $(comment).hide('slow', function () {
+            $(comment).fadeOut('slow', function () {
                 comment.remove()
             })
         })
@@ -18,6 +19,17 @@ function deletePost(id) {
                 })
             }
         )
+    }
+}
+
+function getUrlParameter(param){
+    var currentHref = window.location.search.substring(1);
+    var urlParams = currentHref.split('&');
+    for(var i = 0; urlParams.length; i++){
+        var sep = urlParams[i].split('=');
+        if(sep[0] === param){
+            return sep[1];
+        }
     }
 }
 
