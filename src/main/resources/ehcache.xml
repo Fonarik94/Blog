@@ -1,0 +1,53 @@
+<config
+        xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xmlns:jcache='http://www.ehcache.org/v3/jsr107'
+        xsi:schemaLocation="
+        http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+
+    <service>
+        <jcache:defaults enable-management="true" enable-statistics="true" default-template="common_template">
+            <jcache:cache name="posts" template="posts_template"/>
+            <jcache:cache name="comments" template="comments_template"/>
+        </jcache:defaults>
+    </service>
+
+    <cache alias="posts" uses-template="posts_template"/>
+    <cache alias="comments" uses-template="comments_template"/>
+    <cache alias="default-query-results-region" uses-template="common_template"/>
+    <cache alias="default-update-timestamps-region" uses-template="common_template"/>
+
+    <cache-template name="common_template">
+
+        <heap unit="entries">1000</heap>
+    </cache-template>
+
+    <cache-template name="posts_template">
+        <expiry>
+            <ttl unit="hours">2</ttl>
+        </expiry>
+        <heap unit="entries">100</heap>
+    </cache-template>
+    
+    <cache-template name="comments_template">
+        <expiry>
+            <ttl unit="hours">2</ttl>
+        </expiry>
+        <heap unit="entries">100</heap>
+    </cache-template>
+
+    <cache alias="org.hibernate.cache.spi.QueryResultsRegion">
+        <expiry>
+            <ttl unit="seconds">300</ttl>
+        </expiry>
+        <heap>300</heap>
+    </cache>
+
+    <cache alias="org.hibernate.cache.spi.TimestampsRegion">
+        <expiry>
+            <ttl unit="seconds">300</ttl>
+        </expiry>
+        <heap>300</heap>
+    </cache>
+
+</config>

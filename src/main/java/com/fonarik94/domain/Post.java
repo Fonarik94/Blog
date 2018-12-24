@@ -1,6 +1,8 @@
 package com.fonarik94.domain;
 
 import lombok.*;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,7 +20,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Entity(name = "Post")
 @Table(name = "posts")
-@Cacheable("posts")
+@Cache(region ="posts", usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,6 +28,7 @@ public class Post {
     @NonNull
     private String header;
     @NonNull
+    @Column(columnDefinition = "TEXT")
     private String text;
     @NotNull
     private boolean published;
@@ -33,15 +36,12 @@ public class Post {
     private LocalDateTime publicationDate;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "post_id")
+    @Cache(region = "comments", usage = CacheConcurrencyStrategy.READ_WRITE)
     private List<Comment> comments = new ArrayList<>();
     private static DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
 
     public void addComment(Comment comment){
         comments.add(comment);
-    }
-
-    public void addAllComments(List<Comment> comments){
-        this.comments.addAll(comments);
     }
 
     public String getPublicationDateAsString() {

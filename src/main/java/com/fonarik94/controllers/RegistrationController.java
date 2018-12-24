@@ -49,11 +49,11 @@ public class RegistrationController {
                         .authority(Roles.ADMIN)
                         .build();
                 userRepo.save(user);
-                User sss = new User();
             }
             return "redirect:/";
         }
     }
+
     @GetMapping("/register")
     public String register(Model model){
         if(!model.containsAttribute("userDto")) {

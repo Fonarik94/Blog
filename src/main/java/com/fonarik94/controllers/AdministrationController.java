@@ -1,5 +1,6 @@
 package com.fonarik94.controllers;
 
+import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
 import com.fonarik94.exceptions.ResourceNotFoundException;
 import com.fonarik94.repo.CommentRepository;
@@ -12,18 +13,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.time.LocalDateTime;
+import java.util.Iterator;
+import java.util.List;
 
 @Controller
 @Slf4j
 @RequestMapping(value = "/administration")
 public class AdministrationController {
     private final PostRepository postRepository;
-    private final CommentRepository commentRepository;
 
     @Autowired
-    public AdministrationController(PostRepository postRepository, CommentRepository commentRepository) {
+    public AdministrationController(PostRepository postRepository) {
         this.postRepository = postRepository;
-        this.commentRepository = commentRepository;
     }
 
     @GetMapping(value = "/postwriter")
@@ -58,7 +59,7 @@ public class AdministrationController {
     }
 
     @PostMapping(value = "/postwriter/addpost")
-    public ModelAndView addPost( @ModelAttribute("post") Post post) {
+    public ModelAndView addPost(@ModelAttribute("post") Post post) {
         if (post.isPublished()){
             post.setPublicationDate(LocalDateTime.now());
         }
@@ -79,10 +80,14 @@ public class AdministrationController {
         return new ModelAndView("redirect:/administration/wol");
     }
 
-    @DeleteMapping(value = "/postwriter/delete/comment/{commentId:[\\d]+}")
+    @DeleteMapping(value = "/postwriter/delete/post/{postId:[\\d]+}/comment/{commentId:[\\d]+}")
     @ResponseBody
-    public String deleteComment(@PathVariable int commentId) {
-            commentRepository.deleteById(commentId);
+    public String deleteComment(@PathVariable int commentId, @PathVariable int postId) {
+        Post post =  postRepository
+                .findById(postId)
+                .orElseThrow(ResourceNotFoundException::new);
+        post.getComments().removeIf(comment -> comment.getId() == commentId);
+        postRepository.save(post);
         return "deleted";
     }
 

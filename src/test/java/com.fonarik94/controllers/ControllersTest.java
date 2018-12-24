@@ -23,14 +23,13 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -69,7 +68,6 @@ public class ControllersTest {
             initialized = true;
             posts.forEach(post -> post.setPublished(true));
             posts.forEach(post -> post.setPublicationDate(LocalDateTime.now()));
-            posts.forEach(post -> System.out.println(post.getPublicationDateAsString()));
             postRepository.saveAll(posts);
         }
     }
@@ -79,12 +77,12 @@ public class ControllersTest {
         this.mockMvc
                 .perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Header")))
-                .andExpect(content().string(containsString("Text")))
-                .andExpect(content().string(containsString("Header1")))
-                .andExpect(content().string(containsString("Text1")))
-                .andExpect(content().string(containsString("Header2")))
-                .andExpect(content().string(containsString("Text2")));
+                .andExpect(content().string(containsString(header)))
+                .andExpect(content().string(containsString(text)))
+                .andExpect(content().string(containsString(header + "1")))
+                .andExpect(content().string(containsString(text + "1")))
+                .andExpect(content().string(containsString(header + "2")))
+                .andExpect(content().string(containsString(text + "2")));
     }
 
     @Test
@@ -92,7 +90,7 @@ public class ControllersTest {
         this.mockMvc
                 .perform(get("/about"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Text")))
+                .andExpect(content().string(containsString(text)))
         ;
     }
 
@@ -101,22 +99,22 @@ public class ControllersTest {
         this.mockMvc
                 .perform(get("/post/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Header")))
-                .andExpect(content().string(containsString("Text")));
+                .andExpect(content().string(containsString(header)))
+                .andExpect(content().string(containsString(text)));
     }
 
     @Test
     public void getWrongPost() throws Exception {
         this.mockMvc.perform(get("/post/10"))
-                .andExpect(status().isNotFound());
-//                .andExpect(content().string(containsString("404")));
+                .andExpect(status().isNotFound())
+                .andExpect(content().string(containsString("404")));
     }
 
     @Test
     public void getWrongPostId() throws Exception {
         this.mockMvc.perform(get("/post/rand"))
-                .andExpect(status().isNotFound());
-//                .andExpect(content().string(containsString("404")));
+                .andExpect(status().isNotFound())
+                .andExpect(content().string(containsString("404")));
     }
 
     @Test
@@ -172,6 +170,11 @@ public class ControllersTest {
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/administration/postwriter"));
+
+        this.mockMvc
+                .perform(get("/"))
+                .andExpect(content().string(containsString("goodHeader")))
+                .andExpect(content().string(containsString("goodText")));
     }
 
     @Test
@@ -205,7 +208,6 @@ public class ControllersTest {
         this.mockMvc
                 .perform(delete("/administration/postwriter/delete/post/" + id).with(csrf()))
                 .andExpect(status().isNotFound());
-//                .andExpect(content().string(containsString("404")));
     }
 
     @Test
@@ -218,11 +220,31 @@ public class ControllersTest {
         this.mockMvc
                 .perform(post("/post/2")
                         .param("author", "author")
-                        .param("text", "text")
+                        .param("text", "awesome comment")
                         .param("g-recaptcha-response", "dfgkjhsgnodfg")
                         .with(csrf()))
                 .andExpect(status().is3xxRedirection())
-        .andExpect(redirectedUrl("/post/2"));
+                .andExpect(redirectedUrl("/post/2"));
+
+        this.mockMvc
+                .perform(get("/post/2"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("author")))
+                .andExpect(content().string(containsString("awesome comment")));
+    }
+
+    @Test
+    @WithMockUser(username = "admin", authorities = {"ADMIN"})
+    public void deleteCommentTest() throws Exception {
+
+        this.mockMvc
+                .perform(delete("/administration/postwriter/delete/post/2/comment/5").with(csrf()))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("deleted")));
+
+        this.mockMvc
+                .perform(get("/post/2"))
+                .andExpect(content().string(is(not(containsString("awesome comment")))));
     }
 
 }
