@@ -1,6 +1,6 @@
 package com.fonarik94.services;
 
-import com.fonarik94.repo.UserRepo;
+import com.fonarik94.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -9,15 +9,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService implements UserDetailsService {
-    private UserRepo userRepo;
+    private UserRepository userRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepo.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException("User not found"));
+        return userRepository.findByUsername(username).orElseThrow(()-> new UsernameNotFoundException("User not found"));
     }
 
     @Autowired
-    public UserService(UserRepo userRepo) {
-        this.userRepo = userRepo;
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 }

@@ -3,8 +3,8 @@ package com.fonarik94.controllers;
 import com.fonarik94.domain.Post;
 import com.fonarik94.domain.Roles;
 import com.fonarik94.domain.User;
-import com.fonarik94.repo.PostRepository;
-import com.fonarik94.repo.UserRepo;
+import com.fonarik94.repositories.PostRepository;
+import com.fonarik94.repositories.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +32,7 @@ public class SecurityTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    private UserRepo userRepo;
+    private UserRepository userRepository;
     @Autowired
     private PostRepository postRepository;
 
@@ -54,7 +54,7 @@ public class SecurityTest {
     public void setUp() {
         if (!initialized) {
             initialized = true;
-            userRepo.save(admin);
+            userRepository.save(admin);
             postRepository.save(new Post("Header", "Text"));
         }
     }

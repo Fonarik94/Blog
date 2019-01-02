@@ -3,7 +3,7 @@
     <groupId>com.fonarik94</groupId>
     <artifactId>Blog</artifactId>
     <packaging>jar</packaging>
-    <version>0.8-SNAPSHOT</version>
+    <version>0.9-SNAPSHOT</version>
     <name>Blog</name>
     <!--Spring Boot default config-->
 
@@ -54,10 +54,7 @@
             <artifactId>h2</artifactId>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>-->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -78,32 +75,12 @@
             <groupId>javax.cache</groupId>
             <artifactId>cache-api</artifactId>
         </dependency>
-
-        <!-- Jackson JSON Mapper -->
+        <!--Rest-->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-hateoas</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>${jackson.version}</version>
-        </dependency>
-<!--        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
-        </dependency>-->
-<!--        <dependency>
-            <groupId>javax.xml.bind</groupId>
-            <artifactId>jaxb-api-parent</artifactId>
-            <version>2.3.1</version>
-        </dependency>-->
-<!--        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>javax.activation-api</artifactId>
-        </dependency>-->
         <dependency>
             <groupId>org.glassfish.jaxb</groupId>
             <artifactId>jaxb-runtime</artifactId>

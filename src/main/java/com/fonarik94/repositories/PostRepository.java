@@ -1,4 +1,4 @@
-package com.fonarik94.repo;
+package com.fonarik94.repositories;
 
 import com.fonarik94.domain.Post;
 import org.springframework.data.jpa.repository.Query;

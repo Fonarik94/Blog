@@ -1,10 +1,8 @@
 package com.fonarik94.controllers;
 
-import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
 import com.fonarik94.exceptions.ResourceNotFoundException;
-import com.fonarik94.repo.CommentRepository;
-import com.fonarik94.repo.PostRepository;
+import com.fonarik94.repositories.PostRepository;
 import com.fonarik94.utils.WakeOnLan;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
 import java.time.LocalDateTime;
-import java.util.Iterator;
-import java.util.List;
 
 @Controller
 @Slf4j

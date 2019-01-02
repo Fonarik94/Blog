@@ -1,14 +1,10 @@
-<html>
-<title>
-    You fucked up
-</title>
-<head>
-    <link rel="stylesheet" type="text/css" href="/resources/styles/style.css">
-</head>
-<body>
-    <div class="center-area">
-        <h1 style="font-size: 76pt">404</h1>
-        <h1>Page not found</h1>
+<#import "../parts/common.ftl" as c>
+<@c.commonTemplate>
+    <div class="col-md-6 offset-md-3 text-center">
+        <h1 class="display-1">404</h1>
+        <h1 class="display-3">Страница не найдена</h1>
+        <a class="btn btn-primary mt-5" href="/">
+            Вернуться на главную
+        </a>
     </div>
-</body>
-</html>
+</@c.commonTemplate>

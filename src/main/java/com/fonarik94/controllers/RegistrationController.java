@@ -3,7 +3,7 @@ package com.fonarik94.controllers;
 import com.fonarik94.dto.UserRegistrationDto;
 import com.fonarik94.domain.Roles;
 import com.fonarik94.domain.User;
-import com.fonarik94.repo.UserRepo;
+import com.fonarik94.repositories.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -20,7 +20,7 @@ import javax.validation.Valid;
 @Controller
 @Slf4j
 public class RegistrationController {
-    private final UserRepo userRepo;
+    private final UserRepository userRepository;
 
 
     @PostMapping("/register")
@@ -37,7 +37,7 @@ public class RegistrationController {
             redirectAttr.addFlashAttribute("org.springframework.validation.BindingResult.userDto", bindingResult);
             return "redirect:/register";
         }else {
-            if(userRepo.findAll().isEmpty()){
+            if(userRepository.findAll().isEmpty()){
                 User user = User.builder()
                         .username(userDto.getUsername())
                         .password(new BCryptPasswordEncoder().encode(userDto.getPassword()))
@@ -48,7 +48,7 @@ public class RegistrationController {
                         .enabled(true)
                         .authority(Roles.ADMIN)
                         .build();
-                userRepo.save(user);
+                userRepository.save(user);
             }
             return "redirect:/";
         }
@@ -62,7 +62,7 @@ public class RegistrationController {
         return "register";
     }
     @Autowired
-    public RegistrationController(UserRepo userRepo) {
-        this.userRepo = userRepo;
+    public RegistrationController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 }

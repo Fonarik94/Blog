@@ -2,7 +2,7 @@ package com.fonarik94.controllers;
 
 import com.fonarik94.domain.Post;
 import com.fonarik94.dto.CaptchaResponseDto;
-import com.fonarik94.repo.PostRepository;
+import com.fonarik94.repositories.PostRepository;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -32,6 +32,7 @@ import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
@@ -106,15 +107,15 @@ public class ControllersTest {
     @Test
     public void getWrongPost() throws Exception {
         this.mockMvc.perform(get("/post/10"))
-                .andExpect(status().isNotFound())
-                .andExpect(content().string(containsString("404")));
+                .andExpect(status().isNotFound());
+//                .andExpect(content().string(containsString("404")));
     }
 
     @Test
     public void getWrongPostId() throws Exception {
         this.mockMvc.perform(get("/post/rand"))
-                .andExpect(status().isNotFound())
-                .andExpect(content().string(containsString("404")));
+                .andExpect(status().isNotFound());
+//                .andExpect(content().string(containsString("404")));
     }
 
     @Test
@@ -245,6 +246,39 @@ public class ControllersTest {
         this.mockMvc
                 .perform(get("/post/2"))
                 .andExpect(content().string(is(not(containsString("awesome comment")))));
+    }
+
+    @Test
+    public void restRoot() throws Exception {
+        this.mockMvc
+                .perform(get("/api/posts"))
+                .andExpect(status().isOk())
+            .andExpect(content().string(containsString(header+1)))
+            .andExpect(content().string(containsString(header+2)));
+    }
+
+    @Test
+    public void restGetPost() throws Exception {
+        this.mockMvc
+                .perform(get("/api/post/1"))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString(header)))
+                .andExpect(content().string(containsString(text)));
+    }
+
+    @Test
+    public void restGetWrongPost() throws Exception {
+        this.mockMvc
+                .perform(get("/api/post/46478"))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void restGetInvalidPost() throws Exception {
+        this.mockMvc
+                .perform(get("/api/post/qwerty"))
+                .andExpect(status().isNotFound());
+
     }
 
 }

@@ -3,7 +3,7 @@ package com.fonarik94.controllers;
 import com.fonarik94.domain.Comment;
 import com.fonarik94.domain.Post;
 import com.fonarik94.exceptions.ResourceNotFoundException;
-import com.fonarik94.repo.PostRepository;
+import com.fonarik94.repositories.PostRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

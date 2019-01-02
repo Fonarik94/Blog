@@ -4,6 +4,8 @@ import lombok.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.hateoas.Identifiable;
+import org.springframework.hateoas.ResourceSupport;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
