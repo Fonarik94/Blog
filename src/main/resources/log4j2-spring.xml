@@ -31,7 +31,7 @@
         </RollingFile>
     </Appenders>
     <Loggers>
-        <Root level="trace">
+        <Root level="debug">
             <AppenderRef ref="Console" level="debug"/>
             <AppenderRef ref="Warning" level="warn"/>
             <AppenderRef ref="FileOutput"/>
