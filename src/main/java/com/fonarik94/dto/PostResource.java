@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fonarik94.controllers.RestApi;
 import com.fonarik94.domain.Post;
 import lombok.Getter;
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 import java.time.LocalDateTime;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @Getter
-public class PostResource extends ResourceSupport {
+public class PostResource extends RepresentationModel {
     private String header;
     private String text;
     @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")

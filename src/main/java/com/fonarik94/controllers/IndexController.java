@@ -17,12 +17,10 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RequestMapping(value = "/")
 public class IndexController {
-    private final HttpServletRequest request;
     private final PostRepository postRepository;
     @GetMapping()
     public String main(Model model){
         model.addAttribute("publishedPosts", postRepository.findPublished());
-        log.debug(">> Client IP: " + getClientIp(request));
         return "posts";
     }
 
@@ -42,17 +40,8 @@ public class IndexController {
         return "singlePost";
     }
 
-    private String getClientIp(HttpServletRequest request){
-        String clientIp = request.getHeader("X-FORWARDED-FOR");
-        if(clientIp == null){
-            clientIp = request.getRemoteAddr();
-        }
-        return clientIp;
-    }
-
     @Autowired
-    public IndexController(HttpServletRequest request, PostRepository postRepository) {
-        this.request = request;
+    public IndexController(PostRepository postRepository) {
         this.postRepository = postRepository;
     }
 }

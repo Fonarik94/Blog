@@ -3,11 +3,11 @@ package com.fonarik94.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fonarik94.domain.Comment;
 import lombok.Getter;
-import org.springframework.hateoas.ResourceSupport;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.time.LocalDateTime;
 @Getter
-public class CommentResource extends ResourceSupport {
+public class CommentResource extends RepresentationModel {
     private String author;
     private String text;
     @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")

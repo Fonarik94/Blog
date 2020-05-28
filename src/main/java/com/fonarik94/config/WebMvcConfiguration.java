@@ -3,11 +3,13 @@ package com.fonarik94.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 @Configuration
 public class WebMvcConfiguration extends WebMvcConfigurationSupport {
@@ -20,9 +22,6 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                 .addResourceLocations("/resources/", "classpath:/static/", "file:///"+imagesPath+"/" )
                 .setCachePeriod(3600)
                 .resourceChain(false);
-/*        registry
-                .addResourceHandler("/img/**")
-                .addResourceLocations("file:///"+imagesPath+"/");*/
     }
 
     public void addViewControllers(ViewControllerRegistry registry) {
