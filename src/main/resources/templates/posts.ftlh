@@ -12,9 +12,9 @@
             <div class="card-body p-1 p-md-2">
                 <p class="card-text">
                 <#if post.text?length gte 300>
-                    ${post.text[0..300]}...
+                    ${post.text[0..300]?no_esc}...
                 <#else>
-                    ${post.text}
+                    ${post.text?no_esc}
                 </#if>
                 </p>
             </div>
